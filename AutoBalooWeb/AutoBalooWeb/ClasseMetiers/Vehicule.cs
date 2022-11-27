@@ -5,9 +5,9 @@ using System.Web;
 
 namespace AutoBalooWeb.ClasseMetiers
 {
-    public class Voiture
+    public class Vehicule
     {
-        public Voiture()
+        public Vehicule()
         {
             //test
             //NumChassis = numChassis;
@@ -29,7 +29,7 @@ namespace AutoBalooWeb.ClasseMetiers
             //Carburant = carburant;
             //Carrosserie = carrosserie;
         }
-        public Voiture(string numChassis, string nom, string puissance, int nbPortes, int nbVitesse, int cylindres, string couleur, int kilometrage, DateTime année, DateTime dateCtrlTech, string carnetEntretien, int typeTransaction, int prix, int reduction, string etat, string transmission, string carburant, string carrosserie)
+        public Vehicule(string numChassis, string nom, string puissance, int nbPortes, int nbVitesse, int cylindres, string couleur, int kilometrage, DateTime année, DateTime dateCtrlTech, string carnetEntretien, int typeTransaction, int prix, int reduction, Etat etat, Transmission transmission, Carburant carburant, Carrosserie carrosserie)
         {
             NumChassis = numChassis;
             Nom = nom;
@@ -50,7 +50,7 @@ namespace AutoBalooWeb.ClasseMetiers
             Carburant = carburant;
             Carrosserie = carrosserie;
         }
-        
+
         public int IdVoiture { get; set; }
         public string NumChassis { get; set; }
         public string Nom { get; set; }
@@ -66,9 +66,9 @@ namespace AutoBalooWeb.ClasseMetiers
         public int TypeTransaction { get; set; }
         public int Prix { get; set; }
         public int Reduction { get; set; }
-        public string Etat { get; set; }
-        public string Transmission { get; set; }
-        public string Carburant { get; set; }
-        public string Carrosserie { get; set; }
+        public Etat Etat { get; set; }
+        public Transmission Transmission { get; set; }
+        public Carburant Carburant { get; set; }
+        public Carrosserie Carrosserie { get; set; }
     }
 }
