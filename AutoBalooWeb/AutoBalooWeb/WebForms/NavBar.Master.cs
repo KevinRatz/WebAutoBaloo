@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AutoBalooWeb.CoucheAccesDB;
+using AutoBalooWeb.CoucheModele;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +13,25 @@ namespace AutoBalooWeb
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            try
+            {
+                if (Session["CoucheModele"] == null)
+                {
+                    Session["CoucheModele"] = new Modele();
+                    Session.Timeout = 5;
+                }
+            }
+            catch (ExceptionAccesDB ex)
+            {
+                new Outils().RedirigerErreurConnSQL("NavForm", "Page_Init()", ex.Message);
+            }
 
+            if (Page.User.Identity.IsAuthenticated)
+            {
+                register.Visible = false;
+            }
+            else
+                register.Visible = true;
         }
     }
 }

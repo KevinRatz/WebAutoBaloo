@@ -5,16 +5,36 @@
 <html>
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title></title>
+    <title>AutoBaloo</title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
-            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-            </asp:ContentPlaceHolder>
-        </div>
+        <asp:ContentPlaceHolder ID="CPHMenu" runat="server">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div class="container-fluid">
+                    <a href="MainPageForm.aspx" class="navbar-brand" style="font-size:20px;">AutoBaloo</a>
+                    <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarCollapse" style="font-size:16px;">
+                        <div class="navbar-nav ms-auto">     
+                                <a href="InfoClientForm.aspx"><asp:LoginName ID="LoginName1" runat="server" Font-Bold = "true" /></a>
+                                <asp:LoginStatus ID="LoginStatus1"  runat="server" class="nav-item nav-link"/>
+                                <asp:LinkButton  ID="register" runat="server" class="nav-item nav-link" OnClick="Register_OnClick">S'inscrire</asp:LinkButton>
+                                <a href="PanierForm.aspx"><i class="fa fa-shopping-cart"></i> Panier</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </asp:ContentPlaceHolder>
+        <asp:ContentPlaceHolder ID="CPHContenu" runat="server">
+        </asp:ContentPlaceHolder>
     </form>
 </body>
 </html>

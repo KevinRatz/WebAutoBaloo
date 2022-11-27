@@ -29,7 +29,7 @@ namespace AutoBalooWeb.CoucheAccesDB
         * méthode qui fournit une instance de ProductDB
         * retour : l'instance de ProductDB
         */
-        public VehiculeDB GetProductDB()
+        public VehiculeDB GetVehiculeDB()
         {
             return new VehiculeDB(SqlCmd);
         }
@@ -42,28 +42,28 @@ namespace AutoBalooWeb.CoucheAccesDB
             return new ClientDB(SqlCmd);
         }
         /**
-        * méthode qui fournit une instance de CategorieDB
-        * retour : l'instance de CategorieDB
+        * méthode qui fournit une instance de EssaiDB
+        * retour : l'instance de EssaiDB
         */
-        public EssaiDB GetCategorieDB()
+        public EssaiDB GetEssaiDB()
         {
             return new EssaiDB(SqlCmd);
         }
         /**
-        * méthode qui fournit une instance de CategorieDB
-        * retour : l'instance de CategorieDB
+        * méthode qui fournit une instance de ReservationDB
+        * retour : l'instance de ReservationDB
         */
-        public CommandeDB GetCommandeDB()
+        public ReservationDB GetReservationDB()
         {
-            return new CommandeDB(SqlCmd);
+            return new ReservationDB(SqlCmd);
         }
         /**
-        * méthode qui fournit une instance de CategorieDB
-        * retour : l'instance de CategorieDB
+        * méthode qui fournit une instance de LocationDB
+        * retour : l'instance de LocationDB
         */
-        public PanierDB GetPanierDB()
+        public LocationDB GetLocationDB()
         {
-            return new PanierDB(SqlCmd);
+            return new LocationDB(SqlCmd);
         }
 
         /**

@@ -19,22 +19,22 @@ namespace AutoBalooWeb.CoucheAccesDB
         }
 
         /**
-         * méthode qui lit dans la base de données un Categorie spécifique
-         * param num : le numéro du Categorie
-         * retour : Categorie lu dans la base de données
+         * méthode qui lit dans la base de données un Essai spécifique
+         * param num : le numéro du Essai
+         * retour : Essai lu dans la base de données
          *
-        public override Categorie Charger(string codebarre)
+        public override Essai Charger(string codebarre)
         {
-            Categorie Categorie = null;
+            Essai Essai = null;
 
             try
             {
-                SqlCmd.CommandText = "GetCategorie";
+                SqlCmd.CommandText = "GetEssai";
                 SqlCmd.Parameters.Clear();
                 SqlCmd.Parameters.Add("@codebarre", SqlDbType.VarChar).Value = codebarre;
                 SqlDataReader sqlReader = SqlCmd.ExecuteReader();
                 if (sqlReader.Read() == true)
-                    Categorie = new Categorie(
+                    Essai = new Essai(
                     Convert.ToString(sqlReader["CodeBarre"]),
                     Convert.ToString(sqlReader["Nom"]),
                     Convert.ToDecimal(sqlReader["Prix"]),
@@ -42,11 +42,11 @@ namespace AutoBalooWeb.CoucheAccesDB
                     Convert.ToString(sqlReader["Couleur"]),
                     Convert.ToString(sqlReader["Taille"]),
                     Convert.ToInt32(sqlReader["Actif"]),
-                    new Categorie(Convert.ToString(sqlReader["NomCat"])),
+                    new Essai(Convert.ToString(sqlReader["NomCat"])),
                     new Genre(Convert.ToString(sqlReader["NomGenre"])));
 
                 sqlReader.Close();
-                return Categorie;
+                return Essai;
             }
             catch (Exception e)
             {
@@ -54,11 +54,11 @@ namespace AutoBalooWeb.CoucheAccesDB
             }
         }
         /**
-        * méthode qui ajoute dans la base de données un Categorie
-        * * param obj : le Categorie
+        * méthode qui ajoute dans la base de données un Essai
+        * * param obj : le Essai
         * retour : un booléen indiquant si l'ajout a été réalisé ou non
         *
-        public override bool Ajouter(Categorie obj)
+        public override bool Ajouter(Essai obj)
         {
             try
             {
@@ -81,20 +81,20 @@ namespace AutoBalooWeb.CoucheAccesDB
         * param obj : l'élève
         * retour : un booléen indiquant si la modification a été réalisée ou non
         *
-        public override bool Modifier(Categorie obj)
+        public override bool Modifier(Essai obj)
         {
             try
             {
-                SqlCmd.CommandText = "update Categorie " +
+                SqlCmd.CommandText = "update Essai " +
                 "set nom = @Nom, " +
                " prenom = @Prenom, " +
                " poids = @Poids, " +
                " annee = @Annee, " +
                " datenaissance = @DateNaissance, " +
                " nomimage = @NomImage " +
-               "where numCategorie = @NumCategorie";
+               "where numEssai = @NumEssai";
                 SqlCmd.Parameters.Clear();
-                SqlCmd.Parameters.Add("@NumCategorie", SqlDbType.Int).Value = obj.NumCategorie;
+                SqlCmd.Parameters.Add("@NumEssai", SqlDbType.Int).Value = obj.NumEssai;
                 SqlCmd.Parameters.Add("@Nom", SqlDbType.VarChar).Value = obj.Nom;
                 SqlCmd.Parameters.Add("@Prenom", SqlDbType.VarChar).Value = obj.Prenom;
                 SqlCmd.Parameters.Add("@Poids", SqlDbType.Int).Value = obj.Poids;
@@ -118,10 +118,10 @@ namespace AutoBalooWeb.CoucheAccesDB
         {
             try
             {
-                SqlCmd.CommandText = "delete from Categorie " +
-                "where numCategorie = @NumCategorie";
+                SqlCmd.CommandText = "delete from Essai " +
+                "where numEssai = @NumEssai";
                 SqlCmd.Parameters.Clear();
-                SqlCmd.Parameters.Add("@NumCategorie", SqlDbType.Int).Value = num;
+                SqlCmd.Parameters.Add("@NumEssai", SqlDbType.Int).Value = num;
                 return (SqlCmd.ExecuteNonQuery() == 0) ? false : true;
             }
             catch (Exception e)
@@ -130,19 +130,19 @@ namespace AutoBalooWeb.CoucheAccesDB
             }
         }
         /**
-        * méthode qui lit dans la base de données tous les categories
-        * retour : la liste de tous les categories
+        * méthode qui lit dans la base de données tous les Essais
+        * retour : la liste de tous les Essais
         */
-        public override List<Categorie> ListerTous()
+        public override List<Essai> ListerTous()
         {
-            List<Categorie> liste = new List<Categorie>();
+            List<Essai> liste = new List<Essai>();
             try
             {
-                SqlCmd.CommandText = "Select * from Categorie";
+                SqlCmd.CommandText = "Select * from Essai";
                 SqlCmd.CommandType = CommandType.Text;
                 SqlDataReader sqlReader = SqlCmd.ExecuteReader();
                 while (sqlReader.Read() == true)
-                    liste.Add( new Categorie(
+                    liste.Add( new Essai(
                     Convert.ToInt32(sqlReader["IdCat"]),
                     Convert.ToString(sqlReader["Nom"])));
                 sqlReader.Close();

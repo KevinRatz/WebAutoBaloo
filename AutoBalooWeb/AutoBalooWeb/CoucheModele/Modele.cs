@@ -25,7 +25,7 @@ namespace AutoBalooWeb.CoucheModele
          * méthode qui ajout dans la base de données une commande
          * retour : id cmd créé
          */
-        public int AddCmdVM(string userid)
+        public int AddVehiculeVM(string userid)
         {
             int id = fabDB.GetCommandeDB().Existe(userid);
             if (id == 0)

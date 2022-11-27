@@ -165,32 +165,6 @@ namespace AutoBalooWeb.CoucheAccesDB
             return liste;
         }
         
-        /**
-        * méthode qui lit dans la base de données tous les élèves
-        * retour : la liste de tous les élèves
-        */
-        //public override List<Marque> ListerTous()
-        //{
-        //    List<Marque> liste = new List<Marque>();
-        //    try
-        //    {
-        //        SqlCmd.CommandText = "Select * from Marque";
-        //        SqlCmd.CommandType = CommandType.Text;
-        //        SqlCmd.Parameters.Clear();
-        //        SqlDataReader sqlReader = SqlCmd.ExecuteReader();
-        //        while (sqlReader.Read() == true)
-        //            liste.Add( new Marque(
-        //            Convert.ToInt32(sqlReader["IdMarque"]),
-        //            Convert.ToString(sqlReader["Nom"])));
-        //        sqlReader.Close();
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        throw new ExceptionAccesDB(e.Message);
-        //    }
-
-        //    return liste;
-        //}
         
         /**
         * méthode qui lit dans la base de données tous les élèves

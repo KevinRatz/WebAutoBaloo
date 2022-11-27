@@ -5,23 +5,17 @@ using System.Web;
 
 namespace AutoBalooWeb.ClasseMetiers
 {
-    public class Reservation
+    public class Reservation : Transact
     {
-        public Reservation()
+        public Reservation() : base()
         {
                 
         }
-        public Reservation(DateTime dateRes, Vehicule vehicule, Client client, Etat etat)
+        public Reservation(DateTime dateRes, Vehicule vehicule, Client client, Etat etat) : base(dateRes,client,vehicule)
         {
-            DateRes = dateRes;
-            Vehicule = vehicule;
-            Client = client;
             Etat = etat;
         }
 
-        public DateTime DateRes { get; set; }
-        public Vehicule Vehicule { get; set; }
-        public Client Client { get; set; }
         public Etat Etat { get; set; }
     }
 }
