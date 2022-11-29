@@ -11,7 +11,7 @@ namespace AutoBalooWeb.ClasseMetiers
         {
 
         }
-        public Location(DateTime dateRes, Vehicule vehicule, Client client, DateTime dateFin) : base(dateRes, client, vehicule)
+        public Location(DateTime dateRes, int vehicule, int client, DateTime dateFin) : base(dateRes, client, vehicule)
         {
             DateFin = dateFin;
         }

@@ -11,7 +11,7 @@ namespace AutoBalooWeb.ClasseMetiers
         {
 
         }
-        public Essai(DateTime dateRes, Vehicule vehicule, Client client, Etat etat) : base(dateRes, client, vehicule)
+        public Essai(DateTime dateRes, int vehicule, int client) : base(dateRes, client, vehicule)
         {
         }
     }

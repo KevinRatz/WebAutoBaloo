@@ -133,28 +133,33 @@ namespace AutoBalooWeb.CoucheAccesDB
         * méthode qui lit dans la base de données tous les élèves
         * retour : la liste de tous les élèves
         */
-        public override List<Vehicule> ListerPar(string txt, int id)
+        public override List<Vehicule> ListerTous()
         {
             List<Vehicule> liste = new List<Vehicule>();
             try
             {
-                SqlCmd.CommandText = "SelectProductBy";
+                SqlCmd.CommandText = "";
                 SqlCmd.CommandType = CommandType.StoredProcedure;
                 SqlCmd.Parameters.Clear();
-                SqlCmd.Parameters.AddWithValue("@txt", SqlDbType.VarChar).Value = txt;
-                SqlCmd.Parameters.AddWithValue("@id", SqlDbType.Int).Value = id;
                 SqlDataReader sqlReader = SqlCmd.ExecuteReader();
                 while (sqlReader.Read() == true)
-                    liste.Add( new Vehicule(
-                    Convert.ToString(sqlReader["CodeBarre"]),
-                    Convert.ToString(sqlReader["Nom"]),
-                    Convert.ToDecimal(sqlReader["Prix"]),
-                    Convert.ToInt32(sqlReader["Quantite"]),
-                    Convert.ToString(sqlReader["Couleur"]),
-                    Convert.ToString(sqlReader["Taille"]),
-                    Convert.ToInt32(sqlReader["Actif"]),
-                    new Categorie(Convert.ToString(sqlReader["NomCat"])),
-                    new Genre(Convert.ToString(sqlReader["NomGenre"]))));
+                    //liste.Add( new Vehicule(
+                    //Convert.ToInt32(sqlReader["IdVoiture"]),
+                    //Convert.ToString(sqlReader["NumChassis"]),
+                    //Convert.ToString(sqlReader["Nom"]),
+                    //new Marque(Convert.ToInt32(sqlReader["IdMarque"]),Convert.ToString(sqlReader["NomMarque"])),
+                    //Convert.ToInt32(sqlReader["Quantite"]),
+                    //Convert.ToInt32(sqlReader["Quantite"]),
+                    //Convert.ToInt32(sqlReader["Quantite"]),
+                    //Convert.ToString(sqlReader["Couleur"]),
+                    //Convert.ToDecimal(sqlReader["Kilometrage"]),
+                    //Convert.ToDecimal(sqlReader["Prix"]),
+                    //Convert.ToInt32(sqlReader["Quantite"]),
+                    //Convert.ToString(sqlReader["Couleur"]),
+                    //Convert.ToString(sqlReader["Taille"]),
+                    //Convert.ToInt32(sqlReader["Actif"]),
+                    //new Carburant(Convert.ToInt32(sqlReader["IdCarbu"]), Convert.ToString(sqlReader["NomCarbu"]))));
+                    //new Carrosserie(Convert.ToInt32(sqlReader["IdCaro"]), Convert.ToString(sqlReader["NomCaros"]))));
                 sqlReader.Close();
             }
             catch (Exception e)
@@ -164,70 +169,5 @@ namespace AutoBalooWeb.CoucheAccesDB
 
             return liste;
         }
-        
-        
-        /**
-        * méthode qui lit dans la base de données tous les élèves
-        * retour : la liste de tous les élèves
-        */
-        public override List<Transmission> ListerTous()
-        {
-            List<Transmission> liste = new List<Transmission>();
-            try
-            {
-                SqlCmd.CommandText = "Select * from Transmission";
-                SqlCmd.CommandType = CommandType.Text;
-                SqlCmd.Parameters.Clear();
-                SqlDataReader sqlReader = SqlCmd.ExecuteReader();
-                while (sqlReader.Read() == true)
-                    liste.Add(new Transmission(
-                    Convert.ToInt32(sqlReader["IdTrans"]),
-                    Convert.ToString(sqlReader["Nom"])));
-                sqlReader.Close();
-            }
-            catch (Exception e)
-            {
-                throw new ExceptionAccesDB(e.Message);
-            }
-
-            return liste;
-        }
-        
-        /**
-        * méthode qui lit dans la base de données tous les élèves
-        * retour : la liste de tous les élèves
-        */
-        public override List<Vehicule> ListerPar(string txt, int id)
-        {
-            List<Vehicule> liste = new List<Vehicule>();
-            try
-            {
-                SqlCmd.CommandText = "SelectProductBy";
-                SqlCmd.CommandType = CommandType.StoredProcedure;
-                SqlCmd.Parameters.Clear();
-                SqlCmd.Parameters.AddWithValue("@txt", SqlDbType.VarChar).Value = txt;
-                SqlCmd.Parameters.AddWithValue("@id", SqlDbType.Int).Value = id;
-                SqlDataReader sqlReader = SqlCmd.ExecuteReader();
-                while (sqlReader.Read() == true)
-                    liste.Add( new Vehicule(
-                    Convert.ToString(sqlReader["CodeBarre"]),
-                    Convert.ToString(sqlReader["Nom"]),
-                    Convert.ToDecimal(sqlReader["Prix"]),
-                    Convert.ToInt32(sqlReader["Quantite"]),
-                    Convert.ToString(sqlReader["Couleur"]),
-                    Convert.ToString(sqlReader["Taille"]),
-                    Convert.ToInt32(sqlReader["Actif"]),
-                    new Categorie(Convert.ToString(sqlReader["NomCat"])),
-                    new Genre(Convert.ToString(sqlReader["NomGenre"]))));
-                sqlReader.Close();
-            }
-            catch (Exception e)
-            {
-                throw new ExceptionAccesDB(e.Message);
-            }
-
-            return liste;
-        }
-
     }
 }

@@ -142,9 +142,12 @@ namespace AutoBalooWeb.CoucheAccesDB
                 SqlCmd.CommandType = CommandType.Text;
                 SqlDataReader sqlReader = SqlCmd.ExecuteReader();
                 while (sqlReader.Read() == true)
-                    liste.Add( new Reservation(
-                    Convert.ToInt32(sqlReader["IdCat"]),
-                    Convert.ToString(sqlReader["Nom"])));
+                    //liste.Add( new Reservation(
+                    //Convert.ToDateTime(sqlReader["DateDebut"]),
+                    //Convert.ToInt32(sqlReader["IdVoiture"]),
+                    //Convert.ToInt32(sqlReader["IdClient"]),
+                    //Convert.ToInt32(sqlReader["Etat"])
+                    //));
                 sqlReader.Close();
             }
             catch (Exception e)

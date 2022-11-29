@@ -12,7 +12,7 @@ namespace AutoBalooWeb.ClasseMetiers
 
         }
 
-        protected Transact(DateTime date, Client client, Vehicule voiture)
+        protected Transact(DateTime date, int client, int voiture)
         {
             Date = date;
             Client = client;
@@ -20,7 +20,7 @@ namespace AutoBalooWeb.ClasseMetiers
         }
 
         public DateTime Date { get; set; }
-        public Client Client { get; set; }
-        public Vehicule Voiture { get; set; }
+        public int Client { get; set; }
+        public int Voiture { get; set; }
     }
 }

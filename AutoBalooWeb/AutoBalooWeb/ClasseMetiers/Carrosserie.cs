@@ -5,13 +5,13 @@ using System.Web;
 
 namespace AutoBalooWeb.ClasseMetiers
 {
-    public class Carosserie
+    public class Carrosserie
     {
-        public Carosserie()
+        public Carrosserie()
         {
 
         }
-        public Carosserie(int idCaros, string nomCaros)
+        public Carrosserie(int idCaros, string nomCaros)
         {
             IdCaros = idCaros;
             NomCaros = nomCaros;
@@ -22,7 +22,7 @@ namespace AutoBalooWeb.ClasseMetiers
 
         public override bool Equals(object obj)
         {
-            return obj is Carosserie Caros &&
+            return obj is Carrosserie Caros &&
                    IdCaros == Caros.IdCaros &&
                    NomCaros == Caros.NomCaros;
         }

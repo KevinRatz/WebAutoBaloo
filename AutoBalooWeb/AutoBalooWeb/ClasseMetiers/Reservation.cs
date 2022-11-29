@@ -11,7 +11,7 @@ namespace AutoBalooWeb.ClasseMetiers
         {
                 
         }
-        public Reservation(DateTime dateRes, Vehicule vehicule, Client client, Etat etat) : base(dateRes,client,vehicule)
+        public Reservation(DateTime dateRes, int vehicule, int client, Etat etat) : base(dateRes,client,vehicule)
         {
             Etat = etat;
         }

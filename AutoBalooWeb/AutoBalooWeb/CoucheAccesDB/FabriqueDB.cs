@@ -65,6 +65,54 @@ namespace AutoBalooWeb.CoucheAccesDB
         {
             return new LocationDB(SqlCmd);
         }
+        /**
+        * méthode qui fournit une instance de CarburantDB
+        * retour : l'instance de CarburantDB
+        */
+        public CarburantDB GetCarburantDB()
+        {
+            return new CarburantDB(SqlCmd);
+        }
+        /**
+        * méthode qui fournit une instance de CarrosserieDB
+        * retour : l'instance de CarrosserieDB
+        */
+        public CarrosserieDB GetCarrosserieDB()
+        {
+            return new CarrosserieDB(SqlCmd);
+        }
+        /**
+        * méthode qui fournit une instance de EtatDB
+        * retour : l'instance de EtatDB
+        */
+        public EtatDB GetEtatDB()
+        {
+            return new EtatDB(SqlCmd);
+        }
+        /**
+        * méthode qui fournit une instance de EtatResDB
+        * retour : l'instance de EtatResDB
+        */
+        public EtatResDB GetEtatResDB()
+        {
+            return new EtatResDB(SqlCmd);
+        }
+        /**
+        * méthode qui fournit une instance de MarqueDB
+        * retour : l'instance de MarqueDB
+        */
+        public MarqueDB GetMarqueDB()
+        {
+            return new MarqueDB(SqlCmd);
+        }
+        /**
+        * méthode qui fournit une instance de TransmissionDB
+        * retour : l'instance de TransmissionDB
+        */
+        public TransmissionDB GetTransmissionDB()
+        {
+            return new TransmissionDB(SqlCmd);
+        }
 
         /**
         * méthode qui débute explicitement une transaction

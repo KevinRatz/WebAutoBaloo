@@ -59,12 +59,11 @@ namespace AutoBalooWeb.CoucheAccesDB
                 SqlCmd.CommandText = "AddClient";
                 SqlCmd.CommandType = CommandType.StoredProcedure;
                 SqlCmd.Parameters.Clear();
-                SqlCmd.Parameters.Add("@user", SqlDbType.VarChar).Value = obj.User;
-                SqlCmd.Parameters.Add("@email", SqlDbType.VarChar).Value = obj.Email;
+                SqlCmd.Parameters.Add("@email", SqlDbType.VarChar).Value = obj.EMail;
                 SqlCmd.Parameters.Add("@nom", SqlDbType.VarChar).Value = obj.Nom;
                 SqlCmd.Parameters.Add("@prenom", SqlDbType.VarChar).Value = obj.Prenom;
                 SqlCmd.Parameters.Add("@adresse", SqlDbType.VarChar).Value = obj.Adresse;
-                SqlCmd.Parameters.Add("@mdp", SqlDbType.VarChar).Value = obj.MotDePasse;
+                SqlCmd.Parameters.Add("@mdp", SqlDbType.VarChar).Value = obj.Password;
                 return (SqlCmd.ExecuteNonQuery() == 0) ? false : true;
             }
             catch (Exception e)

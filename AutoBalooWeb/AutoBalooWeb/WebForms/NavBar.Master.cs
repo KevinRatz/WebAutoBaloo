@@ -23,15 +23,15 @@ namespace AutoBalooWeb
             }
             catch (ExceptionAccesDB ex)
             {
-                new Outils().RedirigerErreurConnSQL("NavForm", "Page_Init()", ex.Message);
+                Console.WriteLine(ex.Message);
             }
 
-            if (Page.User.Identity.IsAuthenticated)
-            {
-                register.Visible = false;
-            }
-            else
-                register.Visible = true;
+            //if (Page.User.Identity.IsAuthenticated)
+            //{
+            //    register.Visible = false;
+            //}
+            //else
+            //    register.Visible = true;
         }
     }
 }

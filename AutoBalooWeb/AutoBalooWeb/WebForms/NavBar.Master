@@ -17,17 +17,21 @@
     <form id="form1" runat="server">
         <asp:ContentPlaceHolder ID="CPHMenu" runat="server">
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                <div class="container-fluid">
-                    <a href="MainPageForm.aspx" class="navbar-brand" style="font-size:20px;">AutoBaloo</a>
+                <div class="navbar-nav container-fluid">
+                    <a href="MainPage.aspx" class="navbar-brand" style="font-size:20px;">AutoBaloo</a>
                     <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                         <span class="navbar-toggler-icon"></span>
                     </button>
+                    <a runat="server" class="nav-item nav-link" href="Vente.aspx">Vente</a>
+                    <a runat="server" class="nav-item nav-link" href="Location.aspx">Location</a>
+                    <a runat="server" class="nav-item nav-link" href="Gerer.aspx" visible="false">Gérer</a> <%--admin--%>
                     <div class="collapse navbar-collapse" id="navbarCollapse" style="font-size:16px;">
                         <div class="navbar-nav ms-auto">     
-                                <a href="InfoClientForm.aspx"><asp:LoginName ID="LoginName1" runat="server" Font-Bold = "true" /></a>
+                                <%--<a href="InfoClientForm.aspx"><asp:LoginName ID="LoginName1" runat="server" Font-Bold = "true" /></a>--%>
                                 <asp:LoginStatus ID="LoginStatus1"  runat="server" class="nav-item nav-link"/>
-                                <asp:LinkButton  ID="register" runat="server" class="nav-item nav-link" OnClick="Register_OnClick">S'inscrire</asp:LinkButton>
-                                <a href="PanierForm.aspx"><i class="fa fa-shopping-cart"></i> Panier</a>
+                                <a runat="server" class="nav-item nav-link" href="SignUp.aspx">Inscription</a>
+                        
+                            <%--<asp:LinkButton  ID="register" runat="server" class="nav-item nav-link" OnClick="Register_OnClick">S'inscrire</asp:LinkButton>--%>
                         </div>
                     </div>
                 </div>

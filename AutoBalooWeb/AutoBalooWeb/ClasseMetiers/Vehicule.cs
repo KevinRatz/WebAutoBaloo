@@ -54,17 +54,18 @@ namespace AutoBalooWeb.ClasseMetiers
         public int IdVoiture { get; set; }
         public string NumChassis { get; set; }
         public string Nom { get; set; }
+        public Marque Marque { get; set; }
         public string Puissance { get; set; }
         public int NbPortes { get; set; }
         public int NbVitesse { get; set; }
         public int Cylindres { get; set; }
         public string Couleur { get; set; }
-        public int Kilometrage { get; set; }
+        public Decimal Kilometrage { get; set; }
         public DateTime Année { get; set; }
         public DateTime DateCtrlTech { get; set; }
         public string CarnetEntretien { get; set; }
         public int TypeTransaction { get; set; }
-        public int Prix { get; set; }
+        public Decimal Prix { get; set; }
         public int Reduction { get; set; }
         public Etat Etat { get; set; }
         public Transmission Transmission { get; set; }

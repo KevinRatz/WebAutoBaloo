@@ -143,8 +143,9 @@ namespace AutoBalooWeb.CoucheAccesDB
                 SqlDataReader sqlReader = SqlCmd.ExecuteReader();
                 while (sqlReader.Read() == true)
                     liste.Add( new Essai(
-                    Convert.ToInt32(sqlReader["IdCat"]),
-                    Convert.ToString(sqlReader["Nom"])));
+                    Convert.ToDateTime(sqlReader["DateEssai"]),
+                    Convert.ToInt32(sqlReader["IdVoiture"]),
+                    Convert.ToInt32(sqlReader["IdClient"])));
                 sqlReader.Close();
             }
             catch (Exception e)

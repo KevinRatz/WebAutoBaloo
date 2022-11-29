@@ -74,7 +74,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClasseMetiers\Carburant.cs" />
-    <Compile Include="ClasseMetiers\Carosserie.cs" />
+    <Compile Include="ClasseMetiers\Carrosserie.cs" />
     <Compile Include="ClasseMetiers\Client.cs" />
     <Compile Include="ClasseMetiers\Essai.cs" />
     <Compile Include="ClasseMetiers\Etat.cs" />
@@ -86,6 +86,11 @@
     <Compile Include="ClasseMetiers\Transmission.cs" />
     <Compile Include="ClasseMetiers\Vehicule.cs" />
     <Compile Include="CoucheAccesDB\BaseDB.cs" />
+    <Compile Include="CoucheAccesDB\EtatResDB.cs" />
+    <Compile Include="CoucheAccesDB\EtatDB.cs" />
+    <Compile Include="CoucheAccesDB\CarburantDB.cs" />
+    <Compile Include="CoucheAccesDB\CarrosserieDB.cs" />
+    <Compile Include="CoucheAccesDB\TransmissionDB.cs" />
     <Compile Include="CoucheAccesDB\ReservationDB.cs" />
     <Compile Include="CoucheAccesDB\LocationDB.cs" />
     <Compile Include="CoucheAccesDB\EssaiDB.cs" />
