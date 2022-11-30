@@ -18,12 +18,13 @@ namespace AutoBalooWeb.WebForms
 
         protected void BtnSignup_Click(object sender, EventArgs e)
         {
-            string tel = txtUser.Text;
+            //string tel = txtUser.Text;
+            string tel = txtTel.Text;
             string nom = txtNom.Text;
             string prenom = txtPrenom.Text;
             string adresse = txtAdd.Text;
             string email = txtEmail.Text;
-            string mdp = txtPassword.Text;
+            string mdp = txtPwd.Text;
             string cfmdp = txtConfirmPassword.Text;
             if (mdp == cfmdp)
                 if (((Modele)Session["CoucheModele"]).AddClientVM(new Client(nom, prenom, adresse,tel, email, mdp)))
