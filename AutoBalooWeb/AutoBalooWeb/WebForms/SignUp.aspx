@@ -40,6 +40,6 @@
                     <asp:TextBox ID="txtEmail" runat="server" TextMode="Email" class="form-control" placeholder="Entrer Email" required="required"/>
             </div>
             <hr/>
-            <%--<asp:Button ID="btnSignup" runat="server" Text="Enregistrer" class="btn btn-primary" OnClick="btnSignup_Click"/>--%>
+            <asp:Button ID="btnSignup" runat="server" Text="Enregistrer" class="btn btn-primary" OnClick="BtnSignup_Click"/>
     </div>
 </asp:Content>
