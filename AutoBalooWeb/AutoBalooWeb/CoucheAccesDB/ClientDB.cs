@@ -59,10 +59,10 @@ namespace AutoBalooWeb.CoucheAccesDB
                 SqlCmd.CommandText = "AddClient";
                 SqlCmd.CommandType = CommandType.StoredProcedure;
                 SqlCmd.Parameters.Clear();
-                SqlCmd.Parameters.Add("@email", SqlDbType.VarChar).Value = obj.EMail;
                 SqlCmd.Parameters.Add("@nom", SqlDbType.VarChar).Value = obj.Nom;
                 SqlCmd.Parameters.Add("@prenom", SqlDbType.VarChar).Value = obj.Prenom;
                 SqlCmd.Parameters.Add("@adresse", SqlDbType.VarChar).Value = obj.Adresse;
+                SqlCmd.Parameters.Add("@email", SqlDbType.VarChar).Value = obj.EMail;
                 SqlCmd.Parameters.Add("@mdp", SqlDbType.VarChar).Value = obj.Password;
                 return (SqlCmd.ExecuteNonQuery() == 0) ? false : true;
             }
@@ -115,7 +115,7 @@ namespace AutoBalooWeb.CoucheAccesDB
 
             try
             {
-                SqlCmd.CommandText = "Validate_User";
+                SqlCmd.CommandText = "ValidateUser";
                 SqlCmd.CommandType = CommandType.StoredProcedure;
                 SqlCmd.Parameters.Clear();
                 SqlCmd.Parameters.AddWithValue("@Email", user);
@@ -124,7 +124,7 @@ namespace AutoBalooWeb.CoucheAccesDB
                 SqlDataReader sqlreader = SqlCmd.ExecuteReader();
                 if (sqlreader.Read())
                 {
-                    userId = Convert.ToString(sqlreader["NumSecSoc"]);
+                    userId = Convert.ToString(sqlreader["EMail"]);
                 }
                 sqlreader.Close();
                 return userId;
