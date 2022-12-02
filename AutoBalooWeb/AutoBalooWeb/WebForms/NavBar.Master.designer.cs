@@ -42,6 +42,15 @@ namespace AutoBalooWeb
         protected global::System.Web.UI.WebControls.ContentPlaceHolder CPHMenu;
 
         /// <summary>
+        /// Contrôle LoginName1.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LoginName LoginName1;
+
+        /// <summary>
         /// Contrôle LoginStatus1.
         /// </summary>
         /// <remarks>
@@ -49,6 +58,15 @@ namespace AutoBalooWeb
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LoginStatus LoginStatus1;
+
+        /// <summary>
+        /// Contrôle signup.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor signup;
 
         /// <summary>
         /// Contrôle CPHContenu.

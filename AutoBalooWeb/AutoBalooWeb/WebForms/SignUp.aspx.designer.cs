@@ -7,38 +7,13 @@
 // </généré automatiquement>
 //------------------------------------------------------------------------------
 
-namespace AutoBalooWeb.WebForms {
-    
-    
-    public partial class SignUp {
-        
-        /// <summary>
-        /// Contrôle txtEmail.
-        /// </summary>
-        /// <remarks>
-        /// Champ généré automatiquement.
-        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEmail;
-        
-        /// <summary>
-        /// Contrôle txtPwd.
-        /// </summary>
-        /// <remarks>
-        /// Champ généré automatiquement.
-        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPwd;
-        
-        /// <summary>
-        /// Contrôle txtConfirmPassword.
-        /// </summary>
-        /// <remarks>
-        /// Champ généré automatiquement.
-        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtConfirmPassword;
-        
+namespace AutoBalooWeb.WebForms
+{
+
+
+    public partial class SignUp
+    {
+
         /// <summary>
         /// Contrôle txtNom.
         /// </summary>
@@ -47,7 +22,7 @@ namespace AutoBalooWeb.WebForms {
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtNom;
-        
+
         /// <summary>
         /// Contrôle txtPrenom.
         /// </summary>
@@ -56,7 +31,7 @@ namespace AutoBalooWeb.WebForms {
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPrenom;
-        
+
         /// <summary>
         /// Contrôle txtAdd.
         /// </summary>
@@ -65,7 +40,7 @@ namespace AutoBalooWeb.WebForms {
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtAdd;
-        
+
         /// <summary>
         /// Contrôle txtTel.
         /// </summary>
@@ -74,7 +49,34 @@ namespace AutoBalooWeb.WebForms {
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtTel;
-        
+
+        /// <summary>
+        /// Contrôle txtEmail.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtEmail;
+
+        /// <summary>
+        /// Contrôle txtPwd.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtPwd;
+
+        /// <summary>
+        /// Contrôle txtConfirmPassword.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtConfirmPassword;
+
         /// <summary>
         /// Contrôle btnSignup.
         /// </summary>

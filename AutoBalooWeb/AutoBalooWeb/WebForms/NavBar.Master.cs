@@ -26,12 +26,12 @@ namespace AutoBalooWeb
                 Console.WriteLine(ex.Message);
             }
 
-            //if (Page.User.Identity.IsAuthenticated)
-            //{
-            //    register.Visible = false;
-            //}
-            //else
-            //    register.Visible = true;
+            if (Page.User.Identity.IsAuthenticated)
+            {
+                signup.Visible = false;
+            }
+            else
+                signup.Visible = true;
         }
     }
 }

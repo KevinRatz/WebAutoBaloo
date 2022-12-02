@@ -8,10 +8,10 @@
     <title>AutoBaloo</title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
-
+    <link href='/style.css' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
-
+    <link href="https://netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css" rel="stylesheet">
 </head>
 <body>
     <form id="form1" runat="server">
@@ -27,9 +27,9 @@
                     <a runat="server" class="nav-item nav-link" href="Gerer.aspx" visible="false">Gérer</a> <%--admin--%>
                     <div class="collapse navbar-collapse" id="navbarCollapse" style="font-size:16px;">
                         <div class="navbar-nav ms-auto">     
-                                <%--<a href="InfoClientForm.aspx"><asp:LoginName ID="LoginName1" runat="server" Font-Bold = "true" /></a>--%>
+                                <a runat="server" class="nav-item nav-link" href="#<%--InfoClientForm.aspx--%>"><i class="icon-user"></i> <asp:LoginName ID="LoginName1" runat="server" Font-Bold = "true" /></a>
                                 <asp:LoginStatus ID="LoginStatus1"  runat="server" class="nav-item nav-link"/>
-                                <a runat="server" class="nav-item nav-link" href="SignUp.aspx">Inscription</a>
+                                <a id="signup" runat="server" class="nav-item nav-link" href="SignUp.aspx">S'inscrire</a>
                         
                             <%--<asp:LinkButton  ID="register" runat="server" class="nav-item nav-link" OnClick="Register_OnClick">S'inscrire</asp:LinkButton>--%>
                         </div>
