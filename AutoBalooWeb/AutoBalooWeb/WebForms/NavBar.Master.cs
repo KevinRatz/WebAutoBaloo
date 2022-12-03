@@ -29,9 +29,13 @@ namespace AutoBalooWeb
             if (Page.User.Identity.IsAuthenticated)
             {
                 signup.Visible = false;
+                user.Visible = true;
             }
             else
+            {
                 signup.Visible = true;
+                user.Visible = false;
+            }
         }
     }
 }

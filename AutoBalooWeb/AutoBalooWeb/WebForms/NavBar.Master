@@ -27,11 +27,9 @@
                     <a runat="server" class="nav-item nav-link" href="Gerer.aspx" visible="false">Gérer</a> <%--admin--%>
                     <div class="collapse navbar-collapse" id="navbarCollapse" style="font-size:16px;">
                         <div class="navbar-nav ms-auto">     
-                                <a runat="server" class="nav-item nav-link" href="#<%--InfoClientForm.aspx--%>"><i class="icon-user"></i> <asp:LoginName ID="LoginName1" runat="server" Font-Bold = "true" /></a>
+                                <div id="user" runat="server"><a runat="server" class="nav-item nav-link" href="InfoClientForm.aspx"><i class="icon-user"></i> <asp:LoginName ID="LoginName1" runat="server" Font-Bold = "true" /></a></div> 
                                 <asp:LoginStatus ID="LoginStatus1"  runat="server" class="nav-item nav-link"/>
                                 <a id="signup" runat="server" class="nav-item nav-link" href="SignUp.aspx">S'inscrire</a>
-                        
-                            <%--<asp:LinkButton  ID="register" runat="server" class="nav-item nav-link" OnClick="Register_OnClick">S'inscrire</asp:LinkButton>--%>
                         </div>
                     </div>
                 </div>

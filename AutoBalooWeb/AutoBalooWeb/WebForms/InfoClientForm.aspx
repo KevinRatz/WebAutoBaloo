@@ -1,10 +1,9 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/WebForms/NavBar.Master" AutoEventWireup="true" CodeBehind="SignUp.aspx.cs" Inherits="AutoBalooWeb.WebForms.SignUp" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/WebForms/NavBar.Master" AutoEventWireup="true" CodeBehind="InfoClientForm.aspx.cs" Inherits="AutoBalooWeb.WebForms.InfoClientForm" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="CPHContenu" runat="server">
-
+<asp:Content ID="Content3" ContentPlaceHolderID="CPHContenu" runat="server">
     <div class="form">
-        <h1>Inscription</h1>
+        <h1>Mon profil</h1>
         <hr>
         <div>
             <div class="input-group">
@@ -40,21 +39,8 @@
         </div>
         <p runat="server" class="error text-center" id="ct"></p>
         <div class="text-center">
-        <asp:Button ID="btnSignup" runat="server" Text="S'inscrire" class="btn btn-primary text-center" OnClick="BtnSignup_Click"/>
+        <asp:Button ID="btnSignup" runat="server" Text="Modifier" class="btn btn-primary text-center" OnClick="BtnSignup_Click"/>
         </div>
-        <hr class="hr-text" data-content="OU"/><p style="text-align:center;margin-top:-30px;">OU</p>
                     
     </div>
-        <%--  </div>
-                    <asp:Label Text="Nom d'utilisateur" runat="server" AssociatedControlID="txtUser"/>
-                    <asp:TextBox ID="txtUser" runat="server" class="form-control" placeholder="Entrer nom utilisateur" required="required"/>
-        </div>--%>
-        
-                
-           
-
-        <%-- </fieldset>--%>
-                
-            
-            
 </asp:Content>

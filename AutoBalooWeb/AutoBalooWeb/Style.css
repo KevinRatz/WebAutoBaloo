@@ -73,3 +73,8 @@ div.input-group {
         color: #818078;
         background-color: #fcfcfa;
 }
+
+.error {
+    color: red;
+    font-size: 18px;
+}

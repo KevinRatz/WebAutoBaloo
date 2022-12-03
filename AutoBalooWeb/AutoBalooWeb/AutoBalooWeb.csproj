@@ -70,6 +70,7 @@
     <Content Include="Global.asax" />
     <Content Include="Style.css" />
     <Content Include="Web.config" />
+    <Content Include="WebForms\InfoClientForm.aspx" />
     <Content Include="WebForms\SignIn.aspx" />
     <Content Include="WebForms\SignUp.aspx" />
   </ItemGroup>
@@ -103,6 +104,13 @@
     <Compile Include="CoucheModele\Modele.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\InfoClientForm.aspx.cs">
+      <DependentUpon>InfoClientForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\InfoClientForm.aspx.designer.cs">
+      <DependentUpon>InfoClientForm.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebForms\MainPage.aspx.cs">
       <DependentUpon>MainPage.aspx</DependentUpon>

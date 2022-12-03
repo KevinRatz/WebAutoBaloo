@@ -65,7 +65,7 @@ namespace AutoBalooWeb.CoucheAccesDB
                 SqlCmd.Parameters.Add("@tel", SqlDbType.VarChar).Value = obj.Tel;
                 SqlCmd.Parameters.Add("@email", SqlDbType.VarChar).Value = obj.EMail;
                 SqlCmd.Parameters.Add("@mdp", SqlDbType.VarChar).Value = obj.Password;
-                return (SqlCmd.ExecuteNonQuery() == 0) ? false : true;
+                return (SqlCmd.ExecuteNonQuery() <= 0) ? false : true;
             }
             catch (Exception e)
             {
