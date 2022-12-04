@@ -70,7 +70,10 @@
     <Content Include="Global.asax" />
     <Content Include="Style.css" />
     <Content Include="Web.config" />
+    <Content Include="WebForms\DelCars.aspx" />
+    <Content Include="WebForms\UpCars.aspx" />
     <Content Include="WebForms\InfoClientForm.aspx" />
+    <Content Include="WebForms\AddCars.aspx" />
     <Content Include="WebForms\SignIn.aspx" />
     <Content Include="WebForms\SignUp.aspx" />
   </ItemGroup>
@@ -105,6 +108,27 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="WebForms\DelCars.aspx.cs">
+      <DependentUpon>DelCars.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\DelCars.aspx.designer.cs">
+      <DependentUpon>DelCars.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\NestedMasterForms.master.cs">
+      <DependentUpon>NestedMasterForms.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\NestedMasterForms.master.designer.cs">
+      <DependentUpon>NestedMasterForms.master</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\UpCars.aspx.cs">
+      <DependentUpon>UpCars.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\UpCars.aspx.designer.cs">
+      <DependentUpon>UpCars.aspx</DependentUpon>
+    </Compile>
     <Compile Include="WebForms\InfoClientForm.aspx.cs">
       <DependentUpon>InfoClientForm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -118,6 +142,13 @@
     </Compile>
     <Compile Include="WebForms\MainPage.aspx.designer.cs">
       <DependentUpon>MainPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\AddCars.aspx.cs">
+      <DependentUpon>AddCars.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\AddCars.aspx.designer.cs">
+      <DependentUpon>AddCars.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebForms\NavBar.Master.cs">
       <DependentUpon>NavBar.Master</DependentUpon>
@@ -152,6 +183,7 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+    <Content Include="WebForms\NestedMasterForms.master" />
   </ItemGroup>
   <ItemGroup />
   <PropertyGroup>

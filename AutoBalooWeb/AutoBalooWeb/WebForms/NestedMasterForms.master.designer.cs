@@ -7,92 +7,119 @@
 // </généré automatiquement>
 //------------------------------------------------------------------------------
 
-namespace AutoBalooWeb
+namespace AutoBalooWeb.WebForms
 {
 
 
-    public partial class NavBar
+    public partial class NestedMasterForms
     {
 
         /// <summary>
-        /// Contrôle head.
+        /// Contrôle CPHForms.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder CPHForms;
 
         /// <summary>
-        /// Contrôle form1.
+        /// Contrôle hi.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl hi;
 
         /// <summary>
-        /// Contrôle CPHMenu.
+        /// Contrôle txtNom.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder CPHMenu;
+        protected global::System.Web.UI.WebControls.TextBox txtNom;
 
         /// <summary>
-        /// Contrôle adminbt.
+        /// Contrôle txtPrenom.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor adminbt;
+        protected global::System.Web.UI.WebControls.TextBox txtPrenom;
 
         /// <summary>
-        /// Contrôle user.
+        /// Contrôle txtAdd.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl user;
+        protected global::System.Web.UI.WebControls.TextBox txtAdd;
 
         /// <summary>
-        /// Contrôle LoginName1.
+        /// Contrôle txtTel.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LoginName LoginName1;
+        protected global::System.Web.UI.WebControls.TextBox txtTel;
 
         /// <summary>
-        /// Contrôle LoginStatus1.
+        /// Contrôle txtEmail.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LoginStatus LoginStatus1;
+        protected global::System.Web.UI.WebControls.TextBox txtEmail;
 
         /// <summary>
-        /// Contrôle signup.
+        /// Contrôle txtPwd.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor signup;
+        protected global::System.Web.UI.WebControls.TextBox txtPwd;
 
         /// <summary>
-        /// Contrôle CPHContenu.
+        /// Contrôle txtConfirmPassword.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder CPHContenu;
+        protected global::System.Web.UI.WebControls.TextBox txtConfirmPassword;
+
+        /// <summary>
+        /// Contrôle ct.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ct;
+
+        /// <summary>
+        /// Contrôle btnSignup.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSignup;
+
+        /// <summary>
+        /// Contrôle othersReg.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl othersReg;
     }
 }

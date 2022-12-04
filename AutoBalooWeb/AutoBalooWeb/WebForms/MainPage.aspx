@@ -3,9 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="CPHContenu" runat="server">
     <div class="col-xs-12 text-md-left text-center">
-        <div style="color: #FFFFFF; margin-left: 798px">
-            <h1 class="form-signin-heading">AutoBaloo</h1> 
-        </div>
+
             
         <br />
         Recherche :

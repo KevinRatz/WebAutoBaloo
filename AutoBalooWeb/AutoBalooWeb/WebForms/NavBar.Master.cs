@@ -25,16 +25,19 @@ namespace AutoBalooWeb
             {
                 Console.WriteLine(ex.Message);
             }
-
+            // si un client est connecté
             if (Page.User.Identity.IsAuthenticated)
             {
-                signup.Visible = false;
-                user.Visible = true;
+                signup.Visible = false; // cache bouton inscire
+                user.Visible = true; //aff icon user
+                // si l'email du client connecté correspond à l'admin
+                if (Page.User.Identity.Name.Equals("kev.r@stu.be"))
+                    adminbt.Visible = true; // aff btn gerer
             }
             else
             {
-                signup.Visible = true;
-                user.Visible = false;
+                signup.Visible = true; // aff bouton inscire
+                user.Visible = false; //cache icon user
             }
         }
     }

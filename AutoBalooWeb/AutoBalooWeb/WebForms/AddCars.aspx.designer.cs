@@ -11,7 +11,7 @@ namespace AutoBalooWeb.WebForms
 {
 
 
-    public partial class InfoClientForm
+    public partial class AddCars
     {
     }
 }
