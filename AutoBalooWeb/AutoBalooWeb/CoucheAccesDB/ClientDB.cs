@@ -22,23 +22,27 @@ namespace AutoBalooWeb.CoucheAccesDB
  * méthode qui lit dans la base de données un élève spécifique
  * param num : le numéro de l'élève
  * retour : l'élève lu dans la base de données
- *
-        public override Client Charger(string email)
+ */
+        public Client GetClient(string email)
         {
             Client client = null;
 
             try
             {
-                SqlCmd.CommandText = "GetClient";
+                SqlCmd.CommandText = "SELECT * fROM Client WHERE EMail = @email";
+                SqlCmd.CommandType = CommandType.Text;
                 SqlCmd.Parameters.Clear();
                 SqlCmd.Parameters.Add("@email", SqlDbType.VarChar).Value = email;
                 SqlDataReader sqlReader = SqlCmd.ExecuteReader();
                 if (sqlReader.Read() == true)
                     client = new Client(
-                    Convert.ToString(sqlReader["nom"]),
-                   Convert.ToString(sqlReader["prenom"]),
-                   Convert.ToString(sqlReader["Email"]),
-                   Convert.ToString(sqlReader["adresse"]));
+                    Convert.ToString(sqlReader["Nom"]),
+                   Convert.ToString(sqlReader["Prenom"]),
+                   Convert.ToString(sqlReader["EMail"]),
+                   Convert.ToString(sqlReader["Adresse"]),
+                   Convert.ToString(sqlReader["Tel"]),
+                   Convert.ToString(sqlReader["Password"]),
+                   Convert.ToInt32(sqlReader["Admin"]));
                 sqlReader.Close();
                 return client;
             }

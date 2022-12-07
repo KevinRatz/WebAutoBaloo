@@ -9,7 +9,7 @@
             <div>
                 <div class="input-group">
                     <asp:Label class="icon input-group-addon" Text="Nom" runat="server" AssociatedControlID="txtNom"><i class="icon-user"></i></asp:Label>
-                    <asp:TextBox ID="txtNom" Text="Ratz" runat="server" class="form-control" placeholder="Entrer Nom" required="required"/>
+                    <asp:TextBox ID="txtNom" Text="" runat="server" class="form-control" placeholder="Entrer Nom" required="required"/>
                 </div>
                 <div class="input-group">
                     <asp:Label class="icon input-group-addon" Text="Prenom" runat="server" AssociatedControlID="txtPrenom"><i class="icon-user"></i></asp:Label>
@@ -30,12 +30,12 @@
                 </div>
                 <div class="input-group">
                     <asp:Label class="icon input-group-addon" Text="" runat="server" AssociatedControlID="txtPwd"><i class="icon-lock"></i></asp:Label>
-                    <asp:TextBox ID="txtPwd"  runat="server" TextMode="Password" ToolTip="Password must contain: Minimum 2 characters at-least 1 Alphabet and 1 Number"
-                        class="form-control" placeholder="Entrer mot de passe" required="required" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{2,}$"/>
+                    <asp:TextBox ID="txtPwd"  runat="server" TextMode="Password" ToolTip="Mot de passe doit contenir: Minimum 8 caracteres at-least 1 Alphabet and 1 Number"
+                        class="form-control" placeholder="Entrer mot de passe" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{2,}$"/>
                 </div>       
                 <div class="input-group">
                         <asp:Label class="icon input-group-addon" Text="Confirm Password" runat="server" AssociatedControlID="txtConfirmPassword"><i class="icon-lock"></i></asp:Label>
-                        <asp:TextBox ID="txtConfirmPassword" runat="server" TextMode="Password" class="form-control" placeholder="Confirmer Mot de passe" required="required"/>
+                        <asp:TextBox ID="txtConfirmPassword" runat="server" TextMode="Password" class="form-control" placeholder="Confirmer Mot de passe"/>
                 </div>
             </div>
             <p runat="server" class="error text-center" id="ct"></p>
@@ -45,6 +45,10 @@
             <div runat="server" id="othersReg">
                 <hr class="hr-text" data-content="OU"/><p style="text-align:center;margin-top:-30px;">OU</p>                    
             </div>
+            <div class="text-center">
+                <asp:Button ID="Button1" runat="server" Text="Google" class="btn btn-primary text-center" OnClick="BtnGgl_Click"/>
+            </div>
+
         </div>
     </asp:ContentPlaceHolder>
 </asp:Content>

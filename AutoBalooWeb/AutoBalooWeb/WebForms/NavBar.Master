@@ -22,31 +22,30 @@
                     <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <a runat="server" class="nav-item nav-link" href="Vente.aspx">Vente</a>
-                    <a runat="server" class="nav-item nav-link" href="Location.aspx">Location</a>
+                    <a runat="server" class="nav-item nav-link" href="Vente.aspx">Vente</a> <a runat="server" class="nav-item nav-link" href="Location.aspx">Location</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                      <span class="navbar-toggler-icon"></span>
+                        <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNavDarkDropdown" >
-                      <ul class="navbar-nav">
-                        <li class="nav-item dropdown">
-                          <a class="nav-link dropdown-toggle" href="#" runat="server" visible="false" id="adminbt" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Gérer les véhicules
-                          </a>
-                          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="adminbt">
-                            <li><a class="dropdown-item" runat="server" href="AddCars.aspx">Ajouter</a></li>
-                            <li><a class="dropdown-item" runat="server" href="UpCars.aspx">Modifier</a></li>
-                            <li><a class="dropdown-item" runat="server" href="DelCars.aspx">Supprimer</a></li>
-                          </ul>
-                        </li>
-                      </ul>
+                        <ul class="navbar-nav">
+                            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" runat="server" visible="false" id="adminbt" role="button" data-bs-toggle="dropdown" aria-expanded="false">Gérer les véhicules </a>
+                                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="adminbt">
+                                    <li><a class="dropdown-item" runat="server" href="AddCars.aspx">Ajouter</a></li>
+                                    <li><a class="dropdown-item" runat="server" href="UpCars.aspx">Modifier</a></li>
+                                    <li><a class="dropdown-item" runat="server" href="DelCars.aspx">Supprimer</a></li>
+                                </ul>
+                            </li>
+                        </ul>
                     </div>
-                    
                     <div class="collapse navbar-collapse" id="navbarCollapse" style="font-size:16px;">
-                        <div class="navbar-nav ms-auto">     
-                                <div id="user" runat="server"><a runat="server" class="nav-item nav-link" href="InfoClientForm.aspx"><i class="icon-user"></i> <asp:LoginName ID="LoginName1" runat="server" Font-Bold = "true" /></a></div> 
-                                <asp:LoginStatus ID="LoginStatus1"  runat="server" class="nav-item nav-link"/>
-                                <a id="signup" runat="server" class="nav-item nav-link" href="InfoClientForm.aspx">S'inscrire</a>
+                        <div class="navbar-nav ms-auto">
+                            <div id="user" runat="server">
+                                <a runat="server" class="nav-item nav-link" href="InfoClientForm.aspx"><i class="icon-user"></i>
+                                <asp:LoginName ID="LoginName1" runat="server" Font-Bold = "true" />
+                                </a>
+                            </div>
+                            <asp:LoginStatus ID="LoginStatus1"  runat="server" class="nav-item nav-link" OnLoggingOut="LoginStatus1_LoggingOut"/>
+                            <a id="signup" runat="server" class="nav-item nav-link" href="InfoClientForm.aspx">S'inscrire</a>
                         </div>
                     </div>
                 </div>

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -31,7 +32,7 @@ namespace AutoBalooWeb
                 signup.Visible = false; // cache bouton inscire
                 user.Visible = true; //aff icon user
                 // si l'email du client connecté correspond à l'admin
-                if (Page.User.Identity.Name.Equals("kev.r@stu.be"))
+                if (Session["Admin"]!=null)
                     adminbt.Visible = true; // aff btn gerer
             }
             else
@@ -39,6 +40,14 @@ namespace AutoBalooWeb
                 signup.Visible = true; // aff bouton inscire
                 user.Visible = false; //cache icon user
             }
+        }
+
+        protected void LoginStatus1_LoggingOut(object sender, LoginCancelEventArgs e)
+        {
+            Session.Clear();
+            Page = null;
+            FormsAuthentication.SignOut();
+            FormsAuthentication.RedirectFromLoginPage(email, true);
         }
     }
 }

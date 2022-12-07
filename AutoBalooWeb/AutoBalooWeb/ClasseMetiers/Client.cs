@@ -11,6 +11,16 @@ namespace AutoBalooWeb.ClasseMetiers
         {
 
         }
+        public Client(string nom, string prenom, string adresse, string tel, string eMail, string password, int admin)
+        {
+            EMail = eMail;
+            Password = password;
+            Adresse = adresse;
+            Nom = nom;
+            Prenom = prenom;
+            Tel = tel;
+            Admin = admin;
+        }
         public Client(string nom, string prenom, string adresse, string tel, string eMail, string password)
         {
             EMail = eMail;
@@ -27,5 +37,6 @@ namespace AutoBalooWeb.ClasseMetiers
         public string Tel { get; set; }
         public string EMail { get; set; }
         public string Password { get; set; }
+        public int Admin { get; set; }
     }
 }
