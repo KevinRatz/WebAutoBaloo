@@ -29,8 +29,8 @@ namespace AutoBalooWeb.CoucheAccesDB
 
             try
             {
-                SqlCmd.CommandText = "SELECT * fROM Client WHERE EMail = @email";
-                SqlCmd.CommandType = CommandType.Text;
+                SqlCmd.CommandText = "GetClient";
+                SqlCmd.CommandType = CommandType.StoredProcedure;
                 SqlCmd.Parameters.Clear();
                 SqlCmd.Parameters.Add("@email", SqlDbType.VarChar).Value = email;
                 SqlDataReader sqlReader = SqlCmd.ExecuteReader();

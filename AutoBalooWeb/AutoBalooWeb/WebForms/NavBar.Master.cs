@@ -1,4 +1,5 @@
-﻿using AutoBalooWeb.CoucheAccesDB;
+﻿using AutoBalooWeb.ClasseMetiers;
+using AutoBalooWeb.CoucheAccesDB;
 using AutoBalooWeb.CoucheModele;
 using System;
 using System.Collections.Generic;
@@ -32,7 +33,7 @@ namespace AutoBalooWeb
                 signup.Visible = false; // cache bouton inscire
                 user.Visible = true; //aff icon user
                 // si l'email du client connecté correspond à l'admin
-                if (Session["Admin"]!=null)
+                if (Session["Client"] != null && ((Client)Session["Client"]).Admin==1)
                     adminbt.Visible = true; // aff btn gerer
             }
             else
@@ -47,7 +48,7 @@ namespace AutoBalooWeb
             Session.Clear();
             Page = null;
             FormsAuthentication.SignOut();
-            FormsAuthentication.RedirectFromLoginPage(email, true);
+            FormsAuthentication.RedirectFromLoginPage("", true);
         }
     }
 }

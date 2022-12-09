@@ -3,6 +3,7 @@ using AutoBalooWeb.CoucheModele;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
@@ -14,6 +15,7 @@ namespace AutoBalooWeb.WebForms
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            // si connecté, retour main page
             if (Page.User.Identity.IsAuthenticated)
             {
                 Response.Redirect("MainPage.aspx");
@@ -22,8 +24,6 @@ namespace AutoBalooWeb.WebForms
 
         protected void BtnSignup_Click(object sender, EventArgs e)
         {
-            ContentPlaceHolder cph = (ContentPlaceHolder)Master.FindControl("CPHContenu2");
-            //string tel = txtUser.Text;
             string nom = txtNom.Text;
             string prenom = txtPrenom.Text;
             string adresse = txtAdd.Text;
@@ -32,22 +32,44 @@ namespace AutoBalooWeb.WebForms
             string mdp = txtPwd.Text;
             string cfmdp = txtConfirmPassword.Text;
             Literal lit = new Literal();
+            //si mot de passe et confirmation différent
             if (mdp != cfmdp)
             {
-                lit.Text = "Mot de passe différent";
-                ct.Controls.Add(lit); 
-            }
-            else if (((Modele)Session["CoucheModele"]).AddClientVM(new Client(nom, prenom, adresse, tel, email, mdp)))
-                //        Response.Redirect("MainPage.aspx");
-                //Session["UserId"] = id;
-                //Response.Write("<script>alert('login successful');</script>");
-                FormsAuthentication.RedirectFromLoginPage(email, true);
-            else
-            {
-                //cph.Controls.Add(new LiteralControl("Email existant"));
-                lit.Text = "Email existant";
+                lit.Text = "Email ou mot de passe incorrect";
                 ct.Controls.Add(lit);
             }
+            else
+            {
+                //si ajout réussi, retour main page sinon mdp existant
+                if (((Modele)Session["CoucheModele"]).AddClientVM(new Client(nom, prenom, adresse, tel, email, mdp)))
+                {
+                    Client cliSess = ((Modele)Session["CoucheModele"]).GetClientVM(Page.User.Identity.Name);
+                    if (cliSess != null)
+                        Session["Client"] = cliSess;
+                    FormsAuthentication.RedirectFromLoginPage(email, true);
+                }
+                else
+                {
+                    lit.Text = "Email ou mot de passe incorrect";
+                    ct.Controls.Add(lit);
+                }
+            }
+        }
+        protected void BtnGgl_Click(object sender, EventArgs e)
+        {
+            string ClientId = "258872183646-54mter43i10k9k5hkk1pnf6bgm934pfp.apps.googleusercontent.com";
+            string Scopes = "https://www.googleapis.com/auth/userinfo.email";
+            //get this value by opening your web app in browser.    
+            string RedirectUrl = "http://localhost:64428/WebForms/MainPage.aspx";
+            string Url = "https://accounts.google.com/o/oauth2/auth?";
+            StringBuilder UrlBuilder = new StringBuilder(Url);
+            UrlBuilder.Append("client_id=" + ClientId);
+            UrlBuilder.Append("&redirect_uri=" + RedirectUrl);
+            UrlBuilder.Append("&response_type=" + "code");
+            UrlBuilder.Append("&scope=" + Scopes);
+            UrlBuilder.Append("&access_type=" + "offline");
+            FormsAuthentication.SetAuthCookie("lol", false);
+            Response.Redirect(UrlBuilder.ToString());
         }
     }
 }

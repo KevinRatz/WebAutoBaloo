@@ -12,6 +12,14 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="https://netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" ></script>
+<script
+  type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.1/mdb.min.js"
+></script>
+    <link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+  rel="stylesheet"
+/>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -45,7 +53,7 @@
                                 </a>
                             </div>
                             <asp:LoginStatus ID="LoginStatus1"  runat="server" class="nav-item nav-link" OnLoggingOut="LoginStatus1_LoggingOut"/>
-                            <a id="signup" runat="server" class="nav-item nav-link" href="InfoClientForm.aspx">S'inscrire</a>
+                            <a id="signup" runat="server" class="nav-item nav-link" href="SignUp.aspx">S'inscrire</a>
                         </div>
                     </div>
                 </div>

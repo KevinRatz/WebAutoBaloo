@@ -71,6 +71,7 @@
     <Content Include="Style.css" />
     <Content Include="Web.config" />
     <Content Include="WebForms\DelCars.aspx" />
+    <Content Include="WebForms\GoogleCallBack.aspx" />
     <Content Include="WebForms\UpCars.aspx" />
     <Content Include="WebForms\InfoClientForm.aspx" />
     <Content Include="WebForms\AddCars.aspx" />
@@ -114,6 +115,13 @@
     </Compile>
     <Compile Include="WebForms\DelCars.aspx.designer.cs">
       <DependentUpon>DelCars.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\GoogleCallBack.aspx.cs">
+      <DependentUpon>GoogleCallBack.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\GoogleCallBack.aspx.designer.cs">
+      <DependentUpon>GoogleCallBack.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebForms\NestedMasterForms.master.cs">
       <DependentUpon>NestedMasterForms.master</DependentUpon>

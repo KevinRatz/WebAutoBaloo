@@ -20,10 +20,7 @@ namespace AutoBalooWeb.WebForms
                 hi.InnerText = "Mon profil";
                 btnSignup.Text = "Modifier";
                 othersReg.Visible = false;
-                Client c = ((Modele)Session["CoucheModele"]).GetClientVM(Page.User.Identity.Name);
-                if(c.Admin==1)
-                    Session["Admin"] = 1;
-                txtNom.Text = c.Nom.ToString();
+                
             }
             else
                 othersReg.Visible = true;

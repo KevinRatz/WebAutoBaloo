@@ -1,4 +1,5 @@
-﻿using AutoBalooWeb.CoucheModele;
+﻿using AutoBalooWeb.ClasseMetiers;
+using AutoBalooWeb.CoucheModele;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,6 +28,9 @@ namespace AutoBalooWeb.WebForms
                 Login1.FailureText = "Email et/ou mot de passe incorrect.";
             else
             {
+                Client cliSess = ((Modele)Session["CoucheModele"]).GetClientVM(Login1.UserName);
+                if (cliSess != null)
+                    Session["Client"] = cliSess;
                 Session["UserId"] = id;
                 Response.Write("<script>alert('login successful');</script>");
                 FormsAuthentication.RedirectFromLoginPage(Login1.UserName, Login1.RememberMeSet);
