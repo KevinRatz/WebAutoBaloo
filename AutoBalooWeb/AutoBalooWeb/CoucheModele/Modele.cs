@@ -39,6 +39,20 @@ namespace AutoBalooWeb.CoucheModele
             return fabDB.GetVehiculeDB().Ajouter(v);
         }
         /**
+         * méthode qui retourne la liste des véhicules 
+         * retour : La liste des véhicules
+         */
+        public List<Vehicule> ListVehiculeVM()
+        {
+            return fabDB.GetVehiculeDB().ListerTous();
+        }
+        public List<Vehicule> ListVehiculeVMAvecOptions(int choix)
+        {
+            return fabDB.GetVehiculeDB().ListerTousAvecOptions(choix);
+        }
+
+
+        /**
          * méthode qui liste dans la base de données tous les produits
          * retour : la liste de tous les produits
          *

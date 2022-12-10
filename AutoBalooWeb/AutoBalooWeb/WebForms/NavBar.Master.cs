@@ -11,6 +11,23 @@ namespace AutoBalooWeb
 {
     public partial class NavBar : System.Web.UI.MasterPage
     {
+        protected void Page_Init(object sender, EventArgs e)
+        {
+            //initialisation de la couche modèle
+            try
+            {
+                if (Session["CoucheModele"] == null)
+                {
+                    Session["CoucheModele"] = new Modele();
+                    Session.Timeout = 5;
+                }
+            }
+            catch (ExceptionAccesDB ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             try
