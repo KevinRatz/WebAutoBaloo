@@ -41,11 +41,11 @@ namespace AutoBalooWeb.WebForms
                 lit.Text = "Email ou mot de passe incorrect";
                 ct.Controls.Add(lit);
             }
-            else if (((Modele)Session["CoucheModele"]).AddClientVM(new Client(nom, prenom, adresse, tel, email, mdp)))
-                //        Response.Redirect("MainPage.aspx");
-                //Session["UserId"] = id;
-                //Response.Write("<script>alert('login successful');</script>");
-                FormsAuthentication.RedirectFromLoginPage(email, true);
+            //else if (((Modele)Session["CoucheModele"]).AddClientVM(new Client(nom, prenom, adresse, tel, email, mdp)))
+            //    //        Response.Redirect("MainPage.aspx");
+            //    //Session["UserId"] = id;
+            //    //Response.Write("<script>alert('login successful');</script>");
+            //    FormsAuthentication.RedirectFromLoginPage(email, true);
             else
             {
                 lit.Text = "Email ou mot de passe incorrect";

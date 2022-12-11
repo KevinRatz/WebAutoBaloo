@@ -10,7 +10,9 @@ h1 {
     padding-top: 10px;
     margin-bottom: 10px;
 }
-
+/****
+    * Form SignUp Style
+*/
 .form {
     margin: 20px auto;
     width: 800px;
@@ -77,4 +79,47 @@ div.input-group {
 .error {
     color: red;
     font-size: 18px;
+}
+
+/****
+    * SignIn Style
+*/ 
+.spanSignIn {
+    width: 40px;
+    height: 38px;
+    padding-top: 5px;
+    display: inline-block;
+    background-color: white;
+    border-radius: 0.25em;
+    margin-right: -2px;
+}
+.groupSignIn {
+    background-color: #F7F6F3;
+    Height: 100px;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    Width: 510px;
+    margin-top: -5px;
+    margin-left: auto;
+    margin-right: auto;
+    display: table;
+    border-color: #E6E2D8;
+    Border-Style: Solid;
+    border-width: 1px;
+}
+
+hr.hr-text.signIn {
+    margin: -7px -10px 0px -10px;
+}
+
+.lblCars {
+    display: inline-block;
+    background-color: #3a57af;
+    width : 100px;
+    padding: 5px;
+    margin-left: 10px;
+    border-radius: 4px 0px 0px 4px;
+    color: white;
+    border: solid 0px #cbc9c9;
 }

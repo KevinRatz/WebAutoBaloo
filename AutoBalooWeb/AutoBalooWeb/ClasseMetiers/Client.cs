@@ -31,6 +31,11 @@ namespace AutoBalooWeb.ClasseMetiers
             Tel = tel;
         }
 
+        public Client(string eMail)
+        {
+            EMail = eMail;
+        }
+
         public string Nom { get; set; }
         public string Prenom { get; set; }
         public string Adresse { get; set; }

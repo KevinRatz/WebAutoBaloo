@@ -77,6 +77,26 @@ namespace AutoBalooWeb.CoucheAccesDB
             }
         }
         /**
+        * méthode qui ajoute dans la base de données un client gmail
+        * * param obj : l'élève
+        * retour : un booléen indiquant si l'ajout a été réalisé ou non
+        */
+        public bool AddGmailClient(Client obj)
+        {
+            try
+            {
+                SqlCmd.CommandText = "AddGmailClient";
+                SqlCmd.CommandType = CommandType.StoredProcedure;
+                SqlCmd.Parameters.Clear();
+                SqlCmd.Parameters.Add("@email", SqlDbType.VarChar).Value = obj.EMail;
+                return (SqlCmd.ExecuteNonQuery() <= 0) ? false : true;
+            }
+            catch (Exception e)
+            {
+                throw new ExceptionAccesDB(e.Message);
+            }
+        }
+        /**
         * méthode qui modifie dans la base de données un élève
         * param obj : l'élève
         * retour : un booléen indiquant si la modification a été réalisée ou non

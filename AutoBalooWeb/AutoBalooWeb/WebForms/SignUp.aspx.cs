@@ -35,15 +35,16 @@ namespace AutoBalooWeb.WebForms
             //si mot de passe et confirmation différent
             if (mdp != cfmdp)
             {
-                lit.Text = "Email ou mot de passe incorrect";
+                lit.Text = "Les mot de passe ne correspondent pas";
                 ct.Controls.Add(lit);
             }
             else
             {
-                //si ajout réussi, retour main page sinon mdp existant
-                if (((Modele)Session["CoucheModele"]).AddClientVM(new Client(nom, prenom, adresse, tel, email, mdp)))
+                Client cliSess = new Client(nom, prenom, adresse, tel, email, mdp);
+                //si ajout réussi, retour main page sinon existant
+                if (((Modele)Session["CoucheModele"]).AddClientVM(cliSess,false))
                 {
-                    Client cliSess = ((Modele)Session["CoucheModele"]).GetClientVM(Page.User.Identity.Name);
+                    //Client cliSess = ((Modele)Session["CoucheModele"]).GetClientVM(Page.User.Identity.Name);
                     if (cliSess != null)
                         Session["Client"] = cliSess;
                     FormsAuthentication.RedirectFromLoginPage(email, true);
@@ -60,7 +61,7 @@ namespace AutoBalooWeb.WebForms
             string ClientId = "258872183646-54mter43i10k9k5hkk1pnf6bgm934pfp.apps.googleusercontent.com";
             string Scopes = "https://www.googleapis.com/auth/userinfo.email";
             //get this value by opening your web app in browser.    
-            string RedirectUrl = "http://localhost:64428/WebForms/MainPage.aspx";
+            string RedirectUrl = "http://localhost:64428/WebForms/GoogleCallBack.aspx";
             string Url = "https://accounts.google.com/o/oauth2/auth?";
             StringBuilder UrlBuilder = new StringBuilder(Url);
             UrlBuilder.Append("client_id=" + ClientId);
@@ -68,7 +69,7 @@ namespace AutoBalooWeb.WebForms
             UrlBuilder.Append("&response_type=" + "code");
             UrlBuilder.Append("&scope=" + Scopes);
             UrlBuilder.Append("&access_type=" + "offline");
-            FormsAuthentication.SetAuthCookie("lol", false);
+            UrlBuilder.Append("&state=" + "signup");
             Response.Redirect(UrlBuilder.ToString());
         }
     }

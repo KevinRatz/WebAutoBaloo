@@ -1,3 +1,10 @@
+CREATE PROCEDURE [dbo].[GetClient]
+	@email varchar(30)
+AS
+BEGIN
+	SELECT * fROM Client WHERE EMail = @email
+END
+
 CREATE PROCEDURE [dbo].[AddClient]
 	@nom varchar(50),
 	@prenom varchar(50),
@@ -34,7 +41,20 @@ BEGIN
       FROM Client 
 	  WHERE EMail = @Email 
 	  AND 
-	  CONVERT(varchar(50),DECRYPTBYPASSPHRASE('tdi202',Password)) = @Password
-     
-    
+	  CONVERT(varchar(50),DECRYPTBYPASSPHRASE('tdi202',Password)) = @Password 
+END
+
+CREATE PROCEDURE [dbo].[AddGmailClient]
+	@email varchar(50)
+AS
+
+BEGIN
+	IF((SELECT EMail FROM CLIENT WHERE EMail = @email) IS NULL) 
+	begin
+		INSERT INTO dbo.CLIENT 
+				(	
+					[Email]
+					)
+		 VALUES (@email);
+	 end
 END

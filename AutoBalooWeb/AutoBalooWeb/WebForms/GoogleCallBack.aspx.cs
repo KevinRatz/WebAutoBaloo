@@ -6,6 +6,12 @@ using System.Net;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Text.Json.Serialization;
+using System.Text.Json;
+using System.Text;
+using System.Web.Security;
+using AutoBalooWeb.ClasseMetiers;
+using AutoBalooWeb.CoucheModele;
 
 namespace AutoBalooWeb.WebForms
 {
@@ -19,35 +25,98 @@ namespace AutoBalooWeb.WebForms
             if (Error != null) { }
             else if (Code != null)
             {
-                //Remember, we have set userid in State    
-                string UserId = Request.QueryString["state"];
-                //Get AccessToken    
-                int Id = Convert.ToInt32(UserId);
                 string AccessToken = string.Empty;
-                string RefreshToken = ExchangeAuthorizationCode(Id, Code, out AccessToken);
+                string RefreshToken = ExchangeAuthorizationCode(Code, out AccessToken);
                 //saving refresh token in database    
-                SaveRefreshToken(Id, RefreshToken);
-                //Get Email Id of the authorized user    
-                string EmailId = FetchEmailId(AccessToken);
-                //Saving Email Id    
-                SaveEmailId(UserId, EmailId);
-                //Redirect the user to Authorize.aspx with user id    
-                string Url = "MainPage.aspx";
-                Response.Redirect(Url, true);
+                //SaveRefreshToken(Id, RefreshToken);
+                //Get Email Id of the user    
+                string emailId = FetchEmailId(AccessToken);
+                string etat = Request.QueryString["state"];
+                Client cliSess = ((Modele)Session["CoucheModele"]).GetClientVM(emailId);
+                
+                if (cliSess != null && cliSess.Password=="")
+                {
+                    //Redirect the user to MainPage.aspx avec email connecté
+                    FormsAuthentication.SetAuthCookie(emailId, false);
+                    Response.Redirect("MainPage.aspx", true); 
+                }
+                else
+                {
+                    if (etat == "signup")
+                    {
+                        //Saving Email Id
+                        ((Modele)Session["CoucheModele"]).AddClientVM(new Client(emailId), true);
+                        //Redirect the user to MainPage.aspx avec email connecté
+                        FormsAuthentication.SetAuthCookie(emailId, false);
+                        Response.Redirect("MainPage.aspx", true);
+                    }
+                    else
+                        Response.Redirect("SignIn.aspx", true);
+                }
             }
         }
-        private void SaveRefreshToken(int userId, string refreshToken)
+        /***
+         * Récupération du token du client inscrit avec Gmail
+         */
+        private string ExchangeAuthorizationCode(string code, out string accessToken)
         {
-            SqlConnection Con = new SqlConnection(ConfigurationManager.ConnectionStrings["DbConnection"].ConnectionString);
-            string Query = "insert into Member (UserId,RefreshToken) values(" + userId + ",'" + refreshToken + "')";
-            SqlCommand Cmd = new SqlCommand(Query, Con);
-            Con.Open();
-            int Result = Cmd.ExecuteNonQuery();
-            Con.Close();
+            accessToken = string.Empty;
+            string ClientSecret = "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";
+            string ClientId = "258872183646-54mter43i10k9k5hkk1pnf6bgm934pfp.apps.googleusercontent.com";
+            //get this value by opening your web app in browser.    
+            string RedirectUrl = "http://localhost:64428/WebForms/GoogleCallBack.aspx";
+            var Content = "code=" + code + "&client_id=" + ClientId + "&client_secret=" + ClientSecret + "&redirect_uri=" + RedirectUrl + "&grant_type=authorization_code";
+            var request = WebRequest.Create("https://accounts.google.com/o/oauth2/token");
+            request.Method = "POST";
+            byte[] byteArray = Encoding.UTF8.GetBytes(Content);
+            request.ContentType = "application/x-www-form-urlencoded";
+            request.ContentLength = byteArray.Length;
+            using (Stream dataStream = request.GetRequestStream())
+            {
+                dataStream.Write(byteArray, 0, byteArray.Length);
+                dataStream.Close();
+            }
+            var Response = (HttpWebResponse)request.GetResponse();
+            Stream responseDataStream = Response.GetResponseStream();
+            StreamReader reader = new StreamReader(responseDataStream);
+            string ResponseData = reader.ReadToEnd();
+            reader.Close();
+            responseDataStream.Close();
+            Response.Close();
+            if (Response.StatusCode == HttpStatusCode.OK)
+            {
+                var ReturnedToken = JsonSerializer.Deserialize<Token>(ResponseData);
+                if (ReturnedToken.refresh_token != null)
+                {
+                    accessToken = ReturnedToken.access_token;
+                    return ReturnedToken.refresh_token;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            else
+            {
+                return string.Empty;
+            }
         }
+        //private void SaveRefreshToken(int userId, string refreshToken)
+        //{
+        //    SqlConnection Con = new SqlConnection(ConfigurationManager.ConnectionStrings["DbConnection"].ConnectionString);
+        //    string Query = "insert into Member (UserId,RefreshToken) values(" + userId + ",'" + refreshToken + "')";
+        //    SqlCommand Cmd = new SqlCommand(Query, Con);
+        //    Con.Open();
+        //    int Result = Cmd.ExecuteNonQuery();
+        //    Con.Close();
+        //}
+
+        /***
+         * Récupération de l'email du client inscrit avec Gmail grace à son token
+         */
         private string FetchEmailId(string accessToken)
         {
-            var EmailRequest = "https://www.googleapis.com/userinfo/email?alt=json&access_token=" + accessToken;
+            var EmailRequest = "https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=" + accessToken;
             // Create a request for the URL.    
             var Request = WebRequest.Create(EmailRequest);
             // Get the response.    
@@ -62,19 +131,14 @@ namespace AutoBalooWeb.WebForms
             Reader.Close();
             DataStream.Close();
             Response.Close();
-            dynamic json = JValue.Parse(JsonString);
-            return json.data.email;
+            MyData deptObj = JsonSerializer.Deserialize<MyData>(JsonString);
+            return deptObj.email;// email;
         }
-        private bool SaveEmailId(string userId, string emailId)
-        {
-            SqlConnection Con = new SqlConnection(ConfigurationManager.ConnectionStrings["DbConnection"].ConnectionString);
-            string Query = "update Member set GmailId='" + emailId + "'where UserId='" + userId + "'";
-            SqlCommand Cmd = new SqlCommand(Query, Con);
-            Con.Open();
-            int Result = Cmd.ExecuteNonQuery();
-            Con.Close();
-            return Result > 0 ? true : false;
-        }
+    }
+    public class MyData
+    {
+        public string email { get; set; }
+        public string name { get; set; }
     }
     public class Token
     {
@@ -88,7 +152,7 @@ namespace AutoBalooWeb.WebForms
             get;
             set;
         }
-        public string expires_in
+        public int expires_in
         {
             get;
             set;

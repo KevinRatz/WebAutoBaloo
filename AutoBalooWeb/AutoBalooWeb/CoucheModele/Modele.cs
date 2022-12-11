@@ -26,9 +26,12 @@ namespace AutoBalooWeb.CoucheModele
          * méthode qui add dans la base de données un client 
          * retour : /
          */
-        public bool AddClientVM(Client c)
+        public bool AddClientVM(Client c, bool gmail)
         {
-            return fabDB.GetClientDB().Ajouter(c);
+            if(!gmail)
+                return fabDB.GetClientDB().Ajouter(c);
+            else    
+                return fabDB.GetClientDB().AddGmailClient(c);
         }
         /**
          * méthode qui add dans la base de données un client 
@@ -49,10 +52,10 @@ namespace AutoBalooWeb.CoucheModele
         /**
          * méthode qui liste dans la base de données tous les produits
          * retour : la liste de tous les produits
-         *
-        public List<Produit> ListProducts(string txt, int id)
+         */
+        public bool UpVehiculeVM(Vehicule v)
         {
-            return fabDB.GetProductDB().ListerPar(txt, id);
+            return fabDB.GetVehiculeDB().Modifier(v);
         }
         /**
          * méthode qui lit dans la base de données tous les catégories
@@ -61,15 +64,6 @@ namespace AutoBalooWeb.CoucheModele
         public List<Categorie> ListCategories()
         {
             return fabDB.GetCategorieDB().ListerTous();
-        }
-        /**
-         * méthode qui met à jour dans la base de données la qt dans le panier
-         * param numEleve : le numéro de l'élève
-         * retour : la liste des cours
-         *
-        public void UpQtPanierVM(string codebarre, int numCom, int diffqt)
-        {
-            fabDB.GetPanierDB().UpQtPanierDB(codebarre, numCom, diffqt);
         }
         /**
          * méthode qui liste dans la base de données le panier
