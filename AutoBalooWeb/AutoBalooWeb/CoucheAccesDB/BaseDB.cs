@@ -40,9 +40,14 @@ namespace AutoBalooWeb.CoucheAccesDB
         {
             return null;
         }
+        public virtual List<T> ListerTousAvecOptions(int choix)
+        {
+            return null;
+        }
         public virtual List<T> ListerPar(string txt, int id)
         {
             return null;
         }
+
     }
 }

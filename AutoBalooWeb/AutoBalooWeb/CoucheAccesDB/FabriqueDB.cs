@@ -19,6 +19,7 @@ namespace AutoBalooWeb.CoucheAccesDB
                 SqlCmd = new SqlCommand();
                 SqlCmd.Connection = new SqlConnection("Data Source=" + Environment.MachineName + "\\SQLEXPRESS;Initial Catalog=AutoBaloo;Integrated Security=True");
                 SqlCmd.Connection.Open();
+
             }
             catch (Exception e)
             {

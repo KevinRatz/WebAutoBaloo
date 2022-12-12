@@ -11,7 +11,7 @@ namespace AutoBalooWeb.WebForms
 {
 
 
-    public partial class MainPage
+    public partial class Location
     {
     }
 }

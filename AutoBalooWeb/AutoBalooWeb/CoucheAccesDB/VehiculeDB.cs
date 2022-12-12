@@ -138,28 +138,64 @@ namespace AutoBalooWeb.CoucheAccesDB
             List<Vehicule> liste = new List<Vehicule>();
             try
             {
-                SqlCmd.CommandText = "";
-                SqlCmd.CommandType = CommandType.StoredProcedure;
-                SqlCmd.Parameters.Clear();
+                SqlCmd.CommandText = 
+                    "Select IdVoiture, NumChassis, Voiture.Nom as NomVoit,Puissance,NbPortes,NbVitesse,Cylindres," +
+                    "Couleur,Kilometrage,Annee,DateCtrlTech,CarnetEntretien,TypeTransaction,Prix,Reduction,Photo,DateArrive," +
+                    //FOREIGN KEY
+                    "Etat as IdEtat,Etat.Nom As NomEtat," +
+                    "Transmission As IdTransm,Transmission.Nom As NomTransm," +
+                    "Carburant As IdCarbu,Carburant.Nom As NomCarbu," +
+                    "Carrosserie As IdCarro,Carrosserie.Nom As NomCarro," +
+                    "Marque As IdMarque,Marque.Nom As NomMarque " +
+                    //TABLE ET JOIN
+                    "from Voiture " +
+                    "join Etat on Etat = Etat.IdEtat " +
+                    "Join Transmission on Transmission = Transmission.IdTransmission " +
+                    "Join Carburant on Carburant = Carburant.IdCarburant " +
+                    "Join Carrosserie on Carrosserie = Carrosserie.IdCarrosserie " +
+                    "Join Marque on Marque = Marque.IdMarque ;";
+
+                //                --where Reduction != 0 order by reduction,DateArrive-- Acceuil Promo
+                //                --where TypeTransaction = 0-- Vente
+                //                --where TypeTransaction = 1-- location
+
+
+                SqlCmd.CommandType = CommandType.Text;
+                //SqlCmd.Parameters.Clear();
+
+                SqlCmd.ExecuteNonQuery();
+
                 SqlDataReader sqlReader = SqlCmd.ExecuteReader();
+
+
                 while (sqlReader.Read() == true)
-                    //liste.Add( new Vehicule(
-                    //Convert.ToInt32(sqlReader["IdVoiture"]),
-                    //Convert.ToString(sqlReader["NumChassis"]),
-                    //Convert.ToString(sqlReader["Nom"]),
-                    //new Marque(Convert.ToInt32(sqlReader["IdMarque"]),Convert.ToString(sqlReader["NomMarque"])),
-                    //Convert.ToInt32(sqlReader["Quantite"]),
-                    //Convert.ToInt32(sqlReader["Quantite"]),
-                    //Convert.ToInt32(sqlReader["Quantite"]),
-                    //Convert.ToString(sqlReader["Couleur"]),
-                    //Convert.ToDecimal(sqlReader["Kilometrage"]),
-                    //Convert.ToDecimal(sqlReader["Prix"]),
-                    //Convert.ToInt32(sqlReader["Quantite"]),
-                    //Convert.ToString(sqlReader["Couleur"]),
-                    //Convert.ToString(sqlReader["Taille"]),
-                    //Convert.ToInt32(sqlReader["Actif"]),
-                    //new Carburant(Convert.ToInt32(sqlReader["IdCarbu"]), Convert.ToString(sqlReader["NomCarbu"]))));
-                    //new Carrosserie(Convert.ToInt32(sqlReader["IdCaro"]), Convert.ToString(sqlReader["NomCaros"]))));
+                    liste.Add(new Vehicule(
+                        Convert.ToInt32(sqlReader["IdVoiture"]),
+                        Convert.ToString(sqlReader["NumChassis"]),
+                        Convert.ToString(sqlReader["NomVoit"]),
+                        new Marque(Convert.ToInt32(sqlReader["IdMarque"]), Convert.ToString(sqlReader["NomMarque"])),
+                        Convert.ToString(sqlReader["Puissance"]),
+                        Convert.ToInt32(sqlReader["Nbportes"]),
+                        Convert.ToInt32(sqlReader["NbVitesse"]),
+                        Convert.ToInt32(sqlReader["Cylindres"]),
+                        Convert.ToString(sqlReader["Couleur"]),
+                        Convert.ToDecimal(sqlReader["Kilometrage"]),
+                        DateTime.Parse(Convert.ToString(sqlReader["Annee"])),
+                        DateTime.Parse(Convert.ToString(sqlReader["DateCtrlTech"])),
+                        Convert.ToString(sqlReader["CarnetEntretien"]),
+                        Convert.ToInt32(sqlReader["TypeTransaction"]),
+                        Convert.ToDecimal(sqlReader["Prix"]),
+                        Convert.ToInt32(sqlReader["Reduction"]),
+                        Convert.ToString(sqlReader["Photo"]),
+                        DateTime.Parse(Convert.ToString(sqlReader["DateArrive"])),
+                        new Etat(Convert.ToInt32(sqlReader["IdEtat"]), Convert.ToString(sqlReader["NomEtat"])),
+                        new Transmission(Convert.ToInt32(sqlReader["IdTransm"]), Convert.ToString(sqlReader["NomTransm"])),
+                        new Carburant(Convert.ToInt32(sqlReader["IdCarbu"]), Convert.ToString(sqlReader["NomCarbu"])),
+                        new Carrosserie(Convert.ToInt32(sqlReader["IdCarro"]), Convert.ToString(sqlReader["NomCarro"]))
+
+                        ));
+
+
                 sqlReader.Close();
             }
             catch (Exception e)
@@ -169,5 +205,84 @@ namespace AutoBalooWeb.CoucheAccesDB
 
             return liste;
         }
+
+        //Une fonction qui renvoie la liste des voitures selon certains critères
+
+        public override List<Vehicule> ListerTousAvecOptions(int choix)
+        {
+            //Si choix = 1 : Page Acceuil -> Liste des voiture triée sur la hauteur de la réduction et la date d'arrivée
+            //Si choix = 2 : Page Vente -> voiture en vente uniquement
+            //Si choix = 3 : Page Location -> voiture en location uniquement
+
+
+            List<Vehicule> liste = new List<Vehicule>();
+            try
+            {
+                SqlCmd.CommandText =
+                    "Select IdVoiture, NumChassis, Voiture.Nom as NomVoit,Puissance,NbPortes,NbVitesse,Cylindres," +
+                    "Couleur,Kilometrage,Annee,DateCtrlTech,CarnetEntretien,TypeTransaction,Prix,Reduction,Photo,DateArrive," +
+                    //FOREIGN KEY
+                    "Etat as IdEtat,Etat.Nom As NomEtat," +
+                    "Transmission As IdTransm,Transmission.Nom As NomTransm," +
+                    "Carburant As IdCarbu,Carburant.Nom As NomCarbu," +
+                    "Carrosserie As IdCarro,Carrosserie.Nom As NomCarro," +
+                    "Marque As IdMarque,Marque.Nom As NomMarque " +
+                    //TABLE ET JOIN
+                    "from Voiture " +
+                    "join Etat on Etat = Etat.IdEtat " +
+                    "Join Transmission on Transmission = Transmission.IdTransmission " +
+                    "Join Carburant on Carburant = Carburant.IdCarburant " +
+                    "Join Carrosserie on Carrosserie = Carrosserie.IdCarrosserie " +
+                    "Join Marque on Marque = Marque.IdMarque ";
+
+                //Grâce à choix on sélectionne les options que l'on souhaite ajouter à la commande de récupération de la liste
+                if (choix == 1) { SqlCmd.CommandText = SqlCmd.CommandText + " order by reduction Desc,DateArrive Desc ;"; }
+                if (choix == 2) { SqlCmd.CommandText = SqlCmd.CommandText + " where TypeTransaction = 0"; }
+                if (choix == 3) { SqlCmd.CommandText = SqlCmd.CommandText + " where TypeTransaction = 1"; }
+
+                SqlCmd.CommandType = CommandType.Text;
+                SqlCmd.ExecuteNonQuery();
+                SqlDataReader sqlReader = SqlCmd.ExecuteReader();
+
+                //On récupère les données dans une liste
+                while (sqlReader.Read() == true)
+                    liste.Add(new Vehicule(
+                        Convert.ToInt32(sqlReader["IdVoiture"]),
+                        Convert.ToString(sqlReader["NumChassis"]),
+                        Convert.ToString(sqlReader["NomVoit"]),
+                        new Marque(Convert.ToInt32(sqlReader["IdMarque"]), Convert.ToString(sqlReader["NomMarque"])),
+                        Convert.ToString(sqlReader["Puissance"]),
+                        Convert.ToInt32(sqlReader["Nbportes"]),
+                        Convert.ToInt32(sqlReader["NbVitesse"]),
+                        Convert.ToInt32(sqlReader["Cylindres"]),
+                        Convert.ToString(sqlReader["Couleur"]),
+                        Convert.ToDecimal(sqlReader["Kilometrage"]),
+                        DateTime.Parse(Convert.ToString(sqlReader["Annee"])),
+                        DateTime.Parse(Convert.ToString(sqlReader["DateCtrlTech"])),
+                        Convert.ToString(sqlReader["CarnetEntretien"]),
+                        Convert.ToInt32(sqlReader["TypeTransaction"]),
+                        Convert.ToDecimal(sqlReader["Prix"]),
+                        Convert.ToInt32(sqlReader["Reduction"]),
+                        Convert.ToString(sqlReader["Photo"]),
+                        DateTime.Parse(Convert.ToString(sqlReader["DateArrive"])),
+                        new Etat(Convert.ToInt32(sqlReader["IdEtat"]), Convert.ToString(sqlReader["NomEtat"])),
+                        new Transmission(Convert.ToInt32(sqlReader["IdTransm"]), Convert.ToString(sqlReader["NomTransm"])),
+                        new Carburant(Convert.ToInt32(sqlReader["IdCarbu"]), Convert.ToString(sqlReader["NomCarbu"])),
+                        new Carrosserie(Convert.ToInt32(sqlReader["IdCarro"]), Convert.ToString(sqlReader["NomCarro"]))
+
+                        ));
+
+
+                sqlReader.Close();
+            }
+            catch (Exception e)
+            {
+                throw new ExceptionAccesDB(e.Message);
+            }
+
+            return liste;
+        }
+
+
     }
 }
