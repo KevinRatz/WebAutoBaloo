@@ -33,6 +33,7 @@ namespace AutoBalooWeb.WebForms
                 if (cliSess != null)
                     Session["Client"] = cliSess;
                 Session["UserId"] = id;
+                Session["Connected"] = 1;
                 Response.Write("<script>alert('login successful');</script>");
                 FormsAuthentication.RedirectFromLoginPage(Login1.UserName, Login1.RememberMeSet);
                 FormsAuthentication.SetAuthCookie(Login1.UserName, true);

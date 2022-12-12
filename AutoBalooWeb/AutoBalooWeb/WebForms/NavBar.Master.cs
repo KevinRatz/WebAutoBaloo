@@ -50,5 +50,6 @@ namespace AutoBalooWeb
             FormsAuthentication.SignOut();
             FormsAuthentication.RedirectFromLoginPage("", true);
         }
+
     }
 }
