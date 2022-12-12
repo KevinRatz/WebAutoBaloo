@@ -65,7 +65,7 @@ namespace AutoBalooWeb.WebForms
                         "<div><strike>" + c.Prix + "</strike> " + (c.Prix - (c.Prix * c.Reduction) / 100) + "€ </div>\r\n"));
                 }
                 //Ajout des boutons pour Essai et Vente
-                if (Session["Connected"]!= null)
+                if (Session["Client"] != null)
                 {
                     cph.Controls.Add(new LiteralControl("<button>Acheter</button>\r\n"));
                     cph.Controls.Add(new LiteralControl("<button>Essayer</button>\r\n"));
