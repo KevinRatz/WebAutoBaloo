@@ -15,6 +15,15 @@ namespace AutoBalooWeb.WebForms
     {
 
         /// <summary>
+        /// Contrôle DropDownList1.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
+
+        /// <summary>
         /// Contrôle DDListMarque.
         /// </summary>
         /// <remarks>
@@ -60,6 +69,15 @@ namespace AutoBalooWeb.WebForms
         protected global::System.Web.UI.WebControls.TextBox txtKm;
 
         /// <summary>
+        /// Contrôle DDLCarbu.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DDLCarbu;
+
+        /// <summary>
         /// Contrôle RBTransm.
         /// </summary>
         /// <remarks>
@@ -67,15 +85,6 @@ namespace AutoBalooWeb.WebForms
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButtonList RBTransm;
-
-        /// <summary>
-        /// Contrôle DDListTrans.
-        /// </summary>
-        /// <remarks>
-        /// Champ généré automatiquement.
-        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DDListTrans;
 
         /// <summary>
         /// Contrôle txtNbVitesse.
@@ -96,15 +105,6 @@ namespace AutoBalooWeb.WebForms
         protected global::System.Web.UI.WebControls.TextBox txtPrix;
 
         /// <summary>
-        /// Contrôle DDLCarbu.
-        /// </summary>
-        /// <remarks>
-        /// Champ généré automatiquement.
-        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DDLCarbu;
-
-        /// <summary>
         /// Contrôle txtAn.
         /// </summary>
         /// <remarks>
@@ -121,15 +121,6 @@ namespace AutoBalooWeb.WebForms
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPuissance;
-
-        /// <summary>
-        /// Contrôle txtNbPortes.
-        /// </summary>
-        /// <remarks>
-        /// Champ généré automatiquement.
-        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNbPortes;
 
         /// <summary>
         /// Contrôle RBPortes.
@@ -159,24 +150,6 @@ namespace AutoBalooWeb.WebForms
         protected global::System.Web.UI.WebControls.TextBox txtCouleur;
 
         /// <summary>
-        /// Contrôle dateCtrlTech.
-        /// </summary>
-        /// <remarks>
-        /// Champ généré automatiquement.
-        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox dateCtrlTech;
-
-        /// <summary>
-        /// Contrôle txtCtEntretien.
-        /// </summary>
-        /// <remarks>
-        /// Champ généré automatiquement.
-        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCtEntretien;
-
-        /// <summary>
         /// Contrôle RBCtEnt.
         /// </summary>
         /// <remarks>
@@ -184,6 +157,15 @@ namespace AutoBalooWeb.WebForms
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButtonList RBCtEnt;
+
+        /// <summary>
+        /// Contrôle dateCtrlTech.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox dateCtrlTech;
 
         /// <summary>
         /// Contrôle RBTrans.
@@ -202,6 +184,15 @@ namespace AutoBalooWeb.WebForms
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtReduct;
+
+        /// <summary>
+        /// Contrôle InFile.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputFile InFile;
 
         /// <summary>
         /// Contrôle txtdtarv.

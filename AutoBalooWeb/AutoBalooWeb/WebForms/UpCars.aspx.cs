@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoBalooWeb.ClasseMetiers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,8 @@ namespace AutoBalooWeb.WebForms
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!Page.User.Identity.IsAuthenticated || ((Client)Session["Client"]).Admin == 0)
+                Response.Redirect("MainPage.aspx");
         }
 
         protected void BtnUpCars_Click(object sender, EventArgs e)

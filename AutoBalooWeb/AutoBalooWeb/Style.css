@@ -16,7 +16,7 @@ h1 {
 .form {
     margin: 20px auto;
     width: 800px;
-    height: 600px;
+    height: 800px;
     -webkit-border-radius: 8px/7px;
     -moz-border-radius: 8px/7px;
     border-radius: 8px/7px;
@@ -118,8 +118,39 @@ hr.hr-text.signIn {
     background-color: #3a57af;
     width : 100px;
     padding: 5px;
-    margin-left: 10px;
+    margin-left: 40px;
     border-radius: 4px 0px 0px 4px;
     color: white;
     border: solid 0px #cbc9c9;
+    text-align:center;
 }
+
+
+.form-outline {
+    position: relative;
+    width: 100%;
+    display: flex;
+}
+.form-outline .form-control {
+    min-height: auto;
+    padding: 0.32rem 0.75rem;
+    border: 0;
+    width : auto;
+    transition: all .2s linear;
+}
+
+        .form-outline .form-control ~ .form-label {
+            position: absolute;
+            top: 0;
+            max-width: 90%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            left: 0.75rem;
+            padding-top: 0.37rem;
+            pointer-events: none;
+            transform-origin: 0 0;
+            transition: all .2s ease-out;
+            color: rgba(0,0,0,.6);
+            margin-bottom: 0;
+        }

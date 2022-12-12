@@ -3,43 +3,167 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="CPHContenu" runat="server">
     <div class="form">
-        <h1>Inscription</h1>
+        <h1>Ajouter une voiture</h1>
         <hr>
-        <div>
-            <div class="input-group">
-                <asp:Label class="icon input-group-addon" runat="server" AssociatedControlID="txtNom"><i class="icon-user"></i></asp:Label>
-                <asp:TextBox ID="txtNom" Text="" runat="server" class="form-control" placeholder="Entrer Nom" required="required"/>
+        <div class="row mb-4">
+            <div class="col">
+                <div class="form-outline">
+                    <asp:Label class="lblCars" runat="server" AssociatedControlID="DDListMarque"> Marque</asp:Label>
+                    <asp:DropDownList ID="DDListMarque" AutoPostBack="true" runat="server" style="margin-left: 24px"></asp:DropDownList>
+                </div>
             </div>
-            <div class="input-group">
-                <asp:Label class="icon input-group-addon" runat="server" AssociatedControlID="txtPrenom"><i class="icon-user"></i></asp:Label>
-                <asp:TextBox ID="txtPrenom" Text="Kevin" runat="server" class="form-control" placeholder="Entrer Prenom" required="required"/>
+            <div class="col">
+                <div class="form-outline">
+                    <asp:Label class="lblCars" runat="server" AssociatedControlID="txtNom">Modele </asp:Label>
+                    <asp:TextBox ID="txtNom" Text="Kevin" runat="server" class="form-control" placeholder="Entrer modèle" required="required"/>
+                </div>
             </div>
-            <div class="input-group">
-                <asp:Label class="icon input-group-addon" runat="server" AssociatedControlID="txtAdd"><i class="icon-home"></i></asp:Label>
-                <asp:TextBox ID="txtAdd" Text="rue de sclessin" runat="server" class="form-control" placeholder="Entrer Adresse" required="required"/>
+        </div>
+        <div class="row mb-4">
+            <div class="col">
+                <div class="form-outline">
+                    <asp:Label class="lblCars" runat="server" AssociatedControlID="txtChassis">N° chassis</asp:Label>
+                    <asp:TextBox ID="txtChassis" Text="2" runat="server" class="form-control" required="required"/>
+                </div>
             </div>
-            <div class="input-group">
-                <asp:Label class="icon input-group-addon" runat="server" AssociatedControlID="txtTel"><i class="icon-phone"></i></asp:Label>
-                <asp:TextBox ID="txtTel" Text="0494458515" runat="server" class="form-control" placeholder="Entrer tel" required="required"/>
+            <div class="col">
+                <div class="form-outline">
+                    <asp:Label class="lblCars" runat="server" AssociatedControlID="DDListCarro">Carro </asp:Label>
+                    <asp:DropDownList ID="DDListCarro" AutoPostBack="true" runat="server" style="margin-left: 24px"></asp:DropDownList>
+                </div>
             </div>
-            <div class="input-group">
-                <asp:Label class="icon input-group-addon" runat="server" AssociatedControlID="txtEmail"><i class="icon-envelope "></i></asp:Label>
-                <asp:TextBox ID="txtEmail" Text="kev.r@stu.be" runat="server" TextMode="Email" class="form-control" placeholder="Entrer Email" required="required"
-                    pattern="^([\w\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$" />
+        </div>
+        <div class="row mb-4">
+            <div class="col">
+                <div class="form-outline">
+                    <asp:Label class="lblCars" runat="server" AssociatedControlID="txtKm">Kilométrage</asp:Label>
+                    <asp:TextBox ID="txtKm" runat="server" class="form-control" TextMode="Number" step="any"/>
+                </div>
             </div>
-            <div class="input-group">
-                <asp:Label class="icon input-group-addon" runat="server" AssociatedControlID="txtPwd"><i class="icon-lock"></i></asp:Label>
-                <asp:TextBox ID="txtPwd"  runat="server" TextMode="Password" ToolTip="Mot de passe doit contenir: Minimum 8 caracteres at-least 1 Alphabet and 1 Number"
-                    class="form-control" placeholder="Entrer mot de passe" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{2,}$"/>
-            </div>       
-            <div class="input-group">
-                    <asp:Label class="icon input-group-addon" runat="server" AssociatedControlID="txtConfirmPassword"><i class="icon-lock"></i></asp:Label>
-                    <asp:TextBox ID="txtConfirmPassword" runat="server" TextMode="Password" class="form-control" placeholder="Confirmer Mot de passe"/>
+            <div class="col">
+                <div class="form-outline">
+                    <asp:Label class="lblCars" runat="server" AssociatedControlID="txtAn">Année</asp:Label>                    
+                    <asp:TextBox id="txtAn" runat="server" class="form-control" TextMode="Date"/>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col">
+                <div class="form-outline">
+                    <asp:Label class="lblCars" runat="server" AssociatedControlID="RBTransm"> Transmission</asp:Label>
+                    <asp:RadioButtonList ID="RBTransm" RepeatDirection="Horizontal" AutoPostBack="true" runat="server" OnSelectedIndexChanged="RBTransm_SelectedIndexChanged">
+                        <asp:ListItem> auto </asp:ListItem>
+                        <asp:ListItem>man</asp:ListItem>
+                    </asp:RadioButtonList>
+                <%--<asp:DropDownList ID="DDListTrans" AutoPostBack="true" runat="server" Height="40px" style="margin-left: 24px"></asp:DropDownList>--%>
+                </div>
+            </div>
+            <div class="col">
+                <div id="vitesseHide" runat="server" class="form-outline" style="display:none;">
+                    <asp:Label class="lblCars" runat="server" AssociatedControlID="txtNbVitesse"> Vitesse</asp:Label>
+                    <asp:TextBox ID="txtNbVitesse" Text="7" runat="server" class="form-control" TextMode="Number" required="required"
+                        pattern="^([0-9]{1})$" ToolTip="1 chiffre entre 6 et 9"/>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col">
+                <div class="form-outline">
+                    <asp:Label class="lblCars" runat="server" AssociatedControlID="txtPrix"> Prix</asp:Label>
+                    <asp:TextBox ID="txtPrix" runat="server" class="form-control" placeholder="Entrer Prix"/>                    
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-outline">
+                    <asp:Label class="lblCars" runat="server" AssociatedControlID="txtReduct"> Reduction</asp:Label>
+                    <asp:TextBox ID="txtReduct" runat="server" TextMode="Number" class="form-control"/>                  
+                </div>
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col">
+                <div class="form-outline">
+                    <asp:Label class="lblCars" runat="server" AssociatedControlID="txtPuissance"> Puissance</asp:Label>
+                    <asp:TextBox ID="txtPuissance" Text="81 kW (110 CH)" runat="server" class="form-control" placeholder="Entrer pui" required="required"/>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-outline">
+                    <asp:Label class="lblCars" runat="server" AssociatedControlID="RBPortes"> Portes :</asp:Label>
+                    <%--<asp:TextBox ID="txtNbPortes" Text="3" runat="server" pattern="^([3,5]{1})$" class="form-control" placeholder="Entrer tel" required="required"/>--%>
+                    <asp:RadioButtonList ID="RBPortes" RepeatDirection="Horizontal" runat="server" Width="84px">
+                        <asp:ListItem>3</asp:ListItem>
+                        <asp:ListItem>5</asp:ListItem>
+                    </asp:RadioButtonList> 
+                </div>
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col">
+                <div class="form-outline">
+                    <asp:Label class="lblCars" runat="server" AssociatedControlID="txtCylindres">Cylindre</asp:Label>
+                    <asp:TextBox ID="txtCylindres"  runat="server" class="form-control" placeholder="Entrer valeur du cylindré"/>                    
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-outline">
+                    <asp:Label class="lblCars" runat="server" AssociatedControlID="DDLCarbu">Carburant</asp:Label>
+                    <asp:DropDownList ID="DDLCarbu" AutoPostBack="true" runat="server" style="margin-left: 24px"></asp:DropDownList>                       
+                </div>
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col">
+                <div class="form-outline">
+                    <asp:Label class="lblCars" runat="server" AssociatedControlID="RBCtEnt"> Controle Entretien</asp:Label>
+                    <asp:RadioButtonList ID="RBCtEnt" RepeatDirection="Horizontal" AutoPostBack="true" runat="server" OnSelectedIndexChanged="RBCtEnt_SelectedIndexChanged">
+                        <asp:ListItem>Oui</asp:ListItem>
+                        <asp:ListItem>Non</asp:ListItem>
+                    </asp:RadioButtonList>                     
+                </div>
+            </div>
+            <div class="col">
+                <div id="dtCtrlTechH" runat="server" class="form-outline" style="display:none;">
+                    <asp:Label class="lblCars" runat="server" AssociatedControlID="dateCtrlTech"> Date Controle Entretien</asp:Label>
+                    <asp:TextBox ID="dateCtrlTech" runat="server" class="form-control" TextMode="Date"/>                   
+                </div>
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col">
+                <div class="form-outline">
+                    <asp:Label class="lblCars" runat="server" AssociatedControlID="RBTrans"> Type</asp:Label>
+                    <asp:RadioButtonList ID="RBTrans"  RepeatLayout="Flow" RepeatDirection="Horizontal" runat="server">
+                        <asp:ListItem>Vente</asp:ListItem>
+                        <asp:ListItem>Location</asp:ListItem>
+                    </asp:RadioButtonList>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-outline">
+                    <asp:Label class="lblCars" runat="server" AssociatedControlID="txtCouleur">Couleur</asp:Label>
+                    <asp:TextBox ID="txtCouleur" runat="server" TextMode="Color" Width="50px" class="form-control" placeholder=""/> 
+                </div>
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col">
+                <div class="form-outline">
+                    <asp:Label class="lblCars" runat="server" for="InFile">Photo</asp:Label>
+                    <input type="file" runat="server" class="form-control-file" id="InFile">
+                    <%--<asp:button id="btnUpload" type="submit" text="Upload" ></asp:button>--%>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-outline" style="margin-left:-48px;">
+                    <asp:Label class="lblCars" runat="server" AssociatedControlID="txtdtarv"> Date arrivé</asp:Label>
+                    <asp:TextBox ID="txtdtarv" runat="server" class="form-control" TextMode="Date"/>
+                </div>
             </div>
         </div>
         <p runat="server" class="error text-center" id="ct"></p>
         <div class="text-center">
-        <asp:Button ID="btnSignup" runat="server" Text="S'inscrire" class="btn btn-primary text-center" OnClick="BtnSignup_Click"/>
+        <asp:Button ID="btnAddCars" runat="server" Text="Ajouter" class="btn btn-primary text-center" OnClick="BtnAddCars_Click"/>
         </div>
     </div>
 </asp:Content>
