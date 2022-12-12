@@ -15,7 +15,7 @@
             <div class="col">
                 <div class="form-outline">
                     <asp:Label class="lblCars" runat="server" AssociatedControlID="txtNom">Modele </asp:Label>
-                    <asp:TextBox ID="txtNom" Text="Kevin" runat="server" class="form-control" placeholder="Entrer modèle" required="required"/>
+                    <asp:TextBox ID="txtNom" Text="Kevin" runat="server" class="form-control" required="required"/>
                 </div>
             </div>
         </div>
@@ -70,7 +70,7 @@
             <div class="col">
                 <div class="form-outline">
                     <asp:Label class="lblCars" runat="server" AssociatedControlID="txtPrix"> Prix</asp:Label>
-                    <asp:TextBox ID="txtPrix" runat="server" class="form-control" placeholder="Entrer Prix"/>                    
+                    <asp:TextBox ID="txtPrix" runat="server" class="form-control"  TextMode="Number" step="any"/>                    
                 </div>
             </div>
             <div class="col">
@@ -102,7 +102,7 @@
             <div class="col">
                 <div class="form-outline">
                     <asp:Label class="lblCars" runat="server" AssociatedControlID="txtCylindres">Cylindre</asp:Label>
-                    <asp:TextBox ID="txtCylindres"  runat="server" class="form-control" placeholder="Entrer valeur du cylindré"/>                    
+                    <asp:TextBox ID="txtCylindres"  runat="server" class="form-control" TextMode="Number"/>                    
                 </div>
             </div>
             <div class="col">
@@ -142,7 +142,7 @@
             <div class="col">
                 <div class="form-outline">
                     <asp:Label class="lblCars" runat="server" AssociatedControlID="txtCouleur">Couleur</asp:Label>
-                    <asp:TextBox ID="txtCouleur" runat="server" TextMode="Color" Width="50px" class="form-control" placeholder=""/> 
+                    <asp:TextBox ID="txtCouleur" runat="server" TextMode="Color" Width="50px" Height="35px" class="form-control" placeholder=""/> 
                 </div>
             </div>
         </div>

@@ -42,6 +42,14 @@ namespace AutoBalooWeb.CoucheModele
             return fabDB.GetClientDB().GetClient(c);
         }
         /**
+         * méthode qui add dans la base de données un client 
+         * retour : /
+         */
+        public Vehicule GetVehiculeVM(int v)
+        {
+            return fabDB.GetVehiculeDB().Charger(v);
+        }
+        /**
          * méthode qui add dans la base de données un vehicule 
          * retour : /
          */

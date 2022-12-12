@@ -14,6 +14,19 @@ namespace AutoBalooWeb.WebForms
         {
             //if (!Page.User.Identity.IsAuthenticated || ((Client)Session["Client"]).Admin == 0)
             //    Response.Redirect("MainPage.aspx");
+            // si la page est chargée pour la première fois
+            if (!Page.IsPostBack)
+            {
+                //List<Categorie> liste = ((CoucheModele)Session["CoucheModele"]).ListCategories();
+
+                //DropDownList1.DataSource = liste;
+                //DropDownList1.DataBind();
+
+                //List<Produit> listep = ((CoucheModele)Session["CoucheModele"]).ListProducts("aucun", -1);
+
+                //GridView1.DataSource = listep;
+                //GridView1.DataBind();
+            }
         }
         protected void BtnAddCars_Click(object sender, EventArgs e)
         {
@@ -41,7 +54,6 @@ namespace AutoBalooWeb.WebForms
 
         protected void RBTransm_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Console.WriteLine(RBTransm.SelectedItem.ToString());
             if (RBTransm.SelectedItem.ToString() == "man")
                 vitesseHide.Style.Add("display", "flex");
             else
@@ -49,7 +61,6 @@ namespace AutoBalooWeb.WebForms
         }
         protected void RBCtEnt_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Console.WriteLine(RBCtEnt.SelectedItem.ToString());
             if (RBCtEnt.SelectedItem.ToString() == "Oui")
                 dtCtrlTechH.Style.Add("display", "flex");
             else

@@ -7,8 +7,8 @@
         <hr>
         <div class="row mb-4">
             <div class="form-outline">
-                <asp:Label class="lblCars" runat="server" AssociatedControlID="DDListMarque"> Id voiture</asp:Label>
-                <asp:DropDownList ID="DropDownList1" AutoPostBack="true" runat="server" style="margin-left: 24px"></asp:DropDownList>
+                <asp:Label class="lblCars" runat="server" AssociatedControlID="DDListId"> Id voiture</asp:Label>
+                <asp:DropDownList ID="DDListId" AutoPostBack="true" runat="server" style="margin-left: 24px" OnSelectedIndexChanged="DDListId_SelectedIndexChanged"></asp:DropDownList>
             </div>
         </div>
         <div class="row mb-4">
@@ -21,7 +21,7 @@
             <div class="col">
                 <div class="form-outline">
                     <asp:Label class="lblCars" runat="server" AssociatedControlID="txtNom">Modele </asp:Label>
-                    <asp:TextBox ID="txtNom" Text="Kevin" runat="server" class="form-control" placeholder="Entrer modèle" required="required"/>
+                    <asp:TextBox ID="txtNom" Text="Kevin" runat="server" class="form-control" required="required"/>
                 </div>
             </div>
         </div>
@@ -42,14 +42,14 @@
         <div class="row mb-4">
             <div class="col">
                 <div class="form-outline">
-                    <asp:Label class="lblCars" runat="server" AssociatedControlID="txtKm">Km</asp:Label>
+                    <asp:Label class="lblCars" runat="server" AssociatedControlID="txtKm">Kilométrage</asp:Label>
                     <asp:TextBox ID="txtKm" runat="server" class="form-control" TextMode="Number" step="any"/>
                 </div>
             </div>
             <div class="col">
                 <div class="form-outline">
-                    <asp:Label class="lblCars" runat="server" AssociatedControlID="DDLCarbu">Carburant</asp:Label>
-                    <asp:DropDownList ID="DDLCarbu" AutoPostBack="true" runat="server" style="margin-left: 24px"></asp:DropDownList>
+                    <asp:Label class="lblCars" runat="server" AssociatedControlID="txtAn">Année</asp:Label>                    
+                    <asp:TextBox id="txtAn" runat="server" class="form-control" TextMode="Date"/>
                 </div>
             </div>
         </div>
@@ -57,18 +57,18 @@
             <div class="col">
                 <div class="form-outline">
                     <asp:Label class="lblCars" runat="server" AssociatedControlID="RBTransm"> Transmission</asp:Label>
-                    <asp:RadioButtonList ID="RBTransm" RepeatDirection="Horizontal" runat="server">
+                    <asp:RadioButtonList ID="RBTransm" RepeatDirection="Horizontal" AutoPostBack="true" runat="server" OnSelectedIndexChanged="RBTransm_SelectedIndexChanged">
                         <asp:ListItem> auto </asp:ListItem>
-                        <asp:ListItem> man </asp:ListItem>
+                        <asp:ListItem>man</asp:ListItem>
                     </asp:RadioButtonList>
                 <%--<asp:DropDownList ID="DDListTrans" AutoPostBack="true" runat="server" Height="40px" style="margin-left: 24px"></asp:DropDownList>--%>
                 </div>
             </div>
             <div class="col">
-                <div id="vitesseHide" class="form-outline" style="display:none;">
+                <div id="vitesseHide" runat="server" class="form-outline" style="display:none;">
                     <asp:Label class="lblCars" runat="server" AssociatedControlID="txtNbVitesse"> Vitesse</asp:Label>
-                    <asp:TextBox ID="txtNbVitesse" Text="7" runat="server" class="form-control" placeholder="Entrer nb vitesse" required="required"
-                        pattern="^([0-9]{1})$" />
+                    <asp:TextBox ID="txtNbVitesse" Text="7" runat="server" class="form-control" TextMode="Number" required="required"
+                        pattern="^([0-9]{1})$" ToolTip="1 chiffre entre 6 et 9"/>
                 </div>
             </div>
         </div>
@@ -76,20 +76,20 @@
             <div class="col">
                 <div class="form-outline">
                     <asp:Label class="lblCars" runat="server" AssociatedControlID="txtPrix"> Prix</asp:Label>
-                    <asp:TextBox ID="txtPrix" runat="server" class="form-control" placeholder="Entrer Prix"/>                    
+                    <asp:TextBox ID="txtPrix" runat="server" class="form-control" TextMode="Number" step="any"/>                    
                 </div>
             </div>
             <div class="col">
                 <div class="form-outline">
-                    <asp:Label class="lblCars" runat="server" AssociatedControlID="txtAn">An</asp:Label>                    
-                    <asp:TextBox id="txtAn" runat="server" class="form-control" TextMode="Date"/>                  
+                    <asp:Label class="lblCars" runat="server" AssociatedControlID="txtReduct"> Reduction</asp:Label>
+                    <asp:TextBox ID="txtReduct" runat="server" TextMode="Number" class="form-control"/>                  
                 </div>
             </div>
         </div>
         <div class="row mb-4">
             <div class="col">
                 <div class="form-outline">
-                    <asp:Label class="lblCars" runat="server" AssociatedControlID="txtPuissance"> Pui</asp:Label>
+                    <asp:Label class="lblCars" runat="server" AssociatedControlID="txtPuissance"> Puissance</asp:Label>
                     <asp:TextBox ID="txtPuissance" Text="81 kW (110 CH)" runat="server" class="form-control" placeholder="Entrer pui" required="required"/>
                 </div>
             </div>
@@ -107,14 +107,14 @@
         <div class="row mb-4">
             <div class="col">
                 <div class="form-outline">
-                    <asp:Label class="lblCars" runat="server" AssociatedControlID="txtCylindres">Cylindre</asp:Label>
-                    <asp:TextBox ID="txtCylindres"  runat="server" class="form-control" placeholder="Entrer valeur du cylindré"/>                    
+                    <asp:Label class="lblCars" runat="server" AssociatedControlID="txtCylindres">Cylindré</asp:Label>
+                    <asp:TextBox ID="txtCylindres"  runat="server" class="form-control" TextMode="Number"/>                    
                 </div>
             </div>
             <div class="col">
                 <div class="form-outline">
-                    <asp:Label class="lblCars" runat="server" AssociatedControlID="txtCouleur">Couleur</asp:Label>
-                    <asp:TextBox ID="txtCouleur" runat="server" TextMode="Color" Width="50px" class="form-control" placeholder=""/>                    
+                    <asp:Label class="lblCars" runat="server" AssociatedControlID="DDLCarbu">Carburant</asp:Label>
+                    <asp:DropDownList ID="DDLCarbu" AutoPostBack="true" runat="server" style="margin-left: 24px"></asp:DropDownList>                       
                 </div>
             </div>
         </div>
@@ -122,14 +122,14 @@
             <div class="col">
                 <div class="form-outline">
                     <asp:Label class="lblCars" runat="server" AssociatedControlID="RBCtEnt"> Controle Entretien</asp:Label>
-                    <asp:RadioButtonList ID="RBCtEnt" RepeatDirection="Horizontal" runat="server">
+                    <asp:RadioButtonList ID="RBCtEnt" RepeatDirection="Horizontal" AutoPostBack="true" runat="server" OnSelectedIndexChanged="RBCtEnt_SelectedIndexChanged">
                         <asp:ListItem>Oui</asp:ListItem>
                         <asp:ListItem>Non</asp:ListItem>
                     </asp:RadioButtonList>                     
                 </div>
             </div>
             <div class="col">
-                <div id="dtCtrlTechH" class="form-outline" style="display:none;">
+                <div id="dtCtrlTechH" runat="server" class="form-outline" style="display:none;">
                     <asp:Label class="lblCars" runat="server" AssociatedControlID="dateCtrlTech"> Date Controle Entretien</asp:Label>
                     <asp:TextBox ID="dateCtrlTech" runat="server" class="form-control" TextMode="Date"/>                   
                 </div>
@@ -139,7 +139,7 @@
             <div class="col">
                 <div class="form-outline">
                     <asp:Label class="lblCars" runat="server" AssociatedControlID="RBTrans"> Type</asp:Label>
-                    <asp:RadioButtonList ID="RBTrans" RepeatDirection="Horizontal" runat="server">
+                    <asp:RadioButtonList ID="RBTrans"  RepeatLayout="Flow" RepeatDirection="Horizontal" runat="server">
                         <asp:ListItem>Vente</asp:ListItem>
                         <asp:ListItem>Location</asp:ListItem>
                     </asp:RadioButtonList>
@@ -147,15 +147,15 @@
             </div>
             <div class="col">
                 <div class="form-outline">
-                    <asp:Label class="lblCars" runat="server" AssociatedControlID="txtReduct"> Reduction</asp:Label>
-                    <asp:TextBox ID="txtReduct" runat="server" TextMode="Number" class="form-control"/>
+                    <asp:Label class="lblCars" runat="server" AssociatedControlID="txtCouleur">Couleur</asp:Label>
+                    <asp:TextBox ID="txtCouleur" runat="server" TextMode="Color" Width="50px" Height="35px" class="form-control" placeholder=""/> 
                 </div>
             </div>
         </div>
         <div class="row mb-4">
             <div class="col">
                 <div class="form-outline">
-                    <asp:Label class="lblCars" runat="server" for="InFile">Photo :</asp:Label>
+                    <asp:Label class="lblCars" runat="server" for="InFile">Photo</asp:Label>
                     <input type="file" runat="server" class="form-control-file" id="InFile">
                     <%--<asp:button id="btnUpload" type="submit" text="Upload" ></asp:button>--%>
                 </div>

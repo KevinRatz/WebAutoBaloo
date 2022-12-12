@@ -22,8 +22,8 @@ namespace AutoBalooWeb.CoucheAccesDB
          * méthode qui lit dans la base de données un Vehicule spécifique
          * param num : le numéro du Vehicule
          * retour : Vehicule lu dans la base de données
-         *
-        public override Vehicule Charger(string codebarre)
+         */
+        public override Vehicule Charger(int id)
         {
             Vehicule Vehicule = null;
 
@@ -31,21 +31,21 @@ namespace AutoBalooWeb.CoucheAccesDB
             {
                 SqlCmd.CommandText = "GetVehicule";
                 SqlCmd.Parameters.Clear();
-                SqlCmd.Parameters.Add("@codebarre", SqlDbType.VarChar).Value = codebarre;
-                SqlDataReader sqlReader = SqlCmd.ExecuteReader();
-                if (sqlReader.Read() == true)
-                    Vehicule = new Vehicule(
-                    Convert.ToString(sqlReader["CodeBarre"]),
-                    Convert.ToString(sqlReader["Nom"]),
-                    Convert.ToDecimal(sqlReader["Prix"]),
-                    Convert.ToInt32(sqlReader["Quantite"]),
-                    Convert.ToString(sqlReader["Couleur"]),
-                    Convert.ToString(sqlReader["Taille"]),
-                    Convert.ToInt32(sqlReader["Actif"]),
-                    new Categorie(Convert.ToString(sqlReader["NomCat"])),
-                    new Genre(Convert.ToString(sqlReader["NomGenre"])));
+                SqlCmd.Parameters.Add("@id", SqlDbType.Int).Value = id;
+                //SqlDataReader sqlReader = SqlCmd.ExecuteReader();
+                //if (sqlReader.Read() == true)
+                //    Vehicule = new Vehicule(
+                //    Convert.ToString(sqlReader["CodeBarre"]),
+                //    Convert.ToString(sqlReader["Nom"]),
+                //    Convert.ToDecimal(sqlReader["Prix"]),
+                //    Convert.ToInt32(sqlReader["Quantite"]),
+                //    Convert.ToString(sqlReader["Couleur"]),
+                //    Convert.ToString(sqlReader["Taille"]),
+                //    Convert.ToInt32(sqlReader["Actif"]),
+                //    new Categorie(Convert.ToString(sqlReader["NomCat"])),
+                //    new Genre(Convert.ToString(sqlReader["NomGenre"])));
 
-                sqlReader.Close();
+                //sqlReader.Close();
                 return Vehicule;
             }
             catch (Exception e)
@@ -57,18 +57,18 @@ namespace AutoBalooWeb.CoucheAccesDB
         * méthode qui ajoute dans la base de données un Vehicule
         * * param obj : le Vehicule
         * retour : un booléen indiquant si l'ajout a été réalisé ou non
-        *
+        */
         public override bool Ajouter(Vehicule obj)
         {
             try
             {
-                SqlCmd.CommandText = "AddProduct";
+                SqlCmd.CommandText = "AddVehicule";
                 SqlCmd.Parameters.Clear();
-                SqlCmd.Parameters.Add("@Nom", SqlDbType.VarChar).Value = obj.Nom;
-                SqlCmd.Parameters.Add("@Prenom", SqlDbType.VarChar).Value = obj.Prenom;
-                SqlCmd.Parameters.Add("@email", SqlDbType.VarChar).Value = obj.Email;
-                SqlCmd.Parameters.Add("@mdp", SqlDbType.VarChar).Value = obj.MotDePasse;
-                SqlCmd.Parameters.Add("@adresse", SqlDbType.VarChar).Value = obj.Adresse;
+                //SqlCmd.Parameters.Add("@Nom", SqlDbType.VarChar).Value = obj.Nom;
+                //SqlCmd.Parameters.Add("@Prenom", SqlDbType.VarChar).Value = obj.Prenom;
+                //SqlCmd.Parameters.Add("@email", SqlDbType.VarChar).Value = obj.Email;
+                //SqlCmd.Parameters.Add("@mdp", SqlDbType.VarChar).Value = obj.MotDePasse;
+                //SqlCmd.Parameters.Add("@adresse", SqlDbType.VarChar).Value = obj.Adresse;
                 return (SqlCmd.ExecuteNonQuery() == 0) ? false : true;
             }
             catch (Exception e)
@@ -80,7 +80,7 @@ namespace AutoBalooWeb.CoucheAccesDB
         * méthode qui modifie dans la base de données un élève
         * param obj : l'élève
         * retour : un booléen indiquant si la modification a été réalisée ou non
-        *
+        */
         public override bool Modifier(Vehicule obj)
         {
             try
@@ -93,15 +93,15 @@ namespace AutoBalooWeb.CoucheAccesDB
                " datenaissance = @DateNaissance, " +
                " nomimage = @NomImage " +
                "where numVehicule = @NumVehicule";
-                SqlCmd.Parameters.Clear();
-                SqlCmd.Parameters.Add("@NumVehicule", SqlDbType.Int).Value = obj.NumVehicule;
-                SqlCmd.Parameters.Add("@Nom", SqlDbType.VarChar).Value = obj.Nom;
-                SqlCmd.Parameters.Add("@Prenom", SqlDbType.VarChar).Value = obj.Prenom;
-                SqlCmd.Parameters.Add("@Poids", SqlDbType.Int).Value = obj.Poids;
-                SqlCmd.Parameters.Add("@Annee", SqlDbType.Int).Value = obj.Annee;
-                SqlCmd.Parameters.Add("@DateNaissance", SqlDbType.Char).Value =
-                obj.DateNaissance.ToString("dd-MM-yyyy");
-                SqlCmd.Parameters.Add("@NomImage", SqlDbType.Char).Value = obj.NomImage;
+                //SqlCmd.Parameters.Clear();
+                //SqlCmd.Parameters.Add("@NumVehicule", SqlDbType.Int).Value = obj.NumVehicule;
+                //SqlCmd.Parameters.Add("@Nom", SqlDbType.VarChar).Value = obj.Nom;
+                //SqlCmd.Parameters.Add("@Prenom", SqlDbType.VarChar).Value = obj.Prenom;
+                //SqlCmd.Parameters.Add("@Poids", SqlDbType.Int).Value = obj.Poids;
+                //SqlCmd.Parameters.Add("@Annee", SqlDbType.Int).Value = obj.Annee;
+                //SqlCmd.Parameters.Add("@DateNaissance", SqlDbType.Char).Value =
+                //obj.DateNaissance.ToString("dd-MM-yyyy");
+                //SqlCmd.Parameters.Add("@NomImage", SqlDbType.Char).Value = obj.NomImage;
                 return (SqlCmd.ExecuteNonQuery() == 0) ? false : true;
             }
             catch (Exception e)
@@ -113,7 +113,7 @@ namespace AutoBalooWeb.CoucheAccesDB
         * méthode qui supprime dans la base de données un élève
         * param num : le numéro de l'élève
         * retour : un booléen indiquant si la suppression a été réalisée ou non
-        *
+        */
         public override bool Supprimer(int num)
         {
             try

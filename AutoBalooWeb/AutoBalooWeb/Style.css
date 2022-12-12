@@ -65,15 +65,15 @@ div.input-group {
 }
 
 .hr-text:after {
-        content: attr(data-content);
-        position: relative;
-        display: inline-block;
-        color: black;
-        padding: 0 .5em;
-        line-height: 1.5em;
-        /*this is really the only tricky part, you need to specify the background color of the container element...*/ 
-        color: #818078;
-        background-color: #fcfcfa;
+    content: attr(data-content);
+    position: relative;
+    display: inline-block;
+    color: black;
+    padding: 0 .5em;
+    line-height: 1.5em;
+    /*this is really the only tricky part, you need to specify the background color of the container element...*/ 
+    color: #818078;
+    background-color: #fcfcfa;
 }
 
 .error {
@@ -139,18 +139,18 @@ hr.hr-text.signIn {
     transition: all .2s linear;
 }
 
-        .form-outline .form-control ~ .form-label {
-            position: absolute;
-            top: 0;
-            max-width: 90%;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            left: 0.75rem;
-            padding-top: 0.37rem;
-            pointer-events: none;
-            transform-origin: 0 0;
-            transition: all .2s ease-out;
-            color: rgba(0,0,0,.6);
-            margin-bottom: 0;
-        }
+.form-outline .form-control ~ .form-label {
+    position: absolute;
+    top: 0;
+    max-width: 90%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    left: 0.75rem;
+    padding-top: 0.37rem;
+    pointer-events: none;
+    transform-origin: 0 0;
+    transition: all .2s ease-out;
+    color: rgba(0,0,0,.6);
+    margin-bottom: 0;
+}

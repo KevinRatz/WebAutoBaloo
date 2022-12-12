@@ -1,4 +1,5 @@
 ﻿using AutoBalooWeb.ClasseMetiers;
+using AutoBalooWeb.CoucheModele;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,9 +15,15 @@ namespace AutoBalooWeb.WebForms
         {
             if (!Page.User.Identity.IsAuthenticated || ((Client)Session["Client"]).Admin == 0)
                 Response.Redirect("MainPage.aspx");
-        }
+            if (!Page.IsPostBack)
+            {
+                //List<Categorie> liste = ((CoucheModele)Session["CoucheModele"]).ListCategories();
 
-        protected void BtnUpCars_Click(object sender, EventArgs e)
+                //DropDownList1.DataSource = liste;
+                //DropDownList1.DataBind();
+            }
+            }
+            protected void BtnUpCars_Click(object sender, EventArgs e)
         {
             //string nom = txtNom.Text;
             //string prenom = txtChassis.Text;
@@ -38,6 +45,27 @@ namespace AutoBalooWeb.WebForms
             //if (((Modele)Session["CoucheModele"]).UpCarsVM(new Client(nom, prenom, adresse, tel, email, mdp)))
 
 
+        }
+
+        // attention faire via id recherché 
+        protected void RBTransm_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (RBTransm.SelectedItem.ToString() == "man")
+                vitesseHide.Style.Add("display", "flex");
+            else
+                vitesseHide.Style.Add("display", "none");
+        }
+        protected void RBCtEnt_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (RBCtEnt.SelectedItem.ToString() == "Oui")
+                dtCtrlTechH.Style.Add("display", "flex");
+            else
+                dtCtrlTechH.Style.Add("display", "none");
+        }
+
+        protected void DDListId_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ((Modele)Session["CoucheModele"]).GetVehiculeVM(DDListId.SelectedIndex);
         }
     }
 }
