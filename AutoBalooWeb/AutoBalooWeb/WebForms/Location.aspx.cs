@@ -68,8 +68,10 @@ namespace AutoBalooWeb.WebForms
                 }
 
                 //Ajout des boutons pour faire une demande de location
-                cph.Controls.Add(new LiteralControl("<button>Louer</button>\r\n"));
-
+                if (Session["Connected"] != null)
+                {
+                    cph.Controls.Add(new LiteralControl("<button>Louer</button>\r\n"));
+                }
                 
                 //Balise de fin 
                 cph.Controls.Add(new LiteralControl("</div>\r\n\r\n </div> <br>"));

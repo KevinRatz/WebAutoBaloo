@@ -72,8 +72,11 @@ namespace AutoBalooWeb.WebForms
 
 
                     //Ajout des boutons pour Essai et Vente
-                    cph.Controls.Add(new LiteralControl("<button>Acheter</button>\r\n" ));
-                    cph.Controls.Add(new LiteralControl("<button>Essayer</button>\r\n"));
+                    if (Session["Connected"] != null)
+                    {
+                        cph.Controls.Add(new LiteralControl("<button>Acheter</button>\r\n"));
+                        cph.Controls.Add(new LiteralControl("<button>Essayer</button>\r\n"));
+                    }
                     cph.Controls.Add(new LiteralControl("<div> Disponible depuis : " + c.DateArrive.ToString("dd/MM/yyyy") + "</div>\r\n"));
 
                 }
@@ -98,8 +101,10 @@ namespace AutoBalooWeb.WebForms
                     }
 
                     //Ajout des boutons pour faire une demande de location
-                    cph.Controls.Add(new LiteralControl("<button>Louer</button>\r\n" ));
-
+                    if (Session["Connected"] != null)
+                    {
+                        cph.Controls.Add(new LiteralControl("<button>Louer</button>\r\n"));
+                    }
                 }
                 //Balise de fin 
                 
