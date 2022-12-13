@@ -16,7 +16,10 @@ namespace AutoBalooWeb.ClasseMetiers
             IdCarbu = idCarbu;
             NomCarbu = nomCarbu;
         }
-
+        public override string ToString()
+        {
+            return NomCarbu;
+        }
         public int IdCarbu { get; set; }
         public string NomCarbu { get; set; }
 

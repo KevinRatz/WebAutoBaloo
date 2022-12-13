@@ -9,7 +9,7 @@
             <div class="col">
                 <div class="form-outline">
                     <asp:Label class="lblCars" runat="server" AssociatedControlID="DDListMarque"> Marque</asp:Label>
-                    <asp:DropDownList ID="DDListMarque" AutoPostBack="true" runat="server" style="margin-left: 24px"></asp:DropDownList>
+                    <asp:DropDownList ID="DDListMarque" AutoPostBack="true" runat="server"></asp:DropDownList>
                 </div>
             </div>
             <div class="col">
@@ -29,7 +29,7 @@
             <div class="col">
                 <div class="form-outline">
                     <asp:Label class="lblCars" runat="server" AssociatedControlID="DDListCarro">Carro </asp:Label>
-                    <asp:DropDownList ID="DDListCarro" AutoPostBack="true" runat="server" style="margin-left: 24px"></asp:DropDownList>
+                    <asp:DropDownList ID="DDListCarro" AutoPostBack="true" runat="server"></asp:DropDownList>
                 </div>
             </div>
         </div>
@@ -61,7 +61,7 @@
             <div class="col">
                 <div id="vitesseHide" runat="server" class="form-outline" style="display:none;">
                     <asp:Label class="lblCars" runat="server" AssociatedControlID="txtNbVitesse"> Vitesse</asp:Label>
-                    <asp:TextBox ID="txtNbVitesse" Text="7" runat="server" class="form-control" TextMode="Number" required="required"
+                    <asp:TextBox ID="txtNbVitesse" Text="7" runat="server" class="form-control" TextMode="Number"
                         pattern="^([0-9]{1})$" ToolTip="1 chiffre entre 6 et 9"/>
                 </div>
             </div>
@@ -84,7 +84,7 @@
             <div class="col">
                 <div class="form-outline">
                     <asp:Label class="lblCars" runat="server" AssociatedControlID="txtPuissance"> Puissance</asp:Label>
-                    <asp:TextBox ID="txtPuissance" Text="81 kW (110 CH)" runat="server" class="form-control" placeholder="Entrer pui" required="required"/>
+                    <asp:TextBox ID="txtPuissance" Text="81 kW (110 CH)" runat="server" class="form-control" />
                 </div>
             </div>
             <div class="col">
@@ -101,14 +101,14 @@
         <div class="row mb-4">
             <div class="col">
                 <div class="form-outline">
-                    <asp:Label class="lblCars" runat="server" AssociatedControlID="txtCylindres">Cylindre</asp:Label>
+                    <asp:Label class="lblCars" runat="server" AssociatedControlID="txtCylindres">Cylindrée</asp:Label>
                     <asp:TextBox ID="txtCylindres"  runat="server" class="form-control" TextMode="Number"/>                    
                 </div>
             </div>
             <div class="col">
                 <div class="form-outline">
-                    <asp:Label class="lblCars" runat="server" AssociatedControlID="DDLCarbu">Carburant</asp:Label>
-                    <asp:DropDownList ID="DDLCarbu" AutoPostBack="true" runat="server" style="margin-left: 24px"></asp:DropDownList>                       
+                    <asp:Label class="lblCars" runat="server" AssociatedControlID="DDListCarbu">Carburant</asp:Label>
+                    <asp:DropDownList ID="DDListCarbu" AutoPostBack="true" runat="server"></asp:DropDownList>                       
                 </div>
             </div>
         </div>
@@ -142,16 +142,16 @@
             <div class="col">
                 <div class="form-outline">
                     <asp:Label class="lblCars" runat="server" AssociatedControlID="txtCouleur">Couleur</asp:Label>
-                    <asp:TextBox ID="txtCouleur" runat="server" TextMode="Color" Width="50px" Height="35px" class="form-control" placeholder=""/> 
+                    <asp:TextBox ID="txtCouleur" runat="server" class="form-control" /> 
                 </div>
             </div>
         </div>
         <div class="row mb-4">
             <div class="col">
                 <div class="form-outline">
-                    <asp:Label class="lblCars" runat="server" for="InFile">Photo</asp:Label>
-                    <input type="file" runat="server" class="form-control-file" id="InFile">
-                    <%--<asp:button id="btnUpload" type="submit" text="Upload" ></asp:button>--%>
+                    <asp:Label class="lblCars" runat="server" for="InPhoto">Photo</asp:Label>
+                    <input type="file" runat="server" class="form-control-file" id="InPhoto" name="InPhoto"/>
+                    <%--<asp:button type="submit" text="Upload" ></asp:button>--%>
                 </div>
             </div>
             <div class="col">

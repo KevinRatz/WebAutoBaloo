@@ -150,13 +150,13 @@ namespace AutoBalooWeb.WebForms
         protected global::System.Web.UI.WebControls.TextBox txtCylindres;
 
         /// <summary>
-        /// Contrôle DDLCarbu.
+        /// Contrôle DDListCarbu.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DDLCarbu;
+        protected global::System.Web.UI.WebControls.DropDownList DDListCarbu;
 
         /// <summary>
         /// Contrôle RBCtEnt.
@@ -204,13 +204,13 @@ namespace AutoBalooWeb.WebForms
         protected global::System.Web.UI.WebControls.TextBox txtCouleur;
 
         /// <summary>
-        /// Contrôle InFile.
+        /// Contrôle InPhoto.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputFile InFile;
+        protected global::System.Web.UI.HtmlControls.HtmlInputFile InPhoto;
 
         /// <summary>
         /// Contrôle txtdtarv.

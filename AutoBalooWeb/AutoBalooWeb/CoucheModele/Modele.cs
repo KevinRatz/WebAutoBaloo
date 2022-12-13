@@ -3,6 +3,7 @@ using AutoBalooWeb.CoucheAccesDB;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 
 namespace AutoBalooWeb.CoucheModele
@@ -55,12 +56,26 @@ namespace AutoBalooWeb.CoucheModele
          */
         public bool AddVehiculeVM(Vehicule v)
         {
-            return fabDB.GetVehiculeDB().Ajouter(v);
+            if (!IsValide(v))
+                return false;
+            else
+                return fabDB.GetVehiculeDB().Ajouter(v);
         }
+
+        private bool IsValide(Vehicule v)
+        {
+            if (v.NumChassis != null && Regex.IsMatch(v.NumChassis, "$[0-9]{1,}^") && v.Nom != null && v.Nom.Length < 50 && 
+                v.Puissance != null && v.Puissance.Length < 50 && v.NbPortes != 0 && v.NbVitesse != 0 && v.Cylindres != 0 && 
+                v.Couleur != null && v.Couleur.Length < 50 && v.Kilometrage != 0 && v.Année != null && v.CarnetEntretien != null && v.TypeTransaction != 0 &&
+               v.Prix != 0 && v.Reduction != 0 && v.Photo != null && v.DateArrive != null)
+                return true;
+            return false;
+        }
+
         /**
-         * méthode qui retourne la liste des véhicules 
-         * retour : La liste des véhicules
-         */
+* méthode qui retourne la liste des véhicules 
+* retour : La liste des véhicules
+*/
         public List<Vehicule> ListVehiculeVM()
         {
             return fabDB.GetVehiculeDB().ListerTous();
@@ -82,10 +97,34 @@ namespace AutoBalooWeb.CoucheModele
         /**
          * méthode qui lit dans la base de données tous les catégories
          * retour : la liste de tous les catégories
-         *
-        public List<Categorie> ListCategories()
+         */
+        public List<Etat> ListEtats()
         {
-            return fabDB.GetCategorieDB().ListerTous();
+            return fabDB.GetEtatDB().ListerTous();
+        }
+        /**
+         * méthode qui lit dans la base de données tous les catégories
+         * retour : la liste de tous les catégories
+         */
+        public List<Marque> ListMarques()
+        {
+            return fabDB.GetMarqueDB().ListerTous();
+        }
+        /**
+         * méthode qui lit dans la base de données tous les catégories
+         * retour : la liste de tous les catégories
+         */
+        public List<Carrosserie> ListCarrosseries()
+        {
+            return fabDB.GetCarrosserieDB().ListerTous();
+        }
+        /**
+         * méthode qui lit dans la base de données tous les catégories
+         * retour : la liste de tous les catégories
+         */
+        public List<Carburant> ListCarburants()
+        {
+            return fabDB.GetCarburantDB().ListerTous();
         }
         /**
          * méthode qui liste dans la base de données le panier

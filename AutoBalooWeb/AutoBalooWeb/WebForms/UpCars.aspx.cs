@@ -17,34 +17,33 @@ namespace AutoBalooWeb.WebForms
                 Response.Redirect("MainPage.aspx");
             if (!Page.IsPostBack)
             {
-                //List<Categorie> liste = ((CoucheModele)Session["CoucheModele"]).ListCategories();
+                DDListId.DataSource = ((Modele)Session["CoucheModele"]).ListVehiculeVM();
+                DDListId.DataBind();
 
-                //DropDownList1.DataSource = liste;
-                //DropDownList1.DataBind();
+                DDListMarque.DataSource = ((Modele)Session["CoucheModele"]).ListMarques();
+                DDListMarque.DataBind();
+
+                DDListCarro.DataSource = ((Modele)Session["CoucheModele"]).ListCarrosseries();
+                DDListCarro.DataBind();
+
+                DDListCarbu.DataSource = ((Modele)Session["CoucheModele"]).ListCarburants();
+                DDListCarbu.DataBind();
             }
-            }
-            protected void BtnUpCars_Click(object sender, EventArgs e)
+        }
+        protected void BtnUpCars_Click(object sender, EventArgs e)
         {
-            //string nom = txtNom.Text;
-            //string prenom = txtChassis.Text;
-            //string adresse = txtCouleur.Text;
-            //string tel = txtCtEntretien.Text;
-            //string email = txtCylindres.Text;
-            //string email = txtdtarv.Text;
-            //string email = txtKm.Text;
-            //string email = txtNbPortes.Text;
-            //string email = txtNbVitesse.Text;
-            //string mdp = DDLCarbu.Text;
-            //string cfmdp = DDListCarro.Text;
-            //string cfmdp = DDListMarque.Text;
-            //string cfmdp = txtPuissance.Text;
-            //string cfmdp = RBCtEnt.Text;
-            //string cfmdp = RBPortes.Text;
-            //string cfmdp = RBTransm.Text;
-            //string cfmdp = dateCtrlTech.Text;
-            //if (((Modele)Session["CoucheModele"]).UpCarsVM(new Client(nom, prenom, adresse, tel, email, mdp)))
+            Vehicule v = new Vehicule(txtChassis.Text, txtNom.Text, DDListMarque.SelectedIndex,
+                txtPuissance.Text, Convert.ToInt32(RBPortes.SelectedValue), Convert.ToInt32(txtNbVitesse.Text), Convert.ToInt32(txtCylindres.Text), txtCouleur.Text,
+                Convert.ToDecimal(txtKm.Text), Convert.ToDateTime(txtAn.Text), Convert.ToDateTime(dateCtrlTech.Text), RBCtEnt.SelectedValue, RBTrans.SelectedIndex,
+                Convert.ToDecimal(txtPrix.Text), Convert.ToInt32(txtReduct.Text), (InPhoto.PostedFile.FileName == "") ? null : InPhoto.PostedFile.FileName, Convert.ToDateTime(txtdtarv.Text), 1, RBTransm.SelectedIndex,
+                DDListCarbu.SelectedIndex, DDListCarro.SelectedIndex);
 
-
+            Literal lit = new Literal();
+            if (!((Modele)Session["CoucheModele"]).UpVehiculeVM(v))
+            {
+                lit.Text = "Le numéro du chassis de la voiture existe déjà ou des erreurs dans le formulaire";
+                ct.Controls.Add(lit);
+            }
         }
 
         // attention faire via id recherché 
@@ -66,6 +65,43 @@ namespace AutoBalooWeb.WebForms
         protected void DDListId_SelectedIndexChanged(object sender, EventArgs e)
         {
             ((Modele)Session["CoucheModele"]).GetVehiculeVM(DDListId.SelectedIndex);
+        }
+
+        protected void DDListId_TextChanged(object sender, EventArgs e)
+        {
+            Vehicule v = null;
+            try
+            {
+                v = ((Modele)Session["CoucheModele"]).GetVehiculeVM(DDListId.SelectedIndex);
+                txtChassis.Text = v.NumChassis; 
+                txtNom.Text= v.Nom;
+                DDListMarque.SelectedIndex = v.Marque.IdMarque-1;
+                txtPuissance.Text = v.Puissance;
+                if (v.NbPortes == 3)
+                    RBPortes.SelectedIndex = 0;
+                else
+                    RBPortes.SelectedIndex = 1;
+                if(v.Transmission.NomTrans=="man")
+                    txtNbVitesse.Text = v.NbVitesse.ToString();
+                txtCylindres.Text = v.Cylindres.ToString();
+                txtCouleur.Text = v.Couleur;
+                txtKm.Text = v.Kilometrage.ToString();
+                txtAn.Text = v.Année.ToString();
+                dateCtrlTech.Text = v.DateCtrlTech.ToString();
+                RBCtEnt.SelectedValue = v.CarnetEntretien;
+                if(v.CarnetEntretien=="oui")
+                    txtdtarv.Text = v.DateArrive.ToString();
+                RBTrans.SelectedIndex = v.TypeTransaction;
+                txtPrix.Text = v.Prix.ToString();
+                txtReduct.Text = v.Reduction.ToString();
+                RBTransm.SelectedIndex = v.Transmission.IdTrans;
+                DDListCarbu.SelectedIndex = v.Carburant.IdCarbu-1;
+                DDListCarro.SelectedIndex = v.Carrosserie.IdCaros-1;                
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Problème inattendu lors du listage!");
+            }
         }
     }
 }

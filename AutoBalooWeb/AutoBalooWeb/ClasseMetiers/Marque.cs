@@ -16,7 +16,10 @@ namespace AutoBalooWeb.ClasseMetiers
             IdMarque = idMarque;
             NomMarque = nomMarque;
         }
-
+        public override string ToString()
+        {
+            return NomMarque;
+        }
         public int IdMarque { get; set; }
         public string NomMarque { get; set; }
 

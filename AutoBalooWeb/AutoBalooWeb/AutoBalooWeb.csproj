@@ -97,11 +97,16 @@
     <Content Include="Web.config" />
     <Content Include="WebForms\DelCars.aspx" />
     <Content Include="WebForms\GoogleCallBack.aspx" />
+    <Content Include="WebForms\Image\1.jpg" />
+    <Content Include="WebForms\Image\2.jpg" />
+    <Content Include="WebForms\Image\NoImage.png" />
+    <Content Include="WebForms\Location.aspx" />
     <Content Include="WebForms\UpCars.aspx" />
     <Content Include="WebForms\InfoClientForm.aspx" />
     <Content Include="WebForms\AddCars.aspx" />
     <Content Include="WebForms\SignIn.aspx" />
     <Content Include="WebForms\SignUp.aspx" />
+    <Content Include="WebForms\Vente.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClasseMetiers\Carburant.cs" />
@@ -148,12 +153,12 @@
     <Compile Include="WebForms\GoogleCallBack.aspx.designer.cs">
       <DependentUpon>GoogleCallBack.aspx</DependentUpon>
     </Compile>
-    <Compile Include="WebForms\NestedMasterForms.master.cs">
-      <DependentUpon>NestedMasterForms.master</DependentUpon>
+    <Compile Include="WebForms\Location.aspx.cs">
+      <DependentUpon>Location.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="WebForms\NestedMasterForms.master.designer.cs">
-      <DependentUpon>NestedMasterForms.master</DependentUpon>
+    <Compile Include="WebForms\Location.aspx.designer.cs">
+      <DependentUpon>Location.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebForms\UpCars.aspx.cs">
       <DependentUpon>UpCars.aspx</DependentUpon>
@@ -205,6 +210,13 @@
     <Compile Include="WebForms\SignUp.aspx.designer.cs">
       <DependentUpon>SignUp.aspx</DependentUpon>
     </Compile>
+    <Compile Include="WebForms\Vente.aspx.cs">
+      <DependentUpon>Vente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\Vente.aspx.designer.cs">
+      <DependentUpon>Vente.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="WebForms\MainPage.aspx" />
@@ -216,7 +228,6 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
-    <Content Include="WebForms\NestedMasterForms.master" />
   </ItemGroup>
   <ItemGroup />
   <PropertyGroup>

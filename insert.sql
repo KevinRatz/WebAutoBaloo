@@ -7,7 +7,7 @@
            ,[Cylindres]
            ,[Couleur]
            ,[Kilometrage]
-           ,[Année]
+           ,[Annee]
            ,[DateCtrlTech]
            ,[CarnetEntretien]
            ,[TypeTransaction]
@@ -21,24 +21,25 @@
            ,[Carrosserie]
            ,[Marque])
      VALUES
-           (<NumChassis, varchar(30),>
-           ,<Nom, varchar(30),>
-           ,<Puissance, varchar(30),>
-           ,<NbPortes, int,>
-           ,<NbVitesse, int,>
-           ,<Cylindres, int,>
-           ,<Couleur, varchar(60),>
-           ,<Kilometrage, decimal(18,0),>
-           ,<Année, date,>
-           ,<DateCtrlTech, date,>
-           ,<CarnetEntretien, varchar(3),>
-           ,<TypeTransaction, int,>
-           ,<Prix, decimal(18,0),>
-           ,<Reduction, int,>
-           ,<Photo, varchar(30),>
-           ,<DateArrive, date,>
-           ,<Etat, int,>
-           ,<Transmission, int,>
-           ,<Carburant, int,>
-           ,<Carrosserie, int,>
-           ,<Marque, int,>)
+           ('1234567'
+           ,'voiture vieille réduc'
+           ,'92 kW (125 CH)'
+           ,4
+           ,5
+           ,2
+           ,'rouge'
+           ,1000
+           ,'3/10/2000'
+           ,'3/10/2010'
+           ,'Oui'
+           --TypeTransaction 0 vente 1 location
+           ,1
+           ,600
+           ,10
+           ,'1.jpg'
+           ,'3/10/1996'
+           ,1
+           ,2
+           ,2
+           ,2
+           ,2)

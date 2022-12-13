@@ -1,4 +1,5 @@
 ﻿using AutoBalooWeb.ClasseMetiers;
+using AutoBalooWeb.CoucheModele;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,39 +18,30 @@ namespace AutoBalooWeb.WebForms
             // si la page est chargée pour la première fois
             if (!Page.IsPostBack)
             {
-                //List<Categorie> liste = ((CoucheModele)Session["CoucheModele"]).ListCategories();
+                DDListMarque.DataSource = ((Modele)Session["CoucheModele"]).ListMarques();
+                DDListMarque.DataBind();
+                
+                DDListCarro.DataSource = ((Modele)Session["CoucheModele"]).ListCarrosseries();
+                DDListCarro.DataBind();
 
-                //DropDownList1.DataSource = liste;
-                //DropDownList1.DataBind();
-
-                //List<Produit> listep = ((CoucheModele)Session["CoucheModele"]).ListProducts("aucun", -1);
-
-                //GridView1.DataSource = listep;
-                //GridView1.DataBind();
+                DDListCarbu.DataSource = ((Modele)Session["CoucheModele"]).ListCarburants();
+                DDListCarbu.DataBind();
             }
         }
         protected void BtnAddCars_Click(object sender, EventArgs e)
         {
-            //string nom = txtNom.Text;
-            //string prenom = txtChassis.Text;
-            //string adresse = txtCouleur.Text;
-            //string tel = txtCtEntretien.Text;
-            //string email = txtCylindres.Text;
-            //string email = txtdtarv.Text;
-            //string email = txtKm.Text;
-            //string email = txtNbPortes.Text;
-            //string email = txtNbVitesse.Text;
-            //string mdp = DDLCarbu.Text;
-            //string cfmdp = DDListCarro.Text;
-            //string cfmdp = DDListMarque.Text;
-            //string cfmdp = txtPuissance.Text;
-            //string cfmdp = RBCtEnt.Text;
-            //string cfmdp = RBPortes.Text;
-            //string cfmdp = RBTransm.Text;
-            //string cfmdp = dateCtrlTech.Text;
-            //if (((Modele)Session["CoucheModele"]).UpCarsVM(new Client(nom, prenom, adresse, tel, email, mdp)))
+            Vehicule v = new Vehicule(txtChassis.Text, txtNom.Text, DDListMarque.SelectedIndex,
+                txtPuissance.Text, Convert.ToInt32(RBPortes.SelectedValue), Convert.ToInt32(txtNbVitesse.Text), Convert.ToInt32(txtCylindres.Text), txtCouleur.Text,
+                Convert.ToDecimal(txtKm.Text), Convert.ToDateTime(txtAn.Text), Convert.ToDateTime(dateCtrlTech.Text), RBCtEnt.SelectedValue, RBTrans.SelectedIndex,
+                Convert.ToDecimal(txtPrix.Text), Convert.ToInt32(txtReduct.Text),InPhoto.PostedFile.FileName, Convert.ToDateTime(txtdtarv.Text), 1, RBTransm.SelectedIndex,
+                DDListCarbu.SelectedIndex, DDListCarro.SelectedIndex);
 
-
+            Literal lit = new Literal();
+            if (!((Modele)Session["CoucheModele"]).AddVehiculeVM(v))
+            {
+                lit.Text = "Le numéro du chassis de la voiture existe déjà ou des erreurs dans le formulaire";
+                ct.Controls.Add(lit);
+            }
         }
 
         protected void RBTransm_SelectedIndexChanged(object sender, EventArgs e)

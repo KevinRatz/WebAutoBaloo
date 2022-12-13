@@ -87,6 +87,35 @@ namespace AutoBalooWeb.ClasseMetiers
             Carrosserie = v.Carrosserie;
         }
 
+        public Vehicule(string numChassis, string nom, int marque, string puissance, int nbPortes, int nbVitesse, int cylindres, string couleur, decimal kilometrage, DateTime année, DateTime dateCtrlTech, string carnetEntretien, int typeTransaction, decimal prix, int reduction, string photo, DateTime dateArrive, int etat, int transmission, int carburant, int carrosserie)
+        {
+            NumChassis = numChassis;
+            Nom = nom;
+            Marque.IdMarque = marque;
+            Puissance = puissance;
+            NbPortes = nbPortes;
+            NbVitesse = nbVitesse;
+            Cylindres = cylindres;
+            Couleur = couleur;
+            Kilometrage = kilometrage;
+            Année = année;
+            DateCtrlTech = dateCtrlTech;
+            CarnetEntretien = carnetEntretien;
+            TypeTransaction = typeTransaction;
+            Prix = prix;
+            Reduction = reduction;
+            Photo = photo;
+            DateArrive = dateArrive;
+            Etat.IdEtat = etat;
+            Transmission.IdTrans = transmission;
+            Carburant.IdCarbu = carburant;
+            Carrosserie.IdCaros = carrosserie;
+        }
+
+        public override string ToString()
+        {
+            return IdVoiture + " " + Marque.NomMarque + " " + Nom + " " + NumChassis;
+        }
 
         public int IdVoiture { get; set; }
         public string NumChassis { get; set; }

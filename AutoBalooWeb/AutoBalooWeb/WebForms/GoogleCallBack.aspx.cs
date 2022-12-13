@@ -38,6 +38,8 @@ namespace AutoBalooWeb.WebForms
                 {
                     //Redirect the user to MainPage.aspx avec email connecté
                     FormsAuthentication.SetAuthCookie(emailId, false);
+                    if (cliSess != null)
+                        Session["Client"] = cliSess;
                     Response.Redirect("MainPage.aspx", true); 
                 }
                 else
@@ -48,6 +50,7 @@ namespace AutoBalooWeb.WebForms
                         ((Modele)Session["CoucheModele"]).AddClientVM(new Client(emailId), true);
                         //Redirect the user to MainPage.aspx avec email connecté
                         FormsAuthentication.SetAuthCookie(emailId, false);
+                        Session["Client"] = new Client(emailId);
                         Response.Redirect("MainPage.aspx", true);
                     }
                     else
