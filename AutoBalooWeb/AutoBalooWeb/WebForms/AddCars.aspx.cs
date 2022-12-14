@@ -53,7 +53,7 @@ namespace AutoBalooWeb.WebForms
             Vehicule v = new Vehicule(txtChassis.Text, txtNom.Text, new Marque(DDListMarque.SelectedIndex),
                 txtPuissance.Text, Convert.ToInt32(RBPortes.SelectedValue), Convert.ToInt32(txtNbVitesse.Text), Convert.ToInt32(txtCylindres.Text), txtCouleur.Text,
                 Convert.ToDecimal(txtKm.Text), Convert.ToDateTime(txtAn.Text), (dateCtrlTech.Text=="")? new DateTime(1900,01,01) : (Convert.ToDateTime(dateCtrlTech.Text)), RBCtEnt.SelectedValue, RBTrans.SelectedIndex,
-                Convert.ToDecimal(txtPrix.Text), Convert.ToInt32(txtReduct.Text),InPhoto.PostedFile.FileName, Convert.ToDateTime(txtdtarv.Text), new Etat(1), new Transmission(RBTransm.SelectedIndex),
+                Convert.ToDecimal(txtPrix.Text), Convert.ToInt32(txtReduct.Text), (InPhoto.PostedFile.FileName == "") ? "NoImage.png" : InPhoto.PostedFile.FileName, Convert.ToDateTime(txtdtarv.Text), new Etat(1), new Transmission(RBTransm.SelectedIndex),
                 new Carburant(DDListCarbu.SelectedIndex), new Carrosserie(DDListCarro.SelectedIndex));
 
             Literal lit = new Literal();
@@ -62,10 +62,11 @@ namespace AutoBalooWeb.WebForms
                 lit.Text = "Le numéro du chassis de la voiture existe déjà ou des erreurs dans le formulaire";
                 ct.Controls.Add(lit);
             }
-            else if (v.TypeTransaction == 0)
-                Response.Redirect("Vente.aspx");
             else
-                Response.Redirect("Location.aspx");
+            {
+                lit.Text = "Ajout réussi";
+                ct.Controls.Add(lit);
+            }
         }
 
         protected void RBTransm_SelectedIndexChanged(object sender, EventArgs e)

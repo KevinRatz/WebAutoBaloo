@@ -33,16 +33,21 @@ namespace AutoBalooWeb.WebForms
         }
         protected void BtnUpCars_Click(object sender, EventArgs e)
         {
-            Vehicule v = new Vehicule(txtChassis.Text, txtNom.Text, new Marque(DDListMarque.SelectedIndex),
+            Vehicule v = new Vehicule(DDListId.SelectedIndex,txtChassis.Text, txtNom.Text, new Marque(DDListMarque.SelectedIndex),
                 txtPuissance.Text, Convert.ToInt32(RBPortes.SelectedValue), Convert.ToInt32(txtNbVitesse.Text), Convert.ToInt32(txtCylindres.Text), txtCouleur.Text,
                 Convert.ToDecimal(txtKm.Text), Convert.ToDateTime(txtAn.Text), (dateCtrlTech.Text == "") ? new DateTime(1900, 01, 01) : (Convert.ToDateTime(dateCtrlTech.Text)), RBCtEnt.SelectedValue, RBTrans.SelectedIndex,
-                Convert.ToDecimal(txtPrix.Text), Convert.ToInt32(txtReduct.Text), InPhoto.PostedFile.FileName, Convert.ToDateTime(txtdtarv.Text), new Etat(1), new Transmission(RBTransm.SelectedIndex),
+                Convert.ToDecimal(txtPrix.Text), Convert.ToInt32(txtReduct.Text), (InPhoto.PostedFile.FileName == "") ? "NoImage.png" : InPhoto.PostedFile.FileName, Convert.ToDateTime(txtdtarv.Text), new Etat(1), new Transmission(RBTransm.SelectedIndex),
                 new Carburant(DDListCarbu.SelectedIndex), new Carrosserie(DDListCarro.SelectedIndex));
 
             Literal lit = new Literal();
             if (!((Modele)Session["CoucheModele"]).UpVehiculeVM(v))
             {
                 lit.Text = "Le numéro du chassis de la voiture existe déjà ou des erreurs dans le formulaire";
+                ct.Controls.Add(lit);
+            }
+            else
+            {
+                lit.Text = "Modification réussi";
                 ct.Controls.Add(lit);
             }
         }
@@ -91,8 +96,10 @@ namespace AutoBalooWeb.WebForms
                     if (v.Transmission.NomTrans == "Manuelle")
                     { 
                         txtNbVitesse.Text = v.NbVitesse.ToString(); 
-                        vitesseHide.Style.Add("display", "flex"); 
+                        vitesseHide.Style.Add("display", "flex");
                     }
+                    else
+                        dtCtrlTechH.Style.Add("display", "none");
                     txtCylindres.Text = v.Cylindres.ToString();
                     txtCouleur.Text = v.Couleur;
                     txtKm.Text = v.Kilometrage.ToString();
@@ -103,6 +110,8 @@ namespace AutoBalooWeb.WebForms
                         dtCtrlTechH.Style.Add("display", "flex");
                         dateCtrlTech.Text = v.DateCtrlTech.ToString("yyyy-MM-dd");
                     }
+                    else
+                        dtCtrlTechH.Style.Add("display", "none");
                     txtdtarv.Text = v.DateArrive.ToString("yyyy-MM-dd");
                     RBTrans.SelectedIndex = v.TypeTransaction;
                     txtPrix.Text = v.Prix.ToString();
