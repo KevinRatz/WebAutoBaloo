@@ -42,7 +42,7 @@ namespace AutoBalooWeb.WebForms
                 txtdtarv.Text = "2022-04-20";
                 RBTrans.SelectedIndex = 0;
                 txtPrix.Text = "10000";
-                txtReduct.Text = "5";
+                txtReduct.Text = "0";
                 RBTransm.SelectedIndex = 1;
                 DDListCarbu.SelectedIndex = 1;
                 DDListCarro.SelectedIndex = 1;

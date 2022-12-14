@@ -73,11 +73,12 @@ namespace AutoBalooWeb.WebForms
             Vehicule v = null;
             try
             {
-                v = ((Modele)Session["CoucheModele"]).GetVehiculeVM(DDListId.SelectedIndex);
-                if (v.IdVoiture == 0)
+                
+                if (DDListId.SelectedIndex == 0)
                     EnableForms(false);
                 else
                 {
+                    v = ((Modele)Session["CoucheModele"]).GetVehiculeVM(DDListId.SelectedIndex);
                     EnableForms(true);
                     txtChassis.Text = v.NumChassis; 
                     txtNom.Text= v.Nom;
