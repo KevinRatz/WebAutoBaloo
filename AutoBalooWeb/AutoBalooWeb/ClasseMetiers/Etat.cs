@@ -11,6 +11,10 @@ namespace AutoBalooWeb.ClasseMetiers
         {
 
         }
+        public Etat(int idEtat)
+        {
+            IdEtat = idEtat;
+        }
         public Etat(int idEtat, string nomEtat)
         {
             IdEtat = idEtat;

@@ -64,10 +64,10 @@ namespace AutoBalooWeb.CoucheModele
 
         private bool IsValide(Vehicule v)
         {
-            if (v.NumChassis != null && Regex.IsMatch(v.NumChassis, "$[0-9]{1,}^") && v.Nom != null && v.Nom.Length < 50 && 
+            if (v.NumChassis != null && Regex.IsMatch(v.NumChassis, "^[0-9]{1,}$") && v.Nom != null && v.Nom.Length < 50 && 
                 v.Puissance != null && v.Puissance.Length < 50 && v.NbPortes != 0 && v.NbVitesse != 0 && v.Cylindres != 0 && 
-                v.Couleur != null && v.Couleur.Length < 50 && v.Kilometrage != 0 && v.Année != null && v.CarnetEntretien != null && v.TypeTransaction != 0 &&
-               v.Prix != 0 && v.Reduction != 0 && v.Photo != null && v.DateArrive != null)
+                v.Couleur != null && v.Couleur.Length < 50 && v.Kilometrage != 0 && v.Année != null && v.CarnetEntretien != null && (v.TypeTransaction == 0|| v.TypeTransaction == 1) &&
+               v.Prix != 0 && v.Reduction != 0 && v.Photo != "" && v.DateArrive != null)
                 return true;
             return false;
         }

@@ -9,7 +9,11 @@ namespace AutoBalooWeb.ClasseMetiers
     {
         public Carrosserie()
         {
-
+            NomCaros = "";
+        }
+        public Carrosserie(int idCaros)
+        {
+            IdCaros = idCaros;
         }
         public Carrosserie(int idCaros, string nomCaros)
         {

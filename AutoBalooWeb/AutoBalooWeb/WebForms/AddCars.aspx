@@ -28,7 +28,7 @@
             </div>
             <div class="col">
                 <div class="form-outline">
-                    <asp:Label class="lblCars" runat="server" AssociatedControlID="DDListCarro">Carro </asp:Label>
+                    <asp:Label class="lblCars" runat="server" AssociatedControlID="DDListCarro">Carrosserie </asp:Label>
                     <asp:DropDownList ID="DDListCarro" AutoPostBack="true" runat="server"></asp:DropDownList>
                 </div>
             </div>
@@ -36,7 +36,7 @@
         <div class="row mb-4">
             <div class="col">
                 <div class="form-outline">
-                    <asp:Label class="lblCars" runat="server" AssociatedControlID="txtKm">Kilométrage</asp:Label>
+                    <asp:Label class="lblCars" runat="server" AssociatedControlID="txtKm">Kilométrage (Km)</asp:Label>
                     <asp:TextBox ID="txtKm" runat="server" class="form-control" TextMode="Number" step="any"/>
                 </div>
             </div>
@@ -52,8 +52,8 @@
                 <div class="form-outline">
                     <asp:Label class="lblCars" runat="server" AssociatedControlID="RBTransm"> Transmission</asp:Label>
                     <asp:RadioButtonList ID="RBTransm" RepeatDirection="Horizontal" AutoPostBack="true" runat="server" OnSelectedIndexChanged="RBTransm_SelectedIndexChanged">
-                        <asp:ListItem> auto </asp:ListItem>
-                        <asp:ListItem>man</asp:ListItem>
+                        <asp:ListItem>Automatique</asp:ListItem>
+                        <asp:ListItem>Manuelle</asp:ListItem>
                     </asp:RadioButtonList>
                 <%--<asp:DropDownList ID="DDListTrans" AutoPostBack="true" runat="server" Height="40px" style="margin-left: 24px"></asp:DropDownList>--%>
                 </div>
@@ -69,13 +69,13 @@
         <div class="row mb-4">
             <div class="col">
                 <div class="form-outline">
-                    <asp:Label class="lblCars" runat="server" AssociatedControlID="txtPrix"> Prix</asp:Label>
+                    <asp:Label class="lblCars" runat="server" AssociatedControlID="txtPrix"> Prix (€)</asp:Label>
                     <asp:TextBox ID="txtPrix" runat="server" class="form-control"  TextMode="Number" step="any"/>                    
                 </div>
             </div>
             <div class="col">
                 <div class="form-outline">
-                    <asp:Label class="lblCars" runat="server" AssociatedControlID="txtReduct"> Reduction</asp:Label>
+                    <asp:Label class="lblCars" runat="server" AssociatedControlID="txtReduct"> Reduction (%)</asp:Label>
                     <asp:TextBox ID="txtReduct" runat="server" TextMode="Number" class="form-control"/>                  
                 </div>
             </div>
@@ -101,7 +101,7 @@
         <div class="row mb-4">
             <div class="col">
                 <div class="form-outline">
-                    <asp:Label class="lblCars" runat="server" AssociatedControlID="txtCylindres">Cylindrée</asp:Label>
+                    <asp:Label class="lblCars" runat="server" AssociatedControlID="txtCylindres">Cylindrée (cm³)</asp:Label>
                     <asp:TextBox ID="txtCylindres"  runat="server" class="form-control" TextMode="Number"/>                    
                 </div>
             </div>

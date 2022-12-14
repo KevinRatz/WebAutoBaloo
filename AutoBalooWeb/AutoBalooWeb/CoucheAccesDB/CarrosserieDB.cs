@@ -67,6 +67,7 @@ namespace AutoBalooWeb.CoucheAccesDB
                 SqlCmd.CommandText = "Select * from Carrosserie";
                 SqlCmd.CommandType = CommandType.Text;
                 SqlCmd.Parameters.Clear();
+                liste.Add(new Carrosserie());
                 SqlDataReader sqlReader = SqlCmd.ExecuteReader();
                 while (sqlReader.Read() == true)
                     liste.Add(new Carrosserie(

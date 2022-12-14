@@ -9,7 +9,11 @@ namespace AutoBalooWeb.ClasseMetiers
     {
         public Marque()
         {
-
+            NomMarque = "";
+        }
+        public Marque(int idMarque)
+        {
+            IdMarque = idMarque;
         }
         public Marque(int idMarque, string nomMarque)
         {

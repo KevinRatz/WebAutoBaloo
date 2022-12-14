@@ -68,6 +68,7 @@ namespace AutoBalooWeb.CoucheAccesDB
                 SqlCmd.CommandType = CommandType.Text;
                 SqlCmd.Parameters.Clear();
                 SqlDataReader sqlReader = SqlCmd.ExecuteReader();
+                liste.Add(new Marque());
                 while (sqlReader.Read() == true)
                     liste.Add(new Marque(
                     Convert.ToInt32(sqlReader["IdMarque"]),

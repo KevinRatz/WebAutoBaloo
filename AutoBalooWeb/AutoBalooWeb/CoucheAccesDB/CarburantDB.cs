@@ -68,6 +68,7 @@ namespace AutoBalooWeb.CoucheAccesDB
                 SqlCmd.CommandType = CommandType.Text;
                 SqlCmd.Parameters.Clear();
                 SqlDataReader sqlReader = SqlCmd.ExecuteReader();
+                liste.Add(new Carburant());
                 while (sqlReader.Read() == true)
                     liste.Add(new Carburant(
                     Convert.ToInt32(sqlReader["IdCarburant"]),

@@ -11,10 +11,11 @@ namespace AutoBalooWeb.ClasseMetiers
         public Vehicule()
         {
             //test
-            //IdVoiture = idVoiture;
-            //NumChassis = numChassis;
-            //Nom = nom;
-            //Marque = marque;
+            IdVoiture = 0;
+
+            NumChassis = "";
+            Nom = "";
+            Marque = new Marque(1,"vide");
             //Puissance = puissance;
             //NbPortes = nbPortes;
             //NbVitesse = nbVitesse;
@@ -87,11 +88,11 @@ namespace AutoBalooWeb.ClasseMetiers
             Carrosserie = v.Carrosserie;
         }
 
-        public Vehicule(string numChassis, string nom, int marque, string puissance, int nbPortes, int nbVitesse, int cylindres, string couleur, decimal kilometrage, DateTime année, DateTime dateCtrlTech, string carnetEntretien, int typeTransaction, decimal prix, int reduction, string photo, DateTime dateArrive, int etat, int transmission, int carburant, int carrosserie)
+        public Vehicule(string numChassis, string nom, Marque marque, string puissance, int nbPortes, int nbVitesse, int cylindres, string couleur, decimal kilometrage, DateTime année, DateTime dateCtrlTech, string carnetEntretien, int typeTransaction, decimal prix, int reduction, string photo, DateTime dateArrive, Etat etat, Transmission transmission, Carburant carburant, Carrosserie carrosserie)
         {
             NumChassis = numChassis;
             Nom = nom;
-            Marque.IdMarque = marque;
+            Marque = marque;
             Puissance = puissance;
             NbPortes = nbPortes;
             NbVitesse = nbVitesse;
@@ -106,10 +107,10 @@ namespace AutoBalooWeb.ClasseMetiers
             Reduction = reduction;
             Photo = photo;
             DateArrive = dateArrive;
-            Etat.IdEtat = etat;
-            Transmission.IdTrans = transmission;
-            Carburant.IdCarbu = carburant;
-            Carrosserie.IdCaros = carrosserie;
+            Etat = etat;
+            Transmission = transmission;
+            Carburant = carburant;
+            Carrosserie = carrosserie;
         }
 
         public override string ToString()

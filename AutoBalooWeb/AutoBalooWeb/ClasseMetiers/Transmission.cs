@@ -11,6 +11,10 @@ namespace AutoBalooWeb.ClasseMetiers
         {
 
         }
+        public Transmission(int idTrans)
+        {
+            IdTrans = idTrans;
+        }
         public Transmission(int idTrans, string nomTrans)
         {
             IdTrans = idTrans;

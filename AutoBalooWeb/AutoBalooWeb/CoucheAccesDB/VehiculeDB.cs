@@ -99,12 +99,12 @@ namespace AutoBalooWeb.CoucheAccesDB
                 SqlCmd.Parameters.Add("@reduction", SqlDbType.Int).Value = obj.Reduction;
                 SqlCmd.Parameters.Add("@photo", SqlDbType.VarChar).Value = obj.Photo;
                 SqlCmd.Parameters.Add("@dateArrive", SqlDbType.Date).Value = obj.DateArrive;
-                SqlCmd.Parameters.Add("@etat", SqlDbType.Int).Value = obj.Etat;
-                SqlCmd.Parameters.Add("@transmission", SqlDbType.Int).Value = obj.Transmission;
-                SqlCmd.Parameters.Add("@carburant", SqlDbType.Int).Value = obj.Carburant;
-                SqlCmd.Parameters.Add("@carrosserie", SqlDbType.Int).Value = obj.Carrosserie;
-                SqlCmd.Parameters.Add("@marque", SqlDbType.Int).Value = obj.Marque;
-                return (SqlCmd.ExecuteNonQuery() == 0) ? false : true;
+                SqlCmd.Parameters.Add("@etat", SqlDbType.Int).Value = obj.Etat.IdEtat;
+                SqlCmd.Parameters.Add("@transmission", SqlDbType.Int).Value = obj.Transmission.IdTrans;
+                SqlCmd.Parameters.Add("@carburant", SqlDbType.Int).Value = obj.Carburant.IdCarbu;
+                SqlCmd.Parameters.Add("@carrosserie", SqlDbType.Int).Value = obj.Carrosserie.IdCaros;
+                SqlCmd.Parameters.Add("@marque", SqlDbType.Int).Value = obj.Marque.IdMarque;
+                return (SqlCmd.ExecuteNonQuery() <= 0) ? false : true;
             }
             catch (Exception e)
             {
@@ -208,7 +208,7 @@ namespace AutoBalooWeb.CoucheAccesDB
                 SqlCmd.ExecuteNonQuery();
 
                 SqlDataReader sqlReader = SqlCmd.ExecuteReader();
-
+                liste.Add(new Vehicule());
 
                 while (sqlReader.Read() == true)
                     liste.Add(new Vehicule(
