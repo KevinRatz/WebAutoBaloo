@@ -58,12 +58,12 @@ namespace AutoBalooWeb.CoucheAccesDB
             try
             {
                 SqlCmd.CommandText = "AddReservation";
+                SqlCmd.CommandType = CommandType.StoredProcedure;
                 SqlCmd.Parameters.Clear();
-                //SqlCmd.Parameters.Add("@Nom", SqlDbType.VarChar).Value = obj.Nom;
-                //SqlCmd.Parameters.Add("@Prenom", SqlDbType.VarChar).Value = obj.Prenom;
-                //SqlCmd.Parameters.Add("@email", SqlDbType.VarChar).Value = obj.Email;
-                //SqlCmd.Parameters.Add("@mdp", SqlDbType.VarChar).Value = obj.MotDePasse;
-                //SqlCmd.Parameters.Add("@adresse", SqlDbType.VarChar).Value = obj.Adresse;
+                SqlCmd.Parameters.Add("@date", SqlDbType.Date).Value = obj.Date;
+                SqlCmd.Parameters.Add("@idV", SqlDbType.Int).Value = obj.Voiture;
+                SqlCmd.Parameters.Add("@idC", SqlDbType.Int).Value = obj.Client;
+                SqlCmd.Parameters.Add("@etatR", SqlDbType.Int).Value = obj.EtatRes;
                 return (SqlCmd.ExecuteNonQuery() == 0) ? false : true;
             }
             catch (Exception e)

@@ -63,11 +63,18 @@ namespace AutoBalooWeb.WebForms
                 if (c.TypeTransaction == 0)
                 {
                     //Ajout des boutons pour Essai et Vente
-                    if (Session["Client"] != null)
-                    {
-                        cph.Controls.Add(new LiteralControl("<button>Acheter</button>\r\n"));
+                    //if (Session["Client"] != null)
+                    //{
+                    Button bt = new Button();
+                    bt.ID = (i+1).ToString();
+                    bt.Text = "Réservé";
+                    bt.Click += new EventHandler(BtnRes_Click);
+                    bt.CssClass = "btn btn-primary";
+                    cph.Controls.Add(bt);
+                        cph.Controls.Add(new LiteralControl("<div><a class='btn btn-primary' href='DelCars.aspx' role='button'>Link</a> </div>\r\n"));
+                        cph.Controls.Add(new LiteralControl("<div><button ID='btnDelCars' runat='server' class='btn btn-primary' OnClick='BtnDelCars_Click'>Réservé</button></div>\r\n"));
                         cph.Controls.Add(new LiteralControl("<button>Essayer</button>\r\n"));
-                    }
+                    //}
                     cph.Controls.Add(new LiteralControl("<div> Disponible depuis : " + c.DateArrive.ToString("dd/MM/yyyy") + "</div>\r\n"));
 
                 }
@@ -88,10 +95,30 @@ namespace AutoBalooWeb.WebForms
             }
             //Fermeture de l'affichage
             cph.Controls.Add(new LiteralControl("\r\n\r\n        </div>\r\n\r\n        <div class=\"col col-lg-2\"></div>\r\n\r\n      </div>\r\n    </div>"));
-            
 
+            //exemple button
+            //Table tb = new Table();
 
+            //for (int j = 1; j <= 10; j++)
+            //{
+            //    TableRow tr = new TableRow();
+            //    TableCell td = new TableCell();
+            //    Button bt = new Button();
+            //    bt.ID = j.ToString();
+            //    bt.Text = "Button " + j.ToString();
+            //    bt.Click += new EventHandler(BtnGgl_Click);
+            //    td.Controls.Add(bt);
+            //    tr.Controls.Add(td);
+            //    tb.Controls.Add(tr);
+            //}
 
+            //cph.Controls.Add(tb);
+
+        }
+        protected void BtnRes_Click(object sender, EventArgs e)
+        {
+            Session["IdVehicule"] = (sender as Button).ID;
+            Response.Redirect("VenteForms.aspx");
         }
     }
 }

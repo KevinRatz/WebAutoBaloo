@@ -180,12 +180,28 @@ namespace AutoBalooWeb.CoucheModele
             return fabDB.GetEtatResDB().Charger(idCmd);
         }
         /**
-         * méthode qui
-         * param 
-         *
-        public void UpCmdVM(string add, DateTime date, int idCmd)
+         * méthode qui add dans la base de données un vehicule 
+         * retour : /
+         */
+        public bool AddResVM(Reservation res)
         {
-            fabDB.GetCommandeDB().UpCmdDB(add, date, idCmd);
-        }*/
+            return fabDB.GetReservationDB().Ajouter(res);
+        }
+        /**
+         * méthode qui add dans la base de données un vehicule 
+         * retour : /
+         */
+        public bool AddLocationVM(Location l)
+        {
+            return fabDB.GetLocationDB().Ajouter(l);
+        }
+        /**
+         * méthode qui add dans la base de données un vehicule 
+         * retour : /
+         */
+        public bool AddEssaiVM(Essai e)
+        {
+            return fabDB.GetEssaiDB().Ajouter(e);
+        }
     }
 }

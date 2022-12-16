@@ -13,8 +13,8 @@ namespace AutoBalooWeb.WebForms
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (!Page.User.Identity.IsAuthenticated || ((Client)Session["Client"]).Admin == 0)
-            //    Response.Redirect("MainPage.aspx");
+            if (!Page.User.Identity.IsAuthenticated || ((Client)Session["Client"]).Admin == 0)
+                Response.Redirect("MainPage.aspx");
             // si la page est chargée pour la première fois
             if (!Page.IsPostBack)
             {

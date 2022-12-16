@@ -15,13 +15,22 @@ namespace AutoBalooWeb.WebForms
     {
 
         /// <summary>
-        /// Contrôle txtdtarv.
+        /// Contrôle hh.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtdtarv;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl hh;
+
+        /// <summary>
+        /// Contrôle txtdtRes.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtdtRes;
 
         /// <summary>
         /// Contrôle ct.
@@ -33,12 +42,12 @@ namespace AutoBalooWeb.WebForms
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl ct;
 
         /// <summary>
-        /// Contrôle btnAddCars.
+        /// Contrôle btnResCars.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAddCars;
+        protected global::System.Web.UI.WebControls.Button btnResCars;
     }
 }

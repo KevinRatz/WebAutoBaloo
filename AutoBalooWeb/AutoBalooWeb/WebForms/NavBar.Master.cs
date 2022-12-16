@@ -18,6 +18,8 @@ namespace AutoBalooWeb
             //initialisation de la couche modèle
             try
             {
+                if (Session["Client"] == null)
+                    FormsAuthentication.SignOut();
                 if (Session["CoucheModele"] == null)
                 {
                     Session["CoucheModele"] = new Modele();

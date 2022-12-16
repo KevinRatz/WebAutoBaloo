@@ -154,6 +154,14 @@ BEGIN
 		where IdVoiture = @id;
 END
 
+CREATE PROCEDURE [dbo].[DelCars]
+	@id int
+AS
+BEGIN
+	delete from Reservation where idVoiture = @id;
+	delete from Voiture where idVoiture = @id;
+END
+
 CREATE PROCEDURE [dbo].[UpEtatRes]
 	@id int,@idEtat int
 AS
