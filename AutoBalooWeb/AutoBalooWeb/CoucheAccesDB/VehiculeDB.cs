@@ -111,8 +111,7 @@ namespace AutoBalooWeb.CoucheAccesDB
                 throw new ExceptionAccesDB(e.Message);
             }
         }
-        /**
-        * méthode qui modifie dans la base de données un élève
+        /* méthode qui modifie dans la base de données un élève
         * param obj : l'élève
         * retour : un booléen indiquant si la modification a été réalisée ou non
         */
@@ -153,18 +152,41 @@ namespace AutoBalooWeb.CoucheAccesDB
             }
         }
         /**
+        * méthode qui modifie dans la base de données un élève
+        * param obj : l'élève
+        * retour : un booléen indiquant si la modification a été réalisée ou non
+        */
+        public bool UpEtatResDB(int idEtat, int id)
+        {
+            try
+            {
+                SqlCmd.CommandText = "UpEtatRes";
+                SqlCmd.CommandType = CommandType.StoredProcedure;
+                SqlCmd.Parameters.Clear();
+                SqlCmd.Parameters.Add("@id", SqlDbType.Int).Value = id;
+                SqlCmd.Parameters.Add("@idEtat", SqlDbType.Int).Value = idEtat;
+                return (SqlCmd.ExecuteNonQuery() == 0) ? false : true;
+            }
+            catch (Exception e)
+            {
+                throw new ExceptionAccesDB(e.Message);
+            }
+        }
+
+
+        /**
         * méthode qui supprime dans la base de données un élève
         * param num : le numéro de l'élève
         * retour : un booléen indiquant si la suppression a été réalisée ou non
         */
-        public override bool Supprimer(int num)
+        public override bool Supprimer(int id)
         {
             try
             {
-                SqlCmd.CommandText = "delete from Vehicule " +
-                "where numVehicule = @NumVehicule";
+                SqlCmd.CommandText = "DelCars";
+                SqlCmd.CommandType = CommandType.StoredProcedure;
                 SqlCmd.Parameters.Clear();
-                SqlCmd.Parameters.Add("@NumVehicule", SqlDbType.Int).Value = num;
+                SqlCmd.Parameters.Add("@id", SqlDbType.Int).Value = id;
                 return (SqlCmd.ExecuteNonQuery() == 0) ? false : true;
             }
             catch (Exception e)
@@ -256,13 +278,15 @@ namespace AutoBalooWeb.CoucheAccesDB
             //Si choix = 1 : Page Acceuil -> Liste des voiture triée sur la hauteur de la réduction et la date d'arrivée
             //Si choix = 2 : Page Vente -> voiture en vente uniquement
             //Si choix = 3 : Page Location -> voiture en location uniquement
+            //Si choix = 4 : Page changeEtatRes -> voiture réservé uniquement
+            //Si choix = 5 : Page DelCars -> voiture non réservé ou vente cloturée
 
 
             List<Vehicule> liste = new List<Vehicule>();
             try
             {
                 SqlCmd.CommandText =
-                    "Select IdVoiture, NumChassis, Voiture.Nom as NomVoit,Puissance,NbPortes,NbVitesse,Cylindres," +
+                    "Select Voiture.IdVoiture, NumChassis, Voiture.Nom as NomVoit,Puissance,NbPortes,NbVitesse,Cylindres," +
                     "Couleur,Kilometrage,Annee,DateCtrlTech,CarnetEntretien,TypeTransaction,Prix,Reduction,Photo,DateArrive," +
                     //FOREIGN KEY
                     "Etat as IdEtat,Etat.Nom As NomEtat," +
@@ -280,8 +304,18 @@ namespace AutoBalooWeb.CoucheAccesDB
 
                 //Grâce à choix on sélectionne les options que l'on souhaite ajouter à la commande de récupération de la liste
                 if (choix == 1) { SqlCmd.CommandText = SqlCmd.CommandText + " order by reduction Desc,DateArrive Desc ;"; }
-                if (choix == 2) { SqlCmd.CommandText = SqlCmd.CommandText + " where TypeTransaction = 0"; }
-                if (choix == 3) { SqlCmd.CommandText = SqlCmd.CommandText + " where TypeTransaction = 1"; }
+                else if (choix == 2) { SqlCmd.CommandText = SqlCmd.CommandText + " where TypeTransaction = 0"; }
+                else if (choix == 3) { SqlCmd.CommandText = SqlCmd.CommandText + " where TypeTransaction = 1"; }
+                else if (choix == 4) 
+                {
+                    liste.Add(new Vehicule());
+                    SqlCmd.CommandText = SqlCmd.CommandText + " Join Reservation res on res.IdVoiture = Voiture.IdVoiture where res.EtatRes <5"; 
+                }
+                else if (choix == 5) 
+                {
+                    liste.Add(new Vehicule());
+                    SqlCmd.CommandText = SqlCmd.CommandText + "left outer Join Reservation res on res.IdVoiture = Voiture.IdVoiture where res.IdVoiture is null or res.EtatRes = 5"; 
+                }
 
                 SqlCmd.CommandType = CommandType.Text;
                 SqlCmd.ExecuteNonQuery();

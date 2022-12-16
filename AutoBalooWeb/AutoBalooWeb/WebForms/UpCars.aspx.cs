@@ -13,9 +13,9 @@ namespace AutoBalooWeb.WebForms
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (!Page.User.Identity.IsAuthenticated || ((Client)Session["Client"]).Admin == 0)
-            //    Response.Redirect("MainPage.aspx");
-            if (!Page.IsPostBack)
+            if (!Page.User.Identity.IsAuthenticated || ((Client)Session["Client"]).Admin == 0)
+                Response.Redirect("MainPage.aspx");
+            else if (!Page.IsPostBack)
             {
                 EnableForms(false);
                 DDListId.DataSource = ((Modele)Session["CoucheModele"]).ListVehiculeVM();

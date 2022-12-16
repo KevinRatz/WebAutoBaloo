@@ -11,11 +11,16 @@ namespace AutoBalooWeb.ClasseMetiers
         {
                 
         }
-        public Reservation(DateTime dateRes, int vehicule, int client, Etat etat) : base(dateRes,client,vehicule)
+        public Reservation(DateTime dateRes, int vehicule, int client, int etatRes) : base(dateRes,client,vehicule)
         {
-            Etat = etat;
+            EtatRes = etatRes;
         }
 
-        public Etat Etat { get; set; }
+        public override string ToString()
+        {
+            return base.ToString();
+        }
+
+        public int EtatRes { get; set; }
     }
 }

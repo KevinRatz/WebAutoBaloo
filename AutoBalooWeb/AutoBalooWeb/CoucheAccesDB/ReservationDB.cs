@@ -22,29 +22,24 @@ namespace AutoBalooWeb.CoucheAccesDB
          * méthode qui lit dans la base de données un Reservation spécifique
          * param num : le numéro du Reservation
          * retour : Reservation lu dans la base de données
-         *
-        public override Reservation Charger(string codebarre)
+         */
+        public override Reservation Charger(int id)
         {
             Reservation Reservation = null;
 
             try
             {
-                SqlCmd.CommandText = "GetReservation";
+                SqlCmd.CommandText = "GetRes";
+                SqlCmd.CommandType = CommandType.StoredProcedure;
                 SqlCmd.Parameters.Clear();
-                SqlCmd.Parameters.Add("@codebarre", SqlDbType.VarChar).Value = codebarre;
+                SqlCmd.Parameters.Add("@id", SqlDbType.Int).Value = id;
                 SqlDataReader sqlReader = SqlCmd.ExecuteReader();
                 if (sqlReader.Read() == true)
                     Reservation = new Reservation(
-                    Convert.ToString(sqlReader["CodeBarre"]),
-                    Convert.ToString(sqlReader["Nom"]),
-                    Convert.ToDecimal(sqlReader["Prix"]),
-                    Convert.ToInt32(sqlReader["Quantite"]),
-                    Convert.ToString(sqlReader["Couleur"]),
-                    Convert.ToString(sqlReader["Taille"]),
-                    Convert.ToInt32(sqlReader["Actif"]),
-                    new Reservation(Convert.ToString(sqlReader["NomCat"])),
-                    new Genre(Convert.ToString(sqlReader["NomGenre"])));
-
+                    Convert.ToDateTime(sqlReader["DateRes"]),
+                    Convert.ToInt32(sqlReader["IdVoiture"]),
+                    Convert.ToInt32(sqlReader["IdClient"]),
+                    Convert.ToInt32(sqlReader["EtatRes"]));
                 sqlReader.Close();
                 return Reservation;
             }
@@ -142,12 +137,12 @@ namespace AutoBalooWeb.CoucheAccesDB
                 SqlCmd.CommandType = CommandType.Text;
                 SqlDataReader sqlReader = SqlCmd.ExecuteReader();
                 while (sqlReader.Read() == true)
-                    //liste.Add( new Reservation(
-                    //Convert.ToDateTime(sqlReader["DateDebut"]),
-                    //Convert.ToInt32(sqlReader["IdVoiture"]),
-                    //Convert.ToInt32(sqlReader["IdClient"]),
-                    //Convert.ToInt32(sqlReader["Etat"])
-                    //));
+                    liste.Add(new Reservation(
+                    Convert.ToDateTime(sqlReader["DateRes"]),
+                    Convert.ToInt32(sqlReader["IdVoiture"]),
+                    Convert.ToInt32(sqlReader["IdClient"]),
+                    Convert.ToInt32(sqlReader["EtatRes"])
+                    ));
                 sqlReader.Close();
             }
             catch (Exception e)

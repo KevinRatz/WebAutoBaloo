@@ -73,6 +73,24 @@ namespace AutoBalooWeb.CoucheModele
         }
 
         /**
+         * méthode qui add dans la base de données un vehicule 
+         * retour : /
+         */
+        public bool UpEtatResVM(int idEtat, int id)
+        {
+            return fabDB.GetVehiculeDB().UpEtatResDB(idEtat,id);
+        }
+
+        /**
+         * méthode qui add dans la base de données un vehicule 
+         * retour : /
+         */
+        public bool DelVehiculeVM(int id)
+        {
+            return fabDB.GetVehiculeDB().Supprimer(id);
+        }
+
+        /**
 * méthode qui retourne la liste des véhicules 
 * retour : La liste des véhicules
 */
@@ -106,6 +124,14 @@ namespace AutoBalooWeb.CoucheModele
          * méthode qui lit dans la base de données tous les catégories
          * retour : la liste de tous les catégories
          */
+        public List<EtatRes> ListEtatRersVM()
+        {
+            return fabDB.GetEtatResDB().ListerTous();
+        }
+        /**
+         * méthode qui lit dans la base de données tous les catégories
+         * retour : la liste de tous les catégories
+         */
         public List<Marque> ListMarques()
         {
             return fabDB.GetMarqueDB().ListerTous();
@@ -130,28 +156,28 @@ namespace AutoBalooWeb.CoucheModele
          * méthode qui liste dans la base de données le panier
          * param numcom : le num Com
          * retour : la liste du panier
-         *
-        public List<Contenir> ListerPanier(int numCom)
+         */
+        public List<Vehicule> ListerVehiculeRes()
         {
-            return fabDB.GetPanierDB().ListerPar(numCom);
+            return fabDB.GetVehiculeDB().ListerTousAvecOptions(4);
         }
         /**
          * méthode qui lit dans la base de données tous les cours non suivis par un élève
          * param numEleve : le numéro de l'élève
          * retour : la liste des cours
-         *
-        public List<Commande> ListerCmd(string user)
+         */
+        public Reservation GetVehiculeRes(int user)
         {
-            return fabDB.GetCommandeDB().ListerCmdDB(user);
+            return fabDB.GetReservationDB().Charger(user);
         }
         /**
          * méthode qui liste
          * param 
          * retour : la liste
-         *
-        public List<Produit> ListerProdCmd(string user, int idCmd)
+         */
+        public EtatRes GetEtatRes(int idCmd)
         {
-            return fabDB.GetProductDB().ListerPar(user, idCmd);
+            return fabDB.GetEtatResDB().Charger(idCmd);
         }
         /**
          * méthode qui

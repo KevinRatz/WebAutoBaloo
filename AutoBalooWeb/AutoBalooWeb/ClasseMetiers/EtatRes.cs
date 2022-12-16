@@ -20,6 +20,11 @@ namespace AutoBalooWeb.ClasseMetiers
         public int IdEtatRes { get; set; }
         public string NomEtatRes { get; set; }
 
+        public override string ToString()
+        {
+            return NomEtatRes;
+        }
+
         public override bool Equals(object obj)
         {
             return obj is EtatRes EtatRes &&

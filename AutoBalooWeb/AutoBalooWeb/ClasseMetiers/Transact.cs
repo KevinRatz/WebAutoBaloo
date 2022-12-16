@@ -19,6 +19,11 @@ namespace AutoBalooWeb.ClasseMetiers
             Voiture = voiture;
         }
 
+        public override string ToString()
+        {
+            return Client.ToString() + Voiture.ToString() + Date.ToString();
+        }
+
         public DateTime Date { get; set; }
         public int Client { get; set; }
         public int Voiture { get; set; }

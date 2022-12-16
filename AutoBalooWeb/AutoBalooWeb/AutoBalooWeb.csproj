@@ -95,18 +95,22 @@
     <Content Include="Global.asax" />
     <Content Include="Style.css" />
     <Content Include="Web.config" />
+    <Content Include="WebForms\ChangeEtatCars.aspx" />
     <Content Include="WebForms\DelCars.aspx" />
+    <Content Include="WebForms\EssaiForms.aspx" />
     <Content Include="WebForms\GoogleCallBack.aspx" />
     <Content Include="WebForms\Image\1.jpg" />
     <Content Include="WebForms\Image\2.jpg" />
     <Content Include="WebForms\Image\NoImage.png" />
     <Content Include="WebForms\Location.aspx" />
+    <Content Include="WebForms\LocationForms.aspx" />
     <Content Include="WebForms\UpCars.aspx" />
     <Content Include="WebForms\InfoClientForm.aspx" />
     <Content Include="WebForms\AddCars.aspx" />
     <Content Include="WebForms\SignIn.aspx" />
     <Content Include="WebForms\SignUp.aspx" />
     <Content Include="WebForms\Vente.aspx" />
+    <Content Include="WebForms\VenteForms.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClasseMetiers\Carburant.cs" />
@@ -139,12 +143,26 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="WebForms\ChangeEtatCars.aspx.cs">
+      <DependentUpon>ChangeEtatCars.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\ChangeEtatCars.aspx.designer.cs">
+      <DependentUpon>ChangeEtatCars.aspx</DependentUpon>
+    </Compile>
     <Compile Include="WebForms\DelCars.aspx.cs">
       <DependentUpon>DelCars.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="WebForms\DelCars.aspx.designer.cs">
       <DependentUpon>DelCars.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\EssaiForms.aspx.cs">
+      <DependentUpon>EssaiForms.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\EssaiForms.aspx.designer.cs">
+      <DependentUpon>EssaiForms.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebForms\GoogleCallBack.aspx.cs">
       <DependentUpon>GoogleCallBack.aspx</DependentUpon>
@@ -159,6 +177,13 @@
     </Compile>
     <Compile Include="WebForms\Location.aspx.designer.cs">
       <DependentUpon>Location.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\LocationForms.aspx.cs">
+      <DependentUpon>LocationForms.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\LocationForms.aspx.designer.cs">
+      <DependentUpon>LocationForms.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebForms\UpCars.aspx.cs">
       <DependentUpon>UpCars.aspx</DependentUpon>
@@ -216,6 +241,13 @@
     </Compile>
     <Compile Include="WebForms\Vente.aspx.designer.cs">
       <DependentUpon>Vente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\VenteForms.aspx.cs">
+      <DependentUpon>VenteForms.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\VenteForms.aspx.designer.cs">
+      <DependentUpon>VenteForms.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

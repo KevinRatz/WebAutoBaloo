@@ -11,17 +11,26 @@ namespace AutoBalooWeb.WebForms
 {
 
 
-    public partial class DelCars
+    public partial class LocationForms
     {
 
         /// <summary>
-        /// Contrôle DDListId.
+        /// Contrôle txtdtarv.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DDListId;
+        protected global::System.Web.UI.WebControls.TextBox txtdtarv;
+
+        /// <summary>
+        /// Contrôle TextBox1.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox1;
 
         /// <summary>
         /// Contrôle ct.
@@ -33,12 +42,12 @@ namespace AutoBalooWeb.WebForms
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl ct;
 
         /// <summary>
-        /// Contrôle btnDelCars.
+        /// Contrôle btnAddCars.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnDelCars;
+        protected global::System.Web.UI.WebControls.Button btnAddCars;
     }
 }

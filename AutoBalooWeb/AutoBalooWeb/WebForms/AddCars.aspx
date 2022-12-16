@@ -150,8 +150,7 @@
             <div class="col">
                 <div class="form-outline">
                     <asp:Label class="lblCars" runat="server" for="InPhoto">Photo</asp:Label>
-                    <input type="file" runat="server" class="form-control-file" id="InPhoto" name="InPhoto"/>
-                    <%--<asp:button type="submit" text="Upload" ></asp:button>--%>
+                    <input type="file" runat="server" class="form-control-file" id="InPhoto" name="InPhoto" />
                 </div>
             </div>
             <div class="col">
@@ -163,7 +162,7 @@
         </div>
         <p runat="server" class="error text-center" id="ct"></p>
         <div class="text-center">
-        <asp:Button ID="btnAddCars" runat="server" Text="Ajouter" class="btn btn-primary text-center" OnClick="BtnAddCars_Click"/>
+            <asp:Button ID="btnAddCars" runat="server" Text="Ajouter" class="btn btn-primary text-center" OnClick="BtnAddCars_Click"/>
         </div>
     </div>
 </asp:Content>

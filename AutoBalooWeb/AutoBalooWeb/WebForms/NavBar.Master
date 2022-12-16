@@ -41,6 +41,7 @@
                                     <li><a class="dropdown-item" runat="server" href="AddCars.aspx">Ajouter</a></li>
                                     <li><a class="dropdown-item" runat="server" href="UpCars.aspx">Modifier</a></li>
                                     <li><a class="dropdown-item" runat="server" href="DelCars.aspx">Supprimer</a></li>
+                                    <li><a class="dropdown-item" runat="server" href="ChangeEtatCars.aspx">Supprimer</a></li>
                                 </ul>
                             </li>
                         </ul>

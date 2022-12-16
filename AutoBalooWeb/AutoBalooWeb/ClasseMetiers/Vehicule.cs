@@ -15,7 +15,7 @@ namespace AutoBalooWeb.ClasseMetiers
 
             NumChassis = "";
             Nom = "";
-            Marque = new Marque(1,"vide");
+            Marque = new Marque(1,"Sélectionner un véhicule");
             //Puissance = puissance;
             //NbPortes = nbPortes;
             //NbVitesse = nbVitesse;
@@ -115,7 +115,7 @@ namespace AutoBalooWeb.ClasseMetiers
 
         public override string ToString()
         {
-            return IdVoiture + " " + Marque.NomMarque + " " + Nom + " " + NumChassis;
+            return (Marque.NomMarque + " " + Nom + ((IdVoiture == 0) ? "" : "(NumChassis : " + NumChassis + ")"));
         }
 
         public int IdVoiture { get; set; }

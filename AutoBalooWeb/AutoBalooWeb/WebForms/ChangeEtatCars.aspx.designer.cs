@@ -11,7 +11,7 @@ namespace AutoBalooWeb.WebForms
 {
 
 
-    public partial class DelCars
+    public partial class ChangeEtatCars
     {
 
         /// <summary>
@@ -24,6 +24,15 @@ namespace AutoBalooWeb.WebForms
         protected global::System.Web.UI.WebControls.DropDownList DDListId;
 
         /// <summary>
+        /// Contrôle DDListEtat.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DDListEtat;
+
+        /// <summary>
         /// Contrôle ct.
         /// </summary>
         /// <remarks>
@@ -33,12 +42,12 @@ namespace AutoBalooWeb.WebForms
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl ct;
 
         /// <summary>
-        /// Contrôle btnDelCars.
+        /// Contrôle btnUpEtatCars.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnDelCars;
+        protected global::System.Web.UI.WebControls.Button btnUpEtatCars;
     }
 }
