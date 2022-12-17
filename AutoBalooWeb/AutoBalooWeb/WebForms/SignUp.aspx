@@ -3,7 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="CPHContenu" runat="server">
 
-    <div class="form" style="height:auto; padding-bottom: 20px;">
+    <div class="form">
         <h1>Inscription</h1>
         <hr>
         <div>
@@ -25,7 +25,7 @@
             </div>
             <div class="input-group">
                 <asp:Label class="icon input-group-addon" runat="server" AssociatedControlID="txtEmail"><i class="icon-envelope "></i></asp:Label>
-                <asp:TextBox ID="txtEmail" Text="kev.r@stu.be" runat="server" TextMode="Email" class="form-control" placeholder="Entrer Email" required="required"
+                <asp:TextBox ID="txtEmail" Text="kev.r@stu.be" runat="server" TextMode="Email" class="form-control" placeholder="Entrer Email"
                     pattern="^([\w\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$" />
             </div>
             <div class="input-group">

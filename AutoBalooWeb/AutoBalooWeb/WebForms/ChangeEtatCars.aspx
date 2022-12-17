@@ -2,8 +2,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="CPHContenu" runat="server">
-    <div class="form" style="height: auto; padding-bottom: 20px;">
-        <h1>Changement d'état d'une voiture</h1>
+    <div class="form">
+        <h1>Changement d'état de réservation</h1>
         <hr>
         <div class="row mb-4">
             <div class="col">

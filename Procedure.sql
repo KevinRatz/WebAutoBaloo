@@ -131,8 +131,9 @@ BEGIN
 	where Idvoiture = @id;
 END
 
-CREATE PROCEDURE [dbo].[GetVehicule]
-	@id int
+
+CREATE PROCEDURE [dbo].[GetVehiculeBy]
+	@numCha varchar(30)
 AS
 BEGIN
 	Select IdVoiture, NumChassis, Voiture.Nom as NomVoit,Puissance,NbPortes,NbVitesse,Cylindres,
@@ -151,7 +152,7 @@ BEGIN
         Join Carrosserie on Carrosserie = Carrosserie.IdCarrosserie
         Join Marque on Marque = Marque.IdMarque
 
-		where IdVoiture = @id;
+		where NumChassis = @numCha;
 END
 
 CREATE PROCEDURE [dbo].[DelCars]
@@ -159,6 +160,7 @@ CREATE PROCEDURE [dbo].[DelCars]
 AS
 BEGIN
 	delete from Reservation where idVoiture = @id;
+	delete from Essai where idVoiture = @id;
 	delete from Voiture where idVoiture = @id;
 END
 
@@ -184,4 +186,42 @@ From
     From Reservation where EtatRes <5
 ) t2
 Where RowNum = @id
+END
+
+CREATE PROCEDURE [dbo].[AddReservation]
+	@dateR date,
+	@idV int,
+	@idC int,
+	@etatR int
+AS
+
+BEGIN
+	INSERT INTO dbo.Reservation 
+		 VALUES (@dateR,@idV,@idC,@etatR);
+	UPDATE Voiture set Etat = 2 where IdVoiture =@idV;
+END
+
+CREATE PROCEDURE [dbo].[AddLocation]
+	@dateD date,
+	@idV int,
+	@idC int,
+	@dateF date
+AS
+
+BEGIN
+	INSERT INTO dbo.Location 
+		 VALUES (@dateD,@idV,@idC,@dateF);
+	UPDATE Voiture set Etat = 3 where IdVoiture =@idV;
+END
+
+CREATE PROCEDURE [dbo].[AddEssai]
+	@date date,
+	@idV int,
+	@idC int
+AS
+
+BEGIN
+	INSERT INTO dbo.Essai 
+		 VALUES (@date,@idV,@idC);
+	UPDATE Voiture set Etat = 4 where IdVoiture =@idV;
 END

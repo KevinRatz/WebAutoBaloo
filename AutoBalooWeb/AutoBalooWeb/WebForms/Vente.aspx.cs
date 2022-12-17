@@ -57,13 +57,28 @@ namespace AutoBalooWeb.WebForms
                     ((c.Reduction == 0) ? "<div>" + c.Prix + "€</div>\r\n" : "<div><strike>" + c.Prix + "</strike> " + (c.Prix - (c.Prix * c.Reduction) / 100) + "€ </div>\r\n")));
 
                 //Ajout des boutons pour Essai et Vente
-                if (Session["Client"] != null)
-                {
-                    cph.Controls.Add(new LiteralControl("<button>Acheter</button>\r\n"));
-                    cph.Controls.Add(new LiteralControl("<button>Essayer</button>\r\n"));
-                }
-                cph.Controls.Add(new LiteralControl("<div> Disponible depuis : " + c.DateArrive.ToString("dd/MM/yyyy") + "</div>\r\n"));
-
+                //if (Session["Client"] != null)
+                //{
+                Button bt = new Button();
+                bt.ID = "Res-" + c.NumChassis;
+                bt.Text = "Réserver";
+                bt.Click += new EventHandler(BtnRes_Click);
+                bt.CssClass = "btn btn-primary";
+                bt.Style.Add("margin-right", "20px");
+                if (c.Etat.IdEtat == 2)
+                    bt.Visible = false;
+                cph.Controls.Add(bt);
+                bt = new Button();
+                bt.ID = "Essai-" + c.NumChassis;
+                bt.Text = "Essai";
+                bt.Click += new EventHandler(BtnEssai_Click);
+                bt.CssClass = "btn btn-primary";
+                if (c.Etat.IdEtat == 2)
+                    bt.Visible = false;
+                cph.Controls.Add(bt);
+                //}
+                if (c.Etat.IdEtat != 2)
+                    cph.Controls.Add(new LiteralControl("<div> Disponible depuis : " + c.DateArrive.ToString("dd/MM/yyyy") + "</div>\r\n"));
                 
                 //Balise de fin 
                 cph.Controls.Add(new LiteralControl("</div>\r\n\r\n </div> <br>"));
@@ -72,10 +87,20 @@ namespace AutoBalooWeb.WebForms
             }
             //Fermeture de l'affichage
             cph.Controls.Add(new LiteralControl("\r\n\r\n        </div>\r\n\r\n        <div class=\"col col-lg-2\"></div>\r\n\r\n      </div>\r\n    </div>"));
+        }
 
+        protected void BtnRes_Click(object sender, EventArgs e)
+        {
 
-
-
+            String[] s = (sender as Button).ID.Split('-');
+            Session["IdVehicule"] = s[1];
+            Response.Redirect("VenteForms.aspx");
+        }
+        protected void BtnEssai_Click(object sender, EventArgs e)
+        {
+            String[] s = (sender as Button).ID.Split('-');
+            Session["IdVehicule"] = s[1];
+            Response.Redirect("EssaiForms.aspx");
         }
     }
 }

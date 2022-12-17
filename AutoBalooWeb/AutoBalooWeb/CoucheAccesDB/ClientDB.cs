@@ -36,7 +36,7 @@ namespace AutoBalooWeb.CoucheAccesDB
                 SqlDataReader sqlReader = SqlCmd.ExecuteReader();
                 if (sqlReader.Read() == true)
                     client = new Client(
-                    Convert.ToInt32(sqlReader["Id"]),
+                    Convert.ToInt32(sqlReader["IdClient"]),
                     Convert.ToString(sqlReader["Nom"]),
                    Convert.ToString(sqlReader["Prenom"]),
                    Convert.ToString(sqlReader["EMail"]),

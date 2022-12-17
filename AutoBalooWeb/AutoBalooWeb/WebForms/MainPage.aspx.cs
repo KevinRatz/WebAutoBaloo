@@ -66,26 +66,42 @@ namespace AutoBalooWeb.WebForms
                     //if (Session["Client"] != null)
                     //{
                     Button bt = new Button();
-                    bt.ID = (i+1).ToString();
-                    bt.Text = "Réservé";
+                    bt.ID = "Res-"+c.NumChassis;
+                    bt.Text = "Réserver";
                     bt.Click += new EventHandler(BtnRes_Click);
                     bt.CssClass = "btn btn-primary";
+                    bt.Style.Add("margin-right","20px");
+                    if (c.Etat.IdEtat == 2)
+                        bt.Visible = false;
                     cph.Controls.Add(bt);
-                        cph.Controls.Add(new LiteralControl("<div><a class='btn btn-primary' href='DelCars.aspx' role='button'>Link</a> </div>\r\n"));
-                        cph.Controls.Add(new LiteralControl("<div><button ID='btnDelCars' runat='server' class='btn btn-primary' OnClick='BtnDelCars_Click'>Réservé</button></div>\r\n"));
-                        cph.Controls.Add(new LiteralControl("<button>Essayer</button>\r\n"));
+                    bt = new Button();
+                    bt.ID = "Essai-"+c.NumChassis;
+                    bt.Text = "Essai";
+                    bt.Click += new EventHandler(BtnEssai_Click);
+                    bt.CssClass = "btn btn-primary";
+                    if (c.Etat.IdEtat == 2)
+                        bt.Visible = false;
+                    cph.Controls.Add(bt);
                     //}
-                    cph.Controls.Add(new LiteralControl("<div> Disponible depuis : " + c.DateArrive.ToString("dd/MM/yyyy") + "</div>\r\n"));
+                    if (c.Etat.IdEtat != 2)
+                        cph.Controls.Add(new LiteralControl("<div> Disponible depuis : " + c.DateArrive.ToString("dd/MM/yyyy") + "</div>\r\n"));
 
                 }
                 //Si Location
                 else
                 {
                     //Ajout des boutons pour faire une demande de location
-                    if (Session["Client"] != null)
-                    {
-                        cph.Controls.Add(new LiteralControl("<button>Louer</button>\r\n"));
-                    }
+                    //if (Session["Client"] != null)
+                    //{
+                        Button bt = new Button();
+                        bt.ID = c.NumChassis;
+                        bt.Text = "Louer";
+                        bt.Click += new EventHandler(BtnLoue_Click);
+                        bt.CssClass = "btn btn-primary";
+                        if (c.Etat.IdEtat == 2)
+                            bt.Visible = false;
+                        cph.Controls.Add(bt);
+                    //}
                 }
 
                 //Balise de fin 
@@ -96,29 +112,24 @@ namespace AutoBalooWeb.WebForms
             //Fermeture de l'affichage
             cph.Controls.Add(new LiteralControl("\r\n\r\n        </div>\r\n\r\n        <div class=\"col col-lg-2\"></div>\r\n\r\n      </div>\r\n    </div>"));
 
-            //exemple button
-            //Table tb = new Table();
-
-            //for (int j = 1; j <= 10; j++)
-            //{
-            //    TableRow tr = new TableRow();
-            //    TableCell td = new TableCell();
-            //    Button bt = new Button();
-            //    bt.ID = j.ToString();
-            //    bt.Text = "Button " + j.ToString();
-            //    bt.Click += new EventHandler(BtnGgl_Click);
-            //    td.Controls.Add(bt);
-            //    tr.Controls.Add(td);
-            //    tb.Controls.Add(tr);
-            //}
-
-            //cph.Controls.Add(tb);
-
         }
         protected void BtnRes_Click(object sender, EventArgs e)
         {
-            Session["IdVehicule"] = (sender as Button).ID;
+
+            String[] s = (sender as Button).ID.Split('-');
+            Session["IdVehicule"] = s[1];
             Response.Redirect("VenteForms.aspx");
+        }
+        protected void BtnEssai_Click(object sender, EventArgs e)
+        {
+            String[] s = (sender as Button).ID.Split('-');
+            Session["IdVehicule"] = s[1];
+            Response.Redirect("EssaiForms.aspx");
+        }
+        protected void BtnLoue_Click(object sender, EventArgs e)
+        {
+            Session["IdVehicule"] = (sender as Button).ID.ToString();
+            Response.Redirect("LocationForms.aspx");
         }
     }
 }

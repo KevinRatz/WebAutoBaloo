@@ -52,7 +52,6 @@ namespace AutoBalooWeb.WebForms
                 cph.Controls.Add(new LiteralControl(
                         "<div style=\"display:inline-block ;vertical-align:middle;margin-right:50px;align-content:end\">\r\n" +
                         //Affichage du prix Sans réduction
-                        "<div>" + c.Etat.NomEtat + "</div>\r\n" +
                         ((c.Reduction == 0) ? "" : "<div style =\"color:red\">- "+c.Reduction+" %</div>\r\n") +
                         //Affichage du prix avec réduction
                         ((c.Reduction == 0) ?  "<div>" + c.Prix + "€ par jour</div>\r\n" : "<div><strike>" + c.Prix + "</strike> " + (c.Prix - (c.Prix * c.Reduction) / 100) + "€ par jour </div>\r\n")));
@@ -60,7 +59,12 @@ namespace AutoBalooWeb.WebForms
                 //Ajout des boutons pour faire une demande de location
                 if (Session["Client"] != null)
                 {
-                    cph.Controls.Add(new LiteralControl("<button>Louer</button>\r\n"));
+                    Button bt = new Button();
+                    bt.ID = c.NumChassis;
+                    bt.Text = "Louer";
+                    bt.Click += new EventHandler(BtnLoue_Click);
+                    bt.CssClass = "btn btn-primary";
+                    cph.Controls.Add(bt);
                 }
                 
                 //Balise de fin 
@@ -70,10 +74,12 @@ namespace AutoBalooWeb.WebForms
             }
             //Fermeture de l'affichage
             cph.Controls.Add(new LiteralControl("\r\n\r\n        </div>\r\n\r\n        <div class=\"col col-lg-2\"></div>\r\n\r\n      </div>\r\n    </div>"));
+        }
 
-
-
-
+        protected void BtnLoue_Click(object sender, EventArgs e)
+        {
+            Session["IdVehicule"] = (sender as Button).ID.ToString();
+            Response.Redirect("LocationForms.aspx");
         }
     }
 }

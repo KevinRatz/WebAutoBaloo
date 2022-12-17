@@ -57,19 +57,18 @@ namespace AutoBalooWeb.CoucheAccesDB
         * méthode qui ajoute dans la base de données un Essai
         * * param obj : le Essai
         * retour : un booléen indiquant si l'ajout a été réalisé ou non
-        *
+        */
         public override bool Ajouter(Essai obj)
         {
             try
             {
-                SqlCmd.CommandText = "AddProduct";
+                SqlCmd.CommandText = "AddEssai";
+                SqlCmd.CommandType = CommandType.StoredProcedure; 
                 SqlCmd.Parameters.Clear();
-                SqlCmd.Parameters.Add("@Nom", SqlDbType.VarChar).Value = obj.Nom;
-                SqlCmd.Parameters.Add("@Prenom", SqlDbType.VarChar).Value = obj.Prenom;
-                SqlCmd.Parameters.Add("@email", SqlDbType.VarChar).Value = obj.Email;
-                SqlCmd.Parameters.Add("@mdp", SqlDbType.VarChar).Value = obj.MotDePasse;
-                SqlCmd.Parameters.Add("@adresse", SqlDbType.VarChar).Value = obj.Adresse;
-                return (SqlCmd.ExecuteNonQuery() == 0) ? false : true;
+                SqlCmd.Parameters.Add("@date", SqlDbType.Date).Value = obj.Date;
+                SqlCmd.Parameters.Add("@idV", SqlDbType.Int).Value = obj.Voiture;
+                SqlCmd.Parameters.Add("@idC", SqlDbType.Int).Value = obj.Client;
+                return (SqlCmd.ExecuteNonQuery() <= 0) ? false : true;
             }
             catch (Exception e)
             {

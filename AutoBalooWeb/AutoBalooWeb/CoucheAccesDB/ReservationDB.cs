@@ -60,7 +60,7 @@ namespace AutoBalooWeb.CoucheAccesDB
                 SqlCmd.CommandText = "AddReservation";
                 SqlCmd.CommandType = CommandType.StoredProcedure;
                 SqlCmd.Parameters.Clear();
-                SqlCmd.Parameters.Add("@date", SqlDbType.Date).Value = obj.Date;
+                SqlCmd.Parameters.Add("@dateR", SqlDbType.Date).Value = obj.Date;
                 SqlCmd.Parameters.Add("@idV", SqlDbType.Int).Value = obj.Voiture;
                 SqlCmd.Parameters.Add("@idC", SqlDbType.Int).Value = obj.Client;
                 SqlCmd.Parameters.Add("@etatR", SqlDbType.Int).Value = obj.EtatRes;

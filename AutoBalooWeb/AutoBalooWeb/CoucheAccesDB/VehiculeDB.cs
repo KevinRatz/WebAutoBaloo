@@ -36,7 +36,60 @@ namespace AutoBalooWeb.CoucheAccesDB
                 SqlDataReader sqlReader = SqlCmd.ExecuteReader();
 
 
-                while (sqlReader.Read() == true)
+                if (sqlReader.Read() == true)
+                    Vehicule = (new Vehicule(
+                        Convert.ToInt32(sqlReader["IdVoiture"]),
+                        Convert.ToString(sqlReader["NumChassis"]),
+                        Convert.ToString(sqlReader["NomVoit"]),
+                        new Marque(Convert.ToInt32(sqlReader["IdMarque"]), Convert.ToString(sqlReader["NomMarque"])),
+                        Convert.ToString(sqlReader["Puissance"]),
+                        Convert.ToInt32(sqlReader["Nbportes"]),
+                        Convert.ToInt32(sqlReader["NbVitesse"]),
+                        Convert.ToInt32(sqlReader["Cylindres"]),
+                        Convert.ToString(sqlReader["Couleur"]),
+                        Convert.ToDecimal(sqlReader["Kilometrage"]),
+                        DateTime.Parse(Convert.ToString(sqlReader["Annee"])),
+                        DateTime.Parse(Convert.ToString(sqlReader["DateCtrlTech"])),
+                        Convert.ToString(sqlReader["CarnetEntretien"]),
+                        Convert.ToInt32(sqlReader["TypeTransaction"]),
+                        Convert.ToDecimal(sqlReader["Prix"]),
+                        Convert.ToInt32(sqlReader["Reduction"]),
+                        Convert.ToString(sqlReader["Photo"]),
+                        DateTime.Parse(Convert.ToString(sqlReader["DateArrive"])),
+                        new Etat(Convert.ToInt32(sqlReader["IdEtat"]), Convert.ToString(sqlReader["NomEtat"])),
+                        new Transmission(Convert.ToInt32(sqlReader["IdTransm"]), Convert.ToString(sqlReader["NomTransm"])),
+                        new Carburant(Convert.ToInt32(sqlReader["IdCarbu"]), Convert.ToString(sqlReader["NomCarbu"])),
+                        new Carrosserie(Convert.ToInt32(sqlReader["IdCarro"]), Convert.ToString(sqlReader["NomCarro"]))
+
+                        ));
+
+                sqlReader.Close();
+                return Vehicule;
+            }
+            catch (Exception e)
+            {
+                throw new ExceptionAccesDB(e.Message);
+            }
+        }
+        /**
+         * méthode qui lit dans la base de données un Vehicule spécifique
+         * param num : le numéro du Vehicule
+         * retour : Vehicule lu dans la base de données
+         */
+        public Vehicule ChargerBy(string numCha)
+        {
+            Vehicule Vehicule = null;
+
+            try
+            {
+                SqlCmd.CommandText = "GetVehiculeBy";
+                SqlCmd.CommandType = CommandType.StoredProcedure;
+                SqlCmd.Parameters.Clear();
+                SqlCmd.Parameters.Add("@numCha", SqlDbType.VarChar).Value = numCha;
+                SqlDataReader sqlReader = SqlCmd.ExecuteReader();
+
+
+                if (sqlReader.Read() == true)
                     Vehicule = (new Vehicule(
                         Convert.ToInt32(sqlReader["IdVoiture"]),
                         Convert.ToString(sqlReader["NumChassis"]),

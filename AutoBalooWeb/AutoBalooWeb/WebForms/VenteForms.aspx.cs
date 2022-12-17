@@ -13,14 +13,17 @@ namespace AutoBalooWeb.WebForms
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            txtdtRes.Attributes["min"] = DateTime.Now.ToString("yyyy-MM-dd");
+            txtdtRes.Text = DateTime.Now.ToString();
+            Vehicule v = ((Modele)Session["CoucheModele"]).GetVehiculeByVM(Session["IdVehicule"].ToString());
+            txtVe.Text = v.ToString();
         }
         protected void BtnResCars_Click(object sender, EventArgs e)
         {
             // partie paypal
             Literal lit = new Literal();
             Client cliSess = ((Modele)Session["CoucheModele"]).GetClientVM(Page.User.Identity.Name);
-            Reservation res = new Reservation(Convert.ToDateTime(txtdtRes.Text),Convert.ToInt32(Session["IdVehicule"]), cliSess.Id , 1);
+            Vehicule v = ((Modele)Session["CoucheModele"]).GetVehiculeByVM(Session["IdVehicule"].ToString());
+            Reservation res = new Reservation(Convert.ToDateTime(txtdtRes.Text),v.IdVoiture, cliSess.Id , 1);
             if (!((Modele)Session["CoucheModele"]).AddResVM(res))
             {
                 lit.Text = "Le numéro du chassis de la voiture existe déjà ou des erreurs dans le formulaire";
@@ -28,9 +31,13 @@ namespace AutoBalooWeb.WebForms
             }
             else
             {
-                lit.Text = "Modification réussi";
+                lit.Text = "Réservation réussie";
                 ct.Controls.Add(lit);
             }
+        }
+        protected void BtnCancel_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("MainPage.aspx");
         }
     }
 }

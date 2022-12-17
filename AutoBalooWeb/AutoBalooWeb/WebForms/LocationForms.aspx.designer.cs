@@ -15,22 +15,31 @@ namespace AutoBalooWeb.WebForms
     {
 
         /// <summary>
-        /// Contrôle txtdtarv.
+        /// Contrôle txtdtdeb.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtdtarv;
+        protected global::System.Web.UI.WebControls.TextBox txtdtdeb;
 
         /// <summary>
-        /// Contrôle TextBox1.
+        /// Contrôle txtdtfin.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox txtdtfin;
+
+        /// <summary>
+        /// Contrôle txtVe.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txtVe;
 
         /// <summary>
         /// Contrôle ct.
@@ -42,12 +51,21 @@ namespace AutoBalooWeb.WebForms
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl ct;
 
         /// <summary>
-        /// Contrôle btnAddCars.
+        /// Contrôle btnLouerCars.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAddCars;
+        protected global::System.Web.UI.WebControls.Button btnLouerCars;
+
+        /// <summary>
+        /// Contrôle btnCancel.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCancel;
     }
 }

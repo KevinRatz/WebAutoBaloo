@@ -30,7 +30,16 @@ namespace AutoBalooWeb.WebForms
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtdtRes;
+        protected global::System.Web.UI.WebControls.Label txtdtRes;
+
+        /// <summary>
+        /// Contrôle txtVe.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txtVe;
 
         /// <summary>
         /// Contrôle ct.
@@ -49,5 +58,14 @@ namespace AutoBalooWeb.WebForms
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnResCars;
+
+        /// <summary>
+        /// Contrôle btnCancel.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCancel;
     }
 }

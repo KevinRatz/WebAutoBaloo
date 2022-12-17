@@ -57,18 +57,18 @@ namespace AutoBalooWeb.CoucheAccesDB
         * méthode qui ajoute dans la base de données un Location
         * * param obj : le Location
         * retour : un booléen indiquant si l'ajout a été réalisé ou non
-        *
+        */
         public override bool Ajouter(Location obj)
         {
             try
             {
-                SqlCmd.CommandText = "AddProduct";
+                SqlCmd.CommandText = "AddLocation";
+                SqlCmd.CommandType = CommandType.StoredProcedure;
                 SqlCmd.Parameters.Clear();
-                SqlCmd.Parameters.Add("@Nom", SqlDbType.VarChar).Value = obj.Nom;
-                SqlCmd.Parameters.Add("@Prenom", SqlDbType.VarChar).Value = obj.Prenom;
-                SqlCmd.Parameters.Add("@email", SqlDbType.VarChar).Value = obj.Email;
-                SqlCmd.Parameters.Add("@mdp", SqlDbType.VarChar).Value = obj.MotDePasse;
-                SqlCmd.Parameters.Add("@adresse", SqlDbType.VarChar).Value = obj.Adresse;
+                SqlCmd.Parameters.Add("@dateD", SqlDbType.Date).Value = obj.Date;
+                SqlCmd.Parameters.Add("@idV", SqlDbType.Int).Value = obj.Voiture;
+                SqlCmd.Parameters.Add("@idC", SqlDbType.Int).Value = obj.Client;
+                SqlCmd.Parameters.Add("@dateF", SqlDbType.Date).Value = obj.DateFin;
                 return (SqlCmd.ExecuteNonQuery() == 0) ? false : true;
             }
             catch (Exception e)
