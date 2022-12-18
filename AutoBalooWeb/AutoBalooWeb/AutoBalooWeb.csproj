@@ -48,6 +48,12 @@
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.7.0.0\lib\netstandard2.0\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PayPal, Version=1.9.1.0, Culture=neutral, PublicKeyToken=5b4afc1ccaef40fb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PayPal.1.9.1\lib\net451\PayPal.dll</HintPath>
+    </Reference>
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
     </Reference>
@@ -95,6 +101,7 @@
     <Content Include="Global.asax" />
     <Content Include="Style.css" />
     <Content Include="Web.config" />
+    <Content Include="WebForms\CancelRes.aspx" />
     <Content Include="WebForms\ChangeEtatCars.aspx" />
     <Content Include="WebForms\DelCars.aspx" />
     <Content Include="WebForms\EssaiForms.aspx" />
@@ -104,6 +111,7 @@
     <Content Include="WebForms\Image\NoImage.png" />
     <Content Include="WebForms\Location.aspx" />
     <Content Include="WebForms\LocationForms.aspx" />
+    <Content Include="WebForms\ReturnRes.aspx" />
     <Content Include="WebForms\UpCars.aspx" />
     <Content Include="WebForms\InfoClientForm.aspx" />
     <Content Include="WebForms\AddCars.aspx" />
@@ -142,6 +150,13 @@
     <Compile Include="CoucheModele\Modele.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\CancelRes.aspx.cs">
+      <DependentUpon>CancelRes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\CancelRes.aspx.designer.cs">
+      <DependentUpon>CancelRes.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebForms\ChangeEtatCars.aspx.cs">
       <DependentUpon>ChangeEtatCars.aspx</DependentUpon>
@@ -184,6 +199,13 @@
     </Compile>
     <Compile Include="WebForms\LocationForms.aspx.designer.cs">
       <DependentUpon>LocationForms.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\ReturnRes.aspx.cs">
+      <DependentUpon>ReturnRes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\ReturnRes.aspx.designer.cs">
+      <DependentUpon>ReturnRes.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebForms\UpCars.aspx.cs">
       <DependentUpon>UpCars.aspx</DependentUpon>
