@@ -101,7 +101,7 @@
     <Content Include="Global.asax" />
     <Content Include="Style.css" />
     <Content Include="Web.config" />
-    <Content Include="WebForms\CancelRes.aspx" />
+    <Content Include="WebForms\CancelPayment.aspx" />
     <Content Include="WebForms\ChangeEtatCars.aspx" />
     <Content Include="WebForms\DelCars.aspx" />
     <Content Include="WebForms\EssaiForms.aspx" />
@@ -151,12 +151,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="WebForms\CancelRes.aspx.cs">
-      <DependentUpon>CancelRes.aspx</DependentUpon>
+    <Compile Include="WebForms\CancelPayment.aspx.cs">
+      <DependentUpon>CancelPayment.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="WebForms\CancelRes.aspx.designer.cs">
-      <DependentUpon>CancelRes.aspx</DependentUpon>
+    <Compile Include="WebForms\CancelPayment.aspx.designer.cs">
+      <DependentUpon>CancelPayment.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebForms\ChangeEtatCars.aspx.cs">
       <DependentUpon>ChangeEtatCars.aspx</DependentUpon>

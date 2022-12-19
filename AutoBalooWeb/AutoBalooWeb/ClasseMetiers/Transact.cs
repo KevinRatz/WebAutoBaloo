@@ -18,6 +18,12 @@ namespace AutoBalooWeb.ClasseMetiers
             Client = client;
             Voiture = voiture;
         }
+        protected Transact(Transact t)
+        {
+            Date = t.Date;
+            Client = t.Client;
+            Voiture = t.Voiture;
+        }
 
         public override string ToString()
         {

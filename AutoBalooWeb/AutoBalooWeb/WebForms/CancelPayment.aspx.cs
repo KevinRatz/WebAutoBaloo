@@ -5,9 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace WebPaypalTest.WebForms
+namespace AutoBalooWeb.WebForms
 {
-    public partial class CancelRes : System.Web.UI.Page
+    public partial class CancelPayment : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -15,7 +15,7 @@ namespace WebPaypalTest.WebForms
         }
         protected void BtnCancel_Click(object sender, EventArgs e)
         {
-            Response.Redirect("MainPage.aspx");
+            Response.Redirect("VenteForms.aspx");
         }
     }
 }

@@ -44,7 +44,6 @@ namespace AutoBalooWeb.WebForms
                 //si ajout réussi, retour main page sinon existant
                 if (((Modele)Session["CoucheModele"]).AddClientVM(cliSess,false))
                 {
-                    //Client cliSess = ((Modele)Session["CoucheModele"]).GetClientVM(Page.User.Identity.Name);
                     if (cliSess != null)
                         Session["Client"] = cliSess;
                     FormsAuthentication.RedirectFromLoginPage(email, true);

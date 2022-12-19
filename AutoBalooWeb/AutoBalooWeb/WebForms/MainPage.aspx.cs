@@ -63,26 +63,26 @@ namespace AutoBalooWeb.WebForms
                 if (c.TypeTransaction == 0)
                 {
                     //Ajout des boutons pour Essai et Vente
-                    //if (Session["Client"] != null)
-                    //{
-                    Button bt = new Button();
-                    bt.ID = "Res-"+c.NumChassis;
-                    bt.Text = "Réserver";
-                    bt.Click += new EventHandler(BtnRes_Click);
-                    bt.CssClass = "btn btn-primary";
-                    bt.Style.Add("margin-right","20px");
-                    if (c.Etat.IdEtat == 2)
-                        bt.Visible = false;
-                    cph.Controls.Add(bt);
-                    bt = new Button();
-                    bt.ID = "Essai-"+c.NumChassis;
-                    bt.Text = "Essai";
-                    bt.Click += new EventHandler(BtnEssai_Click);
-                    bt.CssClass = "btn btn-primary";
-                    if (c.Etat.IdEtat == 2)
-                        bt.Visible = false;
-                    cph.Controls.Add(bt);
-                    //}
+                    if (Session["Client"] != null)
+                    {
+                        Button bt = new Button();
+                        bt.ID = "Res-"+c.NumChassis;
+                        bt.Text = "Réserver";
+                        bt.Click += new EventHandler(BtnRes_Click);
+                        bt.CssClass = "btn btn-primary";
+                        bt.Style.Add("margin-right","20px");
+                        if (c.Etat.IdEtat == 2)
+                            bt.Visible = false;
+                        cph.Controls.Add(bt);
+                        bt = new Button();
+                        bt.ID = "Essai-"+c.NumChassis;
+                        bt.Text = "Essai";
+                        bt.Click += new EventHandler(BtnEssai_Click);
+                        bt.CssClass = "btn btn-primary";
+                        if (c.Etat.IdEtat == 2)
+                            bt.Visible = false;
+                        cph.Controls.Add(bt);
+                    }
                     if (c.Etat.IdEtat != 2)
                         cph.Controls.Add(new LiteralControl("<div> Disponible depuis : " + c.DateArrive.ToString("dd/MM/yyyy") + "</div>\r\n"));
 
@@ -91,8 +91,8 @@ namespace AutoBalooWeb.WebForms
                 else
                 {
                     //Ajout des boutons pour faire une demande de location
-                    //if (Session["Client"] != null)
-                    //{
+                    if (Session["Client"] != null)
+                    {
                         Button bt = new Button();
                         bt.ID = c.NumChassis;
                         bt.Text = "Louer";
@@ -101,7 +101,7 @@ namespace AutoBalooWeb.WebForms
                         if (c.Etat.IdEtat == 2)
                             bt.Visible = false;
                         cph.Controls.Add(bt);
-                    //}
+                    }
                 }
 
                 //Balise de fin 

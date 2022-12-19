@@ -5,9 +5,11 @@ using System.Web;
 using System.Web.Configuration;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using AutoBalooWeb.ClasseMetiers;
+using AutoBalooWeb.CoucheModele;
 using PayPal.Api;
 
-namespace WebPaypalTest.WebForms
+namespace AutoBalooWeb.WebForms
 {
     public partial class ReturnRes : System.Web.UI.Page
     {
@@ -17,7 +19,10 @@ namespace WebPaypalTest.WebForms
         }
         protected void BtnCancel_Click(object sender, EventArgs e)
         {
-            Response.Redirect("MainPage.aspx");
+            if (btnConf.Visible)
+                Response.Redirect("VenteForms.aspx");
+            else
+                Response.Redirect("MainPage.aspx");
         }
 
         protected void BtnConf_Click(object sender, EventArgs e)
@@ -42,7 +47,15 @@ namespace WebPaypalTest.WebForms
                 var executedPayment = payment.Execute(apiContext, paymentExecution);
 
                 litInfo.Text = "<p>Le paiement a été completé</p>";
-                btnConf.Visible = false;                   
+
+                Literal lit = new Literal();
+                Client cliSess = ((Modele)Session["CoucheModele"]).GetClientVM(Page.User.Identity.Name);
+                Vehicule v = ((Modele)Session["CoucheModele"]).GetVehiculeByVM(Session["IdVehicule"].ToString());
+                Reservation res = new Reservation((Reservation)Session["Reserve"]);
+                ((Modele)Session["CoucheModele"]).AddResVM(res);
+
+                btnConf.Visible = false;
+                btnCancel.Text = "Retour Accueil";
             }
             
         }

@@ -15,6 +15,10 @@ namespace AutoBalooWeb.ClasseMetiers
         {
             EtatRes = etatRes;
         }
+        public Reservation(Reservation Res) : base(Res)
+        {
+            EtatRes = Res.EtatRes;
+        }
 
         public override string ToString()
         {

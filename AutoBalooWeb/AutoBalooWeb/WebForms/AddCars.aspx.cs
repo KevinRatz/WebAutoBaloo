@@ -27,25 +27,25 @@ namespace AutoBalooWeb.WebForms
                 DDListCarbu.DataSource = ((Modele)Session["CoucheModele"]).ListCarburants();
                 DDListCarbu.DataBind();
 
-                txtChassis.Text = "125";
-                txtNom.Text = "S3";
-                DDListMarque.SelectedIndex = 2;
-                txtPuissance.Text = "50 kW";
-                RBPortes.SelectedIndex = 1;
-                txtNbVitesse.Text = "6";
-                vitesseHide.Style.Add("display", "flex");
-                txtCylindres.Text = "50";
-                txtCouleur.Text = "blue";
-                txtKm.Text = "50000";
-                txtAn.Text = "1995-04-20";
-                RBCtEnt.SelectedValue = "Non";
-                txtdtarv.Text = "2022-04-20";
-                RBTrans.SelectedIndex = 0;
-                txtPrix.Text = "10000";
-                txtReduct.Text = "0";
-                RBTransm.SelectedIndex = 1;
-                DDListCarbu.SelectedIndex = 1;
-                DDListCarro.SelectedIndex = 1;
+                //txtChassis.Text = "125";
+                //txtNom.Text = "S3";
+                //DDListMarque.SelectedIndex = 2;
+                //txtPuissance.Text = "50 kW";
+                //RBPortes.SelectedIndex = 1;
+                //txtNbVitesse.Text = "6";
+                //vitesseHide.Style.Add("display", "flex");
+                //txtCylindres.Text = "50";
+                //txtCouleur.Text = "blue";
+                //txtKm.Text = "50000";
+                //txtAn.Text = "1995-04-20";
+                //RBCtEnt.SelectedValue = "Non";
+                //txtdtarv.Text = "2022-04-20";
+                //RBTrans.SelectedIndex = 0;
+                //txtPrix.Text = "10000";
+                //txtReduct.Text = "0";
+                //RBTransm.SelectedIndex = 1;
+                //DDListCarbu.SelectedIndex = 1;
+                //DDListCarro.SelectedIndex = 1;
             }
         }
         protected void BtnAddCars_Click(object sender, EventArgs e)

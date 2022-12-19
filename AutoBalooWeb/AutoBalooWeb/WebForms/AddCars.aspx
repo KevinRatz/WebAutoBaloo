@@ -15,7 +15,7 @@
             <div class="col">
                 <div class="form-outline">
                     <asp:Label class="lblCars" runat="server" AssociatedControlID="txtNom">Modele </asp:Label>
-                    <asp:TextBox ID="txtNom" Text="Kevin" runat="server" class="form-control" required="required"/>
+                    <asp:TextBox ID="txtNom" runat="server" class="form-control" />
                 </div>
             </div>
         </div>
@@ -23,7 +23,7 @@
             <div class="col">
                 <div class="form-outline">
                     <asp:Label class="lblCars" runat="server" AssociatedControlID="txtChassis">N° chassis</asp:Label>
-                    <asp:TextBox ID="txtChassis" Text="2" runat="server" class="form-control" required="required"/>
+                    <asp:TextBox ID="txtChassis" runat="server" class="form-control" required="required"/>
                 </div>
             </div>
             <div class="col">
@@ -61,7 +61,7 @@
             <div class="col">
                 <div id="vitesseHide" runat="server" class="form-outline" style="display:none;">
                     <asp:Label class="lblCars" runat="server" AssociatedControlID="txtNbVitesse"> Vitesse</asp:Label>
-                    <asp:TextBox ID="txtNbVitesse" Text="7" runat="server" class="form-control" TextMode="Number"
+                    <asp:TextBox ID="txtNbVitesse" runat="server" class="form-control" TextMode="Number"
                         pattern="^([0-9]{1})$" ToolTip="1 chiffre entre 6 et 9"/>
                 </div>
             </div>
@@ -84,13 +84,12 @@
             <div class="col">
                 <div class="form-outline">
                     <asp:Label class="lblCars" runat="server" AssociatedControlID="txtPuissance"> Puissance</asp:Label>
-                    <asp:TextBox ID="txtPuissance" Text="81 kW (110 CH)" runat="server" class="form-control" />
+                    <asp:TextBox ID="txtPuissance" runat="server" class="form-control" />
                 </div>
             </div>
             <div class="col">
                 <div class="form-outline">
                     <asp:Label class="lblCars" runat="server" AssociatedControlID="RBPortes"> Portes :</asp:Label>
-                    <%--<asp:TextBox ID="txtNbPortes" Text="3" runat="server" pattern="^([3,5]{1})$" class="form-control" placeholder="Entrer tel" required="required"/>--%>
                     <asp:RadioButtonList ID="RBPortes" RepeatDirection="Horizontal" runat="server" Width="84px">
                         <asp:ListItem>3</asp:ListItem>
                         <asp:ListItem>5</asp:ListItem>
