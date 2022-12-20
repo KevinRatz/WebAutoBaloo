@@ -73,7 +73,7 @@ namespace AutoBalooWeb.CoucheModele
         private bool IsValide(Vehicule v)
         {
             if (v.NumChassis != null && Regex.IsMatch(v.NumChassis, "^[0-9]{1,}$") && v.Nom != null && v.Nom.Length < 50 && 
-                v.Puissance != null && v.Puissance.Length < 50 && v.NbPortes != 0 && v.NbVitesse != 0 && v.Cylindres != 0 && 
+                v.Puissance != null && v.Puissance.Length < 50 && v.NbPortes != 0 && v.Cylindres != 0 && 
                 v.Couleur != null && v.Couleur.Length < 50 && v.Kilometrage != 0 && v.Année != null && v.CarnetEntretien != null && (v.TypeTransaction == 0|| v.TypeTransaction == 1) &&
                v.Prix != 0 && v.Reduction >= 0 && v.DateArrive != null)
                 return true;
@@ -118,7 +118,10 @@ namespace AutoBalooWeb.CoucheModele
          */
         public bool UpVehiculeVM(Vehicule v)
         {
-            return fabDB.GetVehiculeDB().Modifier(v);
+            if (!IsValide(v))
+                return false;
+            else
+                return fabDB.GetVehiculeDB().Modifier(v);
         }
         /**
          * méthode qui lit dans la base de données tous les catégories

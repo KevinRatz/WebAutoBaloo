@@ -22,7 +22,7 @@ namespace AutoBalooWeb.WebForms
         {
             // partie paypal
             Literal lit = new Literal();
-            Client cliSess = ((Modele)Session["CoucheModele"]).GetClientVM("kevboy9515@gmail.com"/*Page.User.Identity.Name*/);
+            Client cliSess = ((Modele)Session["CoucheModele"]).GetClientVM(Page.User.Identity.Name);
             Vehicule v = ((Modele)Session["CoucheModele"]).GetVehiculeByVM(Session["IdVehicule"].ToString());
             AutoBalooWeb.ClasseMetiers.Location loc = null;
             loc = new AutoBalooWeb.ClasseMetiers.Location(Convert.ToDateTime(txtdtdeb.Text), v.IdVoiture, cliSess.Id, Convert.ToDateTime(txtdtfin.Text));
@@ -35,6 +35,9 @@ namespace AutoBalooWeb.WebForms
             {
                 lit.Text = "Location réussie";
                 ct.Controls.Add(lit);
+                btnLouerCars.Visible = false;
+                btnCancel.CssClass = "btn btn-primary";
+                btnCancel.Text = "Ok";
             }
         }
         protected void BtnCancel_Click(object sender, EventArgs e)

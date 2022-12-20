@@ -61,7 +61,6 @@
                         <asp:ListItem>Automatique</asp:ListItem>
                         <asp:ListItem>Manuelle</asp:ListItem>
                     </asp:RadioButtonList>
-                <%--<asp:DropDownList ID="DDListTrans" AutoPostBack="true" runat="server" Height="40px" style="margin-left: 24px"></asp:DropDownList>--%>
                 </div>
             </div>
             <div class="col">
@@ -82,7 +81,7 @@
             <div class="col">
                 <div class="form-outline">
                     <asp:Label class="lblCars" runat="server" AssociatedControlID="txtReduct"> Reduction (%)</asp:Label>
-                    <asp:TextBox ID="txtReduct" runat="server" TextMode="Number" class="form-control"/>                  
+                    <asp:TextBox ID="txtReduct" text="0" runat="server" TextMode="Number" class="form-control"/>                  
                 </div>
             </div>
         </div>

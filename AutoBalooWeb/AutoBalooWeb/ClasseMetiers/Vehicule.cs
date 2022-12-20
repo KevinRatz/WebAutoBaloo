@@ -115,11 +115,12 @@ namespace AutoBalooWeb.ClasseMetiers
 
         public override string ToString()
         {
-            return (Marque.NomMarque + " " + Nom + ((IdVoiture == 0) ? "" : "(NumChassis : " + NumChassis + ")"));
+            return (Marque.NomMarque + " " + Nom + ((IdVoiture == 0) ? "" : ":" + NumChassis));
         }
 
         public int IdVoiture { get; set; }
         public string NumChassis { get; set; }
+        public string retString { get { return ToString(); } }
         public string Nom { get; set; }
         public Marque Marque { get; set; }
         public string Puissance { get; set; }

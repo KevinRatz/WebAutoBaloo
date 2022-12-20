@@ -29,9 +29,9 @@ namespace AutoBalooWeb.WebForms
             // partie paypal
             Session["Reserve"] = res;
             //tax livraison
-            decimal postageCost = 3.95m;
+            decimal postageCost = 0;
             // prix voiture db
-            decimal price = v.Prix;
+            decimal price = v.Prix-(v.Prix*((decimal)v.Reduction/100));
             //pour test
             int qt = 1;
             decimal subtot = (qt * price);

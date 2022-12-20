@@ -153,7 +153,7 @@ namespace AutoBalooWeb.CoucheAccesDB
                 SqlCmd.Parameters.Add("@photo", SqlDbType.VarChar).Value = obj.Photo;
                 SqlCmd.Parameters.Add("@dateArrive", SqlDbType.Date).Value = obj.DateArrive;
                 SqlCmd.Parameters.Add("@etat", SqlDbType.Int).Value = obj.Etat.IdEtat;
-                SqlCmd.Parameters.Add("@transmission", SqlDbType.Int).Value = obj.Transmission.IdTrans;
+                SqlCmd.Parameters.Add("@transmission", SqlDbType.Int).Value = obj.Transmission.IdTrans+1;
                 SqlCmd.Parameters.Add("@carburant", SqlDbType.Int).Value = obj.Carburant.IdCarbu;
                 SqlCmd.Parameters.Add("@carrosserie", SqlDbType.Int).Value = obj.Carrosserie.IdCaros;
                 SqlCmd.Parameters.Add("@marque", SqlDbType.Int).Value = obj.Marque.IdMarque;
@@ -367,7 +367,7 @@ namespace AutoBalooWeb.CoucheAccesDB
                 else if (choix == 5) 
                 {
                     liste.Add(new Vehicule());
-                    SqlCmd.CommandText = SqlCmd.CommandText + "left outer Join Reservation res on res.IdVoiture = Voiture.IdVoiture where res.IdVoiture is null or res.EtatRes = 5"; 
+                    SqlCmd.CommandText = SqlCmd.CommandText + "left outer Join Reservation res on res.IdVoiture = Voiture.IdVoiture where res.IdVoiture is null or res.EtatRes = 5"; // join essai join location
                 }
 
                 SqlCmd.CommandType = CommandType.Text;

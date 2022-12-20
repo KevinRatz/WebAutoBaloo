@@ -13,12 +13,14 @@ namespace AutoBalooWeb.WebForms
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Page.User.Identity.IsAuthenticated || ((Client)Session["Client"]).Admin == 0)
-                Response.Redirect("MainPage.aspx");
-            else if (!Page.IsPostBack)
+            //if (!Page.User.Identity.IsAuthenticated || ((Client)Session["Client"]).Admin == 0)
+            //    Response.Redirect("MainPage.aspx");
+            if (!Page.IsPostBack)
             {
                 EnableForms(false);
                 DDListId.DataSource = ((Modele)Session["CoucheModele"]).ListVehiculeVM();
+                DDListId.DataValueField = "IdVoiture";
+                DDListId.DataTextField = "retString";
                 DDListId.DataBind();
 
                 DDListMarque.DataSource = ((Modele)Session["CoucheModele"]).ListMarques();
@@ -33,23 +35,43 @@ namespace AutoBalooWeb.WebForms
         }
         protected void BtnUpCars_Click(object sender, EventArgs e)
         {
-            Vehicule v = new Vehicule(DDListId.SelectedIndex,txtChassis.Text, txtNom.Text, new Marque(DDListMarque.SelectedIndex),
-                txtPuissance.Text, Convert.ToInt32(RBPortes.SelectedValue), Convert.ToInt32(txtNbVitesse.Text), Convert.ToInt32(txtCylindres.Text), txtCouleur.Text,
-                Convert.ToDecimal(txtKm.Text), Convert.ToDateTime(txtAn.Text), (dateCtrlTech.Text == "") ? new DateTime(1900, 01, 01) : (Convert.ToDateTime(dateCtrlTech.Text)), RBCtEnt.SelectedValue, RBTrans.SelectedIndex,
-                Convert.ToDecimal(txtPrix.Text), Convert.ToInt32(txtReduct.Text), (InPhoto.PostedFile.FileName == "") ? "NoImage.png" : InPhoto.PostedFile.FileName, Convert.ToDateTime(txtdtarv.Text), new Etat(1), new Transmission(RBTransm.SelectedIndex),
-                new Carburant(DDListCarbu.SelectedIndex), new Carrosserie(DDListCarro.SelectedIndex));
-
+            Vehicule vId = ((Modele)Session["CoucheModele"]).GetVehiculeVM(Convert.ToInt32(DDListId.SelectedItem.Value));
+            Vehicule vCha = ((Modele)Session["CoucheModele"]).GetVehiculeByVM(txtChassis.Text);
+            Vehicule v = null;
             Literal lit = new Literal();
-            if (!((Modele)Session["CoucheModele"]).UpVehiculeVM(v))
+
+            if (vCha != null && txtChassis.Text != vId.NumChassis)
             {
-                lit.Text = "Le numéro du chassis de la voiture existe déjà ou des erreurs dans le formulaire";
+                lit.Text = "Le numéro du chassis de la voiture existe déjà";
                 ct.Controls.Add(lit);
             }
             else
             {
-                lit.Text = "Modification réussi";
-                ct.Controls.Add(lit);
+                v = new Vehicule(vId.IdVoiture, txtChassis.Text, txtNom.Text, new Marque(DDListMarque.SelectedIndex),
+                  txtPuissance.Text, Convert.ToInt32(RBPortes.SelectedValue), (txtNbVitesse.Text == "") ? 0 : Convert.ToInt32(txtNbVitesse.Text), 
+                  (txtCylindres.Text == "") ? 0 : Convert.ToInt32(txtCylindres.Text), txtCouleur.Text, (txtKm.Text == "") ? 0 : Convert.ToDecimal(txtKm.Text), 
+                  (txtAn.Text == "") ? new DateTime(1900, 01, 01) : Convert.ToDateTime(txtAn.Text), 
+                  (dateCtrlTech.Text == "") ? new DateTime(1900, 01, 01) : (Convert.ToDateTime(dateCtrlTech.Text)), RBCtEnt.SelectedValue, RBTrans.SelectedIndex,
+                  (txtPrix.Text == "") ? 0 : Convert.ToDecimal(txtPrix.Text), (txtReduct.Text == "") ? 0 : Convert.ToInt32(txtReduct.Text), (InPhoto.PostedFile.FileName == "") ? vId.Photo : InPhoto.PostedFile.FileName, 
+                  (txtdtarv.Text == "") ? new DateTime(1900, 01, 01) : (Convert.ToDateTime(txtdtarv.Text)), new Etat(1), 
+                  new Transmission(RBTransm.SelectedIndex), new Carburant(DDListCarbu.SelectedIndex), new Carrosserie(DDListCarro.SelectedIndex));
+                if (!((Modele)Session["CoucheModele"]).UpVehiculeVM(v))
+                {
+                    lit.Text = "Des erreurs dans le formulaire";
+                    ct.Controls.Add(lit);
+                }
+                else
+                {
+                    lit.Text = "Modification réussi";
+                    ct.Controls.Add(lit);
+                    DDListId.SelectedIndex = 0;
+                    EnableForms(false);
+                    DDListId.DataSource = ((Modele)Session["CoucheModele"]).ListVehiculeVM();
+                    DDListId.DataBind();
+                }
             }
+
+            
         }
 
         // Méthode qui affiche le champs vitesse ou non si la transmission est manuelle
@@ -83,7 +105,7 @@ namespace AutoBalooWeb.WebForms
                     EnableForms(false);
                 else
                 {
-                    v = ((Modele)Session["CoucheModele"]).GetVehiculeVM(DDListId.SelectedIndex);
+                    v = ((Modele)Session["CoucheModele"]).GetVehiculeVM(Convert.ToInt32(DDListId.SelectedItem.Value));
                     EnableForms(true);
                     txtChassis.Text = v.NumChassis; 
                     txtNom.Text= v.Nom;

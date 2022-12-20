@@ -13,12 +13,14 @@ namespace AutoBalooWeb.WebForms
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (!Page.User.Identity.IsAuthenticated || ((Client)Session["Client"]).Admin == 0)
-            //    Response.Redirect("MainPage.aspx");
+            if (!Page.User.Identity.IsAuthenticated || ((Client)Session["Client"]).Admin == 0)
+                Response.Redirect("MainPage.aspx");
             if (!Page.IsPostBack)
             {
                 btnDelCars.Enabled = false;
                 DDListId.DataSource = ((Modele)Session["CoucheModele"]).ListVehiculeVMAvecOptions(5);
+                DDListId.DataValueField = "IdVoiture";
+                DDListId.DataTextField = "retString";
                 DDListId.DataBind();
             }
         }
@@ -32,12 +34,14 @@ namespace AutoBalooWeb.WebForms
         protected void BtnDelCars_Click(object sender, EventArgs e)
         {
             Literal lit = new Literal();
-            if (((Modele)Session["CoucheModele"]).DelVehiculeVM(DDListId.SelectedIndex))
+            if (((Modele)Session["CoucheModele"]).DelVehiculeVM(Convert.ToInt32(DDListId.SelectedItem.Value)))
             {
                 lit.Text = "Véhicule supprimé";
                 ct.Controls.Add(lit);
                 btnDelCars.Enabled = false;
                 DDListId.SelectedIndex = 0;
+                DDListId.DataSource = ((Modele)Session["CoucheModele"]).ListVehiculeVMAvecOptions(5);
+                DDListId.DataBind();
             }
         }
     }

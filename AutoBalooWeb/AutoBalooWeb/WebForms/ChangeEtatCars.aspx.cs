@@ -23,6 +23,8 @@ namespace AutoBalooWeb.WebForms
 
                 //Charger les listes
                 DDListId.DataSource = ((Modele)Session["CoucheModele"]).ListerVehiculeRes();
+                DDListId.DataValueField = "IdVoiture";
+                DDListId.DataTextField = "retString";
                 DDListId.DataBind();
 
                 DDListEtat.DataSource = ((Modele)Session["CoucheModele"]).ListEtatRersVM();
@@ -43,7 +45,7 @@ namespace AutoBalooWeb.WebForms
             else
             {
                 Reservation res = null;
-                res = ((Modele)Session["CoucheModele"]).GetVehiculeRes(DDListId.SelectedIndex);
+                res = ((Modele)Session["CoucheModele"]).GetVehiculeRes(Convert.ToInt32(DDListId.SelectedItem.Value));
                 //avoir etat pour veh res
                 EtatRes er = ((Modele)Session["CoucheModele"]).GetEtatRes(res.EtatRes);
                 Session["EtatRes"] = er.NomEtatRes;
@@ -80,7 +82,7 @@ namespace AutoBalooWeb.WebForms
             Literal lit = new Literal();
             Reservation res = null;
 
-            res = ((Modele)Session["CoucheModele"]).GetVehiculeRes(DDListId.SelectedIndex);
+            res = ((Modele)Session["CoucheModele"]).GetVehiculeRes(Convert.ToInt32(DDListId.SelectedItem.Value));
             if (!((Modele)Session["CoucheModele"]).UpEtatResVM(DDListEtat.SelectedIndex+1, res.Voiture))
             {
                 lit.Text = "L 'etat est le meme que avant";
@@ -91,6 +93,7 @@ namespace AutoBalooWeb.WebForms
                 lit.Text = "Etat changé";
                 ct.Controls.Add(lit);
                 DDListEtat.Enabled = false;
+                DDListEtat.SelectedIndex = 0;
                 btnUpEtatCars.Enabled = false;
                 DDListId.SelectedIndex = 0;
             }
