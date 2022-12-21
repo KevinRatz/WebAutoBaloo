@@ -17,45 +17,10 @@ namespace AutoBalooWeb.CoucheAccesDB
         public LocationDB(SqlCommand sqlCmd) : base(sqlCmd)
         {
         }
-
+        
         /**
-         * méthode qui lit dans la base de données un Location spécifique
-         * param num : le numéro du Location
-         * retour : Location lu dans la base de données
-         *
-        public override Location Charger(string codebarre)
-        {
-            Location Location = null;
-
-            try
-            {
-                SqlCmd.CommandText = "GetLocation";
-                SqlCmd.Parameters.Clear();
-                SqlCmd.Parameters.Add("@codebarre", SqlDbType.VarChar).Value = codebarre;
-                SqlDataReader sqlReader = SqlCmd.ExecuteReader();
-                if (sqlReader.Read() == true)
-                    Location = new Location(
-                    Convert.ToString(sqlReader["CodeBarre"]),
-                    Convert.ToString(sqlReader["Nom"]),
-                    Convert.ToDecimal(sqlReader["Prix"]),
-                    Convert.ToInt32(sqlReader["Quantite"]),
-                    Convert.ToString(sqlReader["Couleur"]),
-                    Convert.ToString(sqlReader["Taille"]),
-                    Convert.ToInt32(sqlReader["Actif"]),
-                    new Location(Convert.ToString(sqlReader["NomCat"])),
-                    new Genre(Convert.ToString(sqlReader["NomGenre"])));
-
-                sqlReader.Close();
-                return Location;
-            }
-            catch (Exception e)
-            {
-                throw new ExceptionAccesDB(e.Message);
-            }
-        }
-        /**
-        * méthode qui ajoute dans la base de données un Location
-        * * param obj : le Location
+        * méthode qui ajoute dans la base de données une Location
+        * * param obj : la Location
         * retour : un booléen indiquant si l'ajout a été réalisé ou non
         */
         public override bool Ajouter(Location obj)
@@ -70,59 +35,6 @@ namespace AutoBalooWeb.CoucheAccesDB
                 SqlCmd.Parameters.Add("@idC", SqlDbType.Int).Value = obj.Client;
                 SqlCmd.Parameters.Add("@dateF", SqlDbType.Date).Value = obj.DateFin;
                 return (SqlCmd.ExecuteNonQuery() <= 0) ? false : true;
-            }
-            catch (Exception e)
-            {
-                throw new ExceptionAccesDB(e.Message);
-            }
-        }
-        /**
-        * méthode qui modifie dans la base de données un élève
-        * param obj : l'élève
-        * retour : un booléen indiquant si la modification a été réalisée ou non
-        *
-        public override bool Modifier(Location obj)
-        {
-            try
-            {
-                SqlCmd.CommandText = "update Location " +
-                "set nom = @Nom, " +
-               " prenom = @Prenom, " +
-               " poids = @Poids, " +
-               " annee = @Annee, " +
-               " datenaissance = @DateNaissance, " +
-               " nomimage = @NomImage " +
-               "where numLocation = @NumLocation";
-                SqlCmd.Parameters.Clear();
-                SqlCmd.Parameters.Add("@NumLocation", SqlDbType.Int).Value = obj.NumLocation;
-                SqlCmd.Parameters.Add("@Nom", SqlDbType.VarChar).Value = obj.Nom;
-                SqlCmd.Parameters.Add("@Prenom", SqlDbType.VarChar).Value = obj.Prenom;
-                SqlCmd.Parameters.Add("@Poids", SqlDbType.Int).Value = obj.Poids;
-                SqlCmd.Parameters.Add("@Annee", SqlDbType.Int).Value = obj.Annee;
-                SqlCmd.Parameters.Add("@DateNaissance", SqlDbType.Char).Value =
-                obj.DateNaissance.ToString("dd-MM-yyyy");
-                SqlCmd.Parameters.Add("@NomImage", SqlDbType.Char).Value = obj.NomImage;
-                return (SqlCmd.ExecuteNonQuery() == 0) ? false : true;
-            }
-            catch (Exception e)
-            {
-                throw new ExceptionAccesDB(e.Message);
-            }
-        }
-        /**
-        * méthode qui supprime dans la base de données un élève
-        * param num : le numéro de l'élève
-        * retour : un booléen indiquant si la suppression a été réalisée ou non
-        *
-        public override bool Supprimer(int num)
-        {
-            try
-            {
-                SqlCmd.CommandText = "delete from Location " +
-                "where numLocation = @NumLocation";
-                SqlCmd.Parameters.Clear();
-                SqlCmd.Parameters.Add("@NumLocation", SqlDbType.Int).Value = num;
-                return (SqlCmd.ExecuteNonQuery() == 0) ? false : true;
             }
             catch (Exception e)
             {

@@ -17,42 +17,6 @@ namespace AutoBalooWeb.CoucheAccesDB
         public EssaiDB(SqlCommand sqlCmd) : base(sqlCmd)
         {
         }
-
-        /**
-         * méthode qui lit dans la base de données un Essai spécifique
-         * param num : le numéro du Essai
-         * retour : Essai lu dans la base de données
-         *
-        public override Essai Charger(string codebarre)
-        {
-            Essai Essai = null;
-
-            try
-            {
-                SqlCmd.CommandText = "GetEssai";
-                SqlCmd.Parameters.Clear();
-                SqlCmd.Parameters.Add("@codebarre", SqlDbType.VarChar).Value = codebarre;
-                SqlDataReader sqlReader = SqlCmd.ExecuteReader();
-                if (sqlReader.Read() == true)
-                    Essai = new Essai(
-                    Convert.ToString(sqlReader["CodeBarre"]),
-                    Convert.ToString(sqlReader["Nom"]),
-                    Convert.ToDecimal(sqlReader["Prix"]),
-                    Convert.ToInt32(sqlReader["Quantite"]),
-                    Convert.ToString(sqlReader["Couleur"]),
-                    Convert.ToString(sqlReader["Taille"]),
-                    Convert.ToInt32(sqlReader["Actif"]),
-                    new Essai(Convert.ToString(sqlReader["NomCat"])),
-                    new Genre(Convert.ToString(sqlReader["NomGenre"])));
-
-                sqlReader.Close();
-                return Essai;
-            }
-            catch (Exception e)
-            {
-                throw new ExceptionAccesDB(e.Message);
-            }
-        }
         /**
         * méthode qui ajoute dans la base de données un Essai
         * * param obj : le Essai

@@ -19,45 +19,8 @@ namespace AutoBalooWeb.CoucheAccesDB
         }
 
         /**
-         * méthode qui lit dans la base de données un produit spécifique
-         * param num : le numéro du produit
-         * retour : produit lu dans la base de données
-         *
-        public override Produit Charger(string codebarre)
-        {
-            Produit Produit = null;
-
-            try
-            {
-                SqlCmd.CommandText = "GetProduit";
-                SqlCmd.Parameters.Clear();
-                SqlCmd.Parameters.Add("@codebarre", SqlDbType.VarChar).Value = codebarre;
-                SqlDataReader sqlReader = SqlCmd.ExecuteReader();
-                if (sqlReader.Read() == true)
-                    Produit = new Produit(
-                    Convert.ToString(sqlReader["CodeBarre"]),
-                    Convert.ToString(sqlReader["Nom"]),
-                    Convert.ToDecimal(sqlReader["Prix"]),
-                    Convert.ToInt32(sqlReader["Quantite"]),
-                    Convert.ToString(sqlReader["Couleur"]),
-                    Convert.ToString(sqlReader["Taille"]),
-                    Convert.ToInt32(sqlReader["Actif"]),
-                    new Categorie(Convert.ToString(sqlReader["NomCat"])),
-                    new Genre(Convert.ToString(sqlReader["NomGenre"])));
-
-                sqlReader.Close();
-                return Produit;
-            }
-            catch (Exception e)
-            {
-                throw new ExceptionAccesDB(e.Message);
-            }
-        }
-
-        /**
-         * méthode qui lit dans la base de données un produit spécifique
-         * param num : le numéro du produit
-         * retour : produit lu dans la base de données
+         * méthode qui lit dans la base de données toutes les marques
+         * retour : liste marque
          */
         public override List<Marque> ListerTous()
         {

@@ -19,9 +19,9 @@ namespace AutoBalooWeb.CoucheAccesDB
         }
 
         /**
- * méthode qui lit dans la base de données un élève spécifique
- * param num : le numéro de l'élève
- * retour : l'élève lu dans la base de données
+ * méthode qui lit dans la base de données un client spécifique
+ * param num : le numéro de client
+ * retour : l'client lu dans la base de données
  */
         public Client GetClient(string email)
         {
@@ -53,8 +53,8 @@ namespace AutoBalooWeb.CoucheAccesDB
             }
         }
         /**
-        * méthode qui ajoute dans la base de données un élève
-        * * param obj : l'élève
+        * méthode qui ajoute dans la base de données un client
+        * * param obj : l'client
         * retour : un booléen indiquant si l'ajout a été réalisé ou non
         */
         public override bool Ajouter(Client obj)
@@ -79,7 +79,7 @@ namespace AutoBalooWeb.CoucheAccesDB
         }
         /**
         * méthode qui ajoute dans la base de données un client gmail
-        * * param obj : l'élève
+        * * param obj : l'client
         * retour : un booléen indiquant si l'ajout a été réalisé ou non
         */
         public bool AddGmailClient(Client obj)
@@ -131,8 +131,8 @@ namespace AutoBalooWeb.CoucheAccesDB
             }
         }
         /**
-        * méthode qui supprime dans la base de données un élève
-        * param num : le numéro de l'élève
+        * méthode qui valide dans la base de données un client
+        * param num : le numéro de l'client
         * retour : un booléen indiquant si la suppression a été réalisée ou non
         */
         public string ValidateUserDB(string user, string mdp)

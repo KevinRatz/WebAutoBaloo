@@ -224,7 +224,10 @@ CREATE PROCEDURE [dbo].[AddEssai]
 AS
 
 BEGIN
-	INSERT INTO dbo.Essai 
-		 VALUES (@date,@idV,@idC);
-	UPDATE Voiture set Etat = 4 where IdVoiture =@idV;
+	IF((SELECT IdClient FROM Essai WHERE DateEssai = @date and IdVoiture=@idV) IS NULL) 
+	BEGIN
+		INSERT INTO dbo.Essai 
+			 VALUES (@date,@idV,@idC);
+		UPDATE Voiture set Etat = 4 where IdVoiture =@idV;
+	END
 END

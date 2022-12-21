@@ -20,7 +20,7 @@ namespace AutoBalooWeb.CoucheAccesDB
 
         /**
          * méthode qui lit dans la base de données un Vehicule spécifique
-         * param num : le numéro du Vehicule
+         * param id : l'id du Vehicule
          * retour : Vehicule lu dans la base de données
          */
         public override Vehicule Charger(int id)
@@ -73,7 +73,7 @@ namespace AutoBalooWeb.CoucheAccesDB
         }
         /**
          * méthode qui lit dans la base de données un Vehicule spécifique
-         * param num : le numéro du Vehicule
+         * param numCha : le numéro du chassis
          * retour : Vehicule lu dans la base de données
          */
         public Vehicule ChargerBy(string numCha)
@@ -164,8 +164,8 @@ namespace AutoBalooWeb.CoucheAccesDB
                 throw new ExceptionAccesDB(e.Message);
             }
         }
-        /* méthode qui modifie dans la base de données un élève
-        * param obj : l'élève
+        /* méthode qui modifie dans la base de données un vehicule
+        * param obj : le vehicule
         * retour : un booléen indiquant si la modification a été réalisée ou non
         */
         public override bool Modifier(Vehicule obj)
@@ -205,8 +205,8 @@ namespace AutoBalooWeb.CoucheAccesDB
             }
         }
         /**
-        * méthode qui modifie dans la base de données un élève
-        * param obj : l'élève
+        * méthode qui modifie dans la base de données un vehicule
+        * param obj : vehicule
         * retour : un booléen indiquant si la modification a été réalisée ou non
         */
         public bool UpEtatResDB(int idEtat, int id)
@@ -228,8 +228,8 @@ namespace AutoBalooWeb.CoucheAccesDB
 
 
         /**
-        * méthode qui supprime dans la base de données un élève
-        * param num : le numéro de l'élève
+        * méthode qui supprime dans la base de données un vehicule
+        * param num : le numéro du vehicule
         * retour : un booléen indiquant si la suppression a été réalisée ou non
         */
         public override bool Supprimer(int id)
@@ -248,8 +248,8 @@ namespace AutoBalooWeb.CoucheAccesDB
             }
         }
         /**
-        * méthode qui lit dans la base de données tous les élèves
-        * retour : la liste de tous les élèves
+        * méthode qui lit dans la base de données tous les vehicules
+        * retour : la liste de tous les vehicules
         */
         public override List<Vehicule> ListerTous()
         {

@@ -35,32 +35,34 @@ namespace AutoBalooWeb.CoucheModele
                 return fabDB.GetClientDB().AddGmailClient(c);
         }
         /**
-         * méthode qui add dans la base de données un client 
-         * retour : /
+         * méthode qui récupere dans la base de données un client 
+         * retour : un client
          */
         public Client GetClientVM(string c)
         {
             return fabDB.GetClientDB().GetClient(c);
         }
         /**
-         * méthode qui add dans la base de données un client 
-         * retour : /
+         * méthode qui récupere dans la base de données un vehicule 
+         * param v : id voiture
+         * retour : vehicule
          */
         public Vehicule GetVehiculeVM(int v)
         {
             return fabDB.GetVehiculeDB().Charger(v);
         }
         /**
-         * méthode qui add dans la base de données un client 
-         * retour : /
+         * méthode qui récupere dans la base de données un vehicule par num chassis
+         * param v : num chassisvehicule
          */
         public Vehicule GetVehiculeByVM(string v)
         {
             return fabDB.GetVehiculeDB().ChargerBy(v);
         }
         /**
-         * méthode qui add dans la base de données un vehicule 
-         * retour : /
+         * méthode qui add dans la base de données un vehicule
+         * param : vehicule
+         * retour : vrai ou faux
          */
         public bool AddVehiculeVM(Vehicule v)
         {
@@ -81,8 +83,9 @@ namespace AutoBalooWeb.CoucheModele
         }
 
         /**
-         * méthode qui add dans la base de données un vehicule 
-         * retour : /
+         * méthode qui modifie un état de réservation dans la db
+         * param : idetat et id du vehicule
+         * retour : vrai ou faux
          */
         public bool UpEtatResVM(int idEtat, int id)
         {
@@ -90,7 +93,7 @@ namespace AutoBalooWeb.CoucheModele
         }
 
         /**
-         * méthode qui add dans la base de données un vehicule 
+         * méthode qui supp dans la base de données un vehicule 
          * retour : /
          */
         public bool DelVehiculeVM(int id)
@@ -99,22 +102,35 @@ namespace AutoBalooWeb.CoucheModele
         }
 
         /**
-* méthode qui retourne la liste des véhicules 
-* retour : La liste des véhicules
-*/
+        * méthode qui retourne la liste des véhicules 
+        * retour : La liste des véhicules
+        */
         public List<Vehicule> ListVehiculeVM()
         {
             return fabDB.GetVehiculeDB().ListerTous();
         }
+
+        /**
+        * méthode qui retourne la liste des véhicules avec des options
+        * retour : La liste des véhicules
+        */
         public List<Vehicule> ListVehiculeVMAvecOptions(int choix)
         {
             return fabDB.GetVehiculeDB().ListerTousAvecOptions(choix);
         }
 
+        /**
+          * méthode qui retourne la liste des véhicules réservés
+          * retour : la liste des véhicules
+          */
+        public List<Vehicule> ListerVehiculeRes()
+        {
+            return fabDB.GetVehiculeDB().ListerTousAvecOptions(4);
+        }
 
         /**
-         * méthode qui liste dans la base de données tous les produits
-         * retour : la liste de tous les produits
+         * méthode qui modifie un vehicule
+         * retour : vrai ou faux
          */
         public bool UpVehiculeVM(Vehicule v)
         {
@@ -123,84 +139,77 @@ namespace AutoBalooWeb.CoucheModele
             else
                 return fabDB.GetVehiculeDB().Modifier(v);
         }
+
         /**
-         * méthode qui lit dans la base de données tous les catégories
-         * retour : la liste de tous les catégories
+         * méthode qui lit dans la base de données tous les etats
+         * retour : la liste de tous les etats
          */
         public List<Etat> ListEtats()
         {
             return fabDB.GetEtatDB().ListerTous();
         }
         /**
-         * méthode qui lit dans la base de données tous les catégories
-         * retour : la liste de tous les catégories
+         * méthode qui lit dans la base de données tous les EtatRes
+         * retour : la liste de tous les EtatRes
          */
         public List<EtatRes> ListEtatRersVM()
         {
             return fabDB.GetEtatResDB().ListerTous();
         }
         /**
-         * méthode qui lit dans la base de données tous les catégories
-         * retour : la liste de tous les catégories
+         * méthode qui lit dans la base de données tous les Marques
+         * retour : la liste de tous les Marques
          */
         public List<Marque> ListMarques()
         {
             return fabDB.GetMarqueDB().ListerTous();
         }
         /**
-         * méthode qui lit dans la base de données tous les catégories
-         * retour : la liste de tous les catégories
+         * méthode qui lit dans la base de données tous les Carrosserie
+         * retour : la liste de tous les Carrosserie
          */
         public List<Carrosserie> ListCarrosseries()
         {
             return fabDB.GetCarrosserieDB().ListerTous();
         }
         /**
-         * méthode qui lit dans la base de données tous les catégories
-         * retour : la liste de tous les catégories
+         * méthode qui lit dans la base de données tous les Carburant
+         * retour : la liste de tous les Carburant
          */
         public List<Carburant> ListCarburants()
         {
             return fabDB.GetCarburantDB().ListerTous();
         }
+ 
         /**
-         * méthode qui liste dans la base de données le panier
-         * param numcom : le num Com
-         * retour : la liste du panier
-         */
-        public List<Vehicule> ListerVehiculeRes()
-        {
-            return fabDB.GetVehiculeDB().ListerTousAvecOptions(4);
-        }
-        /**
-         * méthode qui liste dans la base de données le panier
-         * param numcom : le num Com
-         * retour : la liste du panier
+         * méthode qui liste dans la base de donnée
+         * param : 
+         * retour : la liste 
          */
         public List<Location> ListLocationsByVehiculeVM( int idV)
         {
             return fabDB.GetLocationDB().ListerBy(idV);
         }
         /**
-         * méthode qui lit dans la base de données tous les cours non suivis par un élève
-         * param numEleve : le numéro de l'élève
-         * retour : la liste des cours
+         * méthode qui lit dans la base de données 
+         * param numEleve : 
+         * retour : 
          */
         public Reservation GetVehiculeRes(int user)
         {
             return fabDB.GetReservationDB().Charger(user);
         }
         /**
-         * méthode qui liste
+         * méthode qui 
          * param 
-         * retour : la liste
+         * retour : EtatRes
          */
         public EtatRes GetEtatRes(int idCmd)
         {
             return fabDB.GetEtatResDB().Charger(idCmd);
         }
         /**
-         * méthode qui add dans la base de données un vehicule 
+         * méthode qui add dans la base de données Reservation
          * retour : /
          */
         public bool AddResVM(Reservation res)
@@ -208,7 +217,7 @@ namespace AutoBalooWeb.CoucheModele
             return fabDB.GetReservationDB().Ajouter(res);
         }
         /**
-         * méthode qui add dans la base de données un vehicule 
+         * méthode qui add dans la base de données une location 
          * retour : /
          */
         public bool AddLocationVM(Location l)
@@ -216,7 +225,7 @@ namespace AutoBalooWeb.CoucheModele
             return fabDB.GetLocationDB().Ajouter(l);
         }
         /**
-         * méthode qui add dans la base de données un vehicule 
+         * méthode qui add dans la base de données un essai
          * retour : /
          */
         public bool AddEssaiVM(Essai e)
