@@ -16,24 +16,6 @@ namespace AutoBalooWeb.ClasseMetiers
             NumChassis = "";
             Nom = "";
             Marque = new Marque(1,"Sélectionner un véhicule");
-            //Puissance = puissance;
-            //NbPortes = nbPortes;
-            //NbVitesse = nbVitesse;
-            //Cylindres = cylindres;
-            //Couleur = couleur;
-            //Kilometrage = kilometrage;
-            //Année = année;
-            //DateCtrlTech = dateCtrlTech;
-            //CarnetEntretien = carnetEntretien;
-            //TypeTransaction = typeTransaction;
-            //Prix = prix;
-            //Reduction = reduction;
-            //Photo = photo;
-            //DateArrive = dateArrive;
-            //Etat = etat;
-            //Transmission = transmission;
-            //Carburant = carburant;
-            //Carrosserie = carrosserie;
         }
 
         public Vehicule(int idVoiture, string numChassis, string nom, Marque marque, string puissance, int nbPortes, int nbVitesse, int cylindres, string couleur, decimal kilometrage, DateTime année, DateTime dateCtrlTech, string carnetEntretien, int typeTransaction, decimal prix, int reduction, string photo, DateTime dateArrive, Etat etat, Transmission transmission, Carburant carburant, Carrosserie carrosserie)

@@ -8,7 +8,7 @@
         <div class="row mb-4">
             <div class="form-outline">
                 <asp:Label class="lblCars" runat="server" AssociatedControlID="txtdt"> Date de l'essai</asp:Label>
-                <asp:TextBox ID="txtdt" runat="server" class="form-control" TextMode="Date"/>
+                <asp:TextBox ID="txtdt" runat="server" class="form-control" TextMode="Date" AutoPostBack="true" OnTextChanged="txtdt_TextChanged"/>
             </div>
         </div>
         <div class="row mb-4">

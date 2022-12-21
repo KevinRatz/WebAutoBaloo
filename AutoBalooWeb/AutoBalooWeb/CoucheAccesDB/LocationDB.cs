@@ -69,7 +69,7 @@ namespace AutoBalooWeb.CoucheAccesDB
                 SqlCmd.Parameters.Add("@idV", SqlDbType.Int).Value = obj.Voiture;
                 SqlCmd.Parameters.Add("@idC", SqlDbType.Int).Value = obj.Client;
                 SqlCmd.Parameters.Add("@dateF", SqlDbType.Date).Value = obj.DateFin;
-                return (SqlCmd.ExecuteNonQuery() == 0) ? false : true;
+                return (SqlCmd.ExecuteNonQuery() <= 0) ? false : true;
             }
             catch (Exception e)
             {
@@ -140,6 +140,35 @@ namespace AutoBalooWeb.CoucheAccesDB
             {
                 SqlCmd.CommandText = "Select * from Location";
                 SqlCmd.CommandType = CommandType.Text;
+                SqlDataReader sqlReader = SqlCmd.ExecuteReader();
+                while (sqlReader.Read() == true)
+                    liste.Add( new Location(
+                    Convert.ToDateTime(sqlReader["DateDebut"]),
+                    Convert.ToInt32(sqlReader["IdVoiture"]),
+                    Convert.ToInt32(sqlReader["IdClient"]),
+                    Convert.ToDateTime(sqlReader["DateFin"])));
+                sqlReader.Close();
+            }
+            catch (Exception e)
+            {
+                throw new ExceptionAccesDB(e.Message);
+            }
+
+            return liste;
+        }
+        /**
+        * méthode qui lit dans la base de données tous les Locations
+        * retour : la liste de tous les Locations
+        */
+        public List<Location> ListerBy(int idV)
+        {
+            List<Location> liste = new List<Location>();
+            try
+            {
+                SqlCmd.CommandText = "Select * from Location where IdVoiture = @id";
+                SqlCmd.CommandType = CommandType.Text;
+                SqlCmd.Parameters.Clear();
+                SqlCmd.Parameters.Add("@id", SqlDbType.Int).Value = idV;
                 SqlDataReader sqlReader = SqlCmd.ExecuteReader();
                 while (sqlReader.Read() == true)
                     liste.Add( new Location(

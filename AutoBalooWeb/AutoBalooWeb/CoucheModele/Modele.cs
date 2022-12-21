@@ -173,6 +173,15 @@ namespace AutoBalooWeb.CoucheModele
             return fabDB.GetVehiculeDB().ListerTousAvecOptions(4);
         }
         /**
+         * méthode qui liste dans la base de données le panier
+         * param numcom : le num Com
+         * retour : la liste du panier
+         */
+        public List<Location> ListLocationsByVehiculeVM( int idV)
+        {
+            return fabDB.GetLocationDB().ListerBy(idV);
+        }
+        /**
          * méthode qui lit dans la base de données tous les cours non suivis par un élève
          * param numEleve : le numéro de l'élève
          * retour : la liste des cours

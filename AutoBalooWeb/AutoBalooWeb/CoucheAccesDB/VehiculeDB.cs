@@ -367,7 +367,9 @@ namespace AutoBalooWeb.CoucheAccesDB
                 else if (choix == 5) 
                 {
                     liste.Add(new Vehicule());
-                    SqlCmd.CommandText = SqlCmd.CommandText + "left outer Join Reservation res on res.IdVoiture = Voiture.IdVoiture where res.IdVoiture is null or res.EtatRes = 5"; // join essai join location
+                    SqlCmd.CommandText = SqlCmd.CommandText + "left outer Join Reservation res on res.IdVoiture = Voiture.IdVoiture " +
+                        "left outer Join Location loc on loc.IdVoiture = Voiture.IdVoiture where(loc.IdVoiture is null or loc.DateFin <= cast(GETDATE() as DATE)) " +
+                        "and(res.IdVoiture is null or res.EtatRes = 5)";
                 }
 
                 SqlCmd.CommandType = CommandType.Text;

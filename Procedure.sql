@@ -209,9 +209,12 @@ CREATE PROCEDURE [dbo].[AddLocation]
 AS
 
 BEGIN
-	INSERT INTO dbo.Location 
-		 VALUES (@dateD,@idV,@idC,@dateF);
-	UPDATE Voiture set Etat = 3 where IdVoiture =@idV;
+	IF((SELECT IdClient FROM Location WHERE (DateDebut between @dateD and @dateF or DateFin between @dateD and @dateF) and IdVoiture=@idV) IS NULL) 
+	BEGIN
+		INSERT INTO dbo.Location 
+			 VALUES (@dateD,@idV,@idC,@dateF);
+		UPDATE Voiture set Etat = 3 where IdVoiture =@idV;
+	END
 END
 
 CREATE PROCEDURE [dbo].[AddEssai]

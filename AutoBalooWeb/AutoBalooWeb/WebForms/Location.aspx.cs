@@ -56,7 +56,7 @@ namespace AutoBalooWeb.WebForms
                         //Affichage du prix avec réduction
                         ((c.Reduction == 0) ?  "<div>" + c.Prix + "€ par jour</div>\r\n" : "<div><strike>" + c.Prix + "</strike> " + (c.Prix - (c.Prix * c.Reduction) / 100) + "€ par jour </div>\r\n")));
 
-                //Ajout des boutons pour faire une demande de location
+                //Ajout des boutons pour faire une demande de location si connecté
                 if (Session["Client"] != null)
                 {
                     Button bt = new Button();

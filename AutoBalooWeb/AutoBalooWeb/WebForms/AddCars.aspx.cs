@@ -18,6 +18,11 @@ namespace AutoBalooWeb.WebForms
             // si la page est chargée pour la première fois
             if (!Page.IsPostBack)
             {
+
+                /*
+                 * Remplissage des dropdown list
+                 */
+                
                 DDListMarque.DataSource = ((Modele)Session["CoucheModele"]).ListMarques();
                 DDListMarque.DataBind();
                 

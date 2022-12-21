@@ -14,6 +14,7 @@ namespace AutoBalooWeb.WebForms
         protected void Page_Load(object sender, EventArgs e)
         {
             txtdt.Attributes["min"] = DateTime.Now.ToString("yyyy-MM-dd");
+            // recherche le vehicule sélectionné
             Vehicule v = ((Modele)Session["CoucheModele"]).GetVehiculeByVM(Session["IdVehicule"].ToString());
             txtVe.Text = v.ToString();
         }
@@ -21,7 +22,8 @@ namespace AutoBalooWeb.WebForms
         protected void BtnEssaiCars_Click(object sender, EventArgs e)
         {
             Literal lit = new Literal();
-            Client cliSess = ((Modele)Session["CoucheModele"]).GetClientVM("kevboy9515@gmail.com"/*Page.User.Identity.Name*/);
+            Client cliSess = ((Modele)Session["CoucheModele"]).GetClientVM(Page.User.Identity.Name);
+            // recherche le vehicule sélectionné
             Vehicule v = ((Modele)Session["CoucheModele"]).GetVehiculeByVM(Session["IdVehicule"].ToString());
             AutoBalooWeb.ClasseMetiers.Essai essai = null;
 
@@ -42,12 +44,22 @@ namespace AutoBalooWeb.WebForms
                 {
                     lit.Text = "Essai réussi";
                     ct.Controls.Add(lit);
+                    btnEssaiCars.Visible = false;
+                    btnCancel.CssClass = "btn btn-primary";
+                    btnCancel.Text = "OK";
                 }
             }
         }
         protected void BtnCancel_Click(object sender, EventArgs e)
         {
             Response.Redirect("MainPage.aspx");
+        }
+
+        protected void txtdt_TextChanged(object sender, EventArgs e)
+        {
+            btnEssaiCars.Visible = true;
+            btnCancel.CssClass = "btn btn-secondary";
+            btnCancel.Text = "Annuler";
         }
     }
 }

@@ -27,27 +27,33 @@ namespace AutoBalooWeb.WebForms
 
         protected void BtnConf_Click(object sender, EventArgs e)
         {
+
+            // Config paypal
             var config = new Dictionary<string, string>();
             config.Add("mode", "sandbox");
             config.Add("clientId", WebConfigurationManager.AppSettings["clientID"]);
             config.Add("clientSecret", WebConfigurationManager.AppSettings["clientSecret"]);
 
             var accessToken = new OAuthTokenCredential(config).GetAccessToken();
-
             var apiContext = new APIContext(accessToken);
             apiContext.Config = config;
 
+            // retrouver les info du paiement via la session
             var paymentId = Session["paymentId"].ToString();
+
+            //vérifier qu'on à la session
             if (!String.IsNullOrEmpty(paymentId))
             { 
-                var payment = new Payment() { id = paymentId };  
+                var payment = new Payment() { id = paymentId }; 
+                
+                //requete et éxecution du paiement
                 var payerId = Request.QueryString["PayerID"].ToString();
                 var paymentExecution = new PaymentExecution() { payer_id = payerId };
-
                 var executedPayment = payment.Execute(apiContext, paymentExecution);
 
                 litInfo.Text = "<p>Le paiement a été completé</p>";
 
+                // envoi de la réservation dans la DB
                 Literal lit = new Literal();
                 Client cliSess = ((Modele)Session["CoucheModele"]).GetClientVM(Page.User.Identity.Name);
                 Vehicule v = ((Modele)Session["CoucheModele"]).GetVehiculeByVM(Session["IdVehicule"].ToString());

@@ -17,7 +17,13 @@ namespace AutoBalooWeb.WebForms
             //    Response.Redirect("MainPage.aspx");
             if (!Page.IsPostBack)
             {
+                //désactive tous les champs
                 EnableForms(false);
+
+                /*
+                 * Remplissage des dropdown list
+                 */
+
                 DDListId.DataSource = ((Modele)Session["CoucheModele"]).ListVehiculeVM();
                 DDListId.DataValueField = "IdVoiture";
                 DDListId.DataTextField = "retString";
@@ -150,7 +156,7 @@ namespace AutoBalooWeb.WebForms
             }
         }
 
-        // Méthode qui active ou non tous le champs du forms
+        // Méthode qui active ou non tous le champs du forms et les vide si faux
         private void EnableForms(bool t)
         {
             txtChassis.Enabled = t;
@@ -173,6 +179,29 @@ namespace AutoBalooWeb.WebForms
             DDListCarbu.Enabled = t;
             DDListCarro.Enabled = t;
             btnUpCars.Enabled = t;
+            if(!t)
+            {
+                RBCtEnt.SelectedValue = "Non";
+                RBTrans.SelectedIndex = 0;
+                RBPortes.SelectedIndex = 1;
+                RBTransm.SelectedIndex = 1;
+                vitesseHide.Style.Add("display", "flex");
+                txtNbVitesse.Text = "6";
+
+                txtChassis.Text = "";
+                txtNom.Text = "";
+                DDListMarque.SelectedIndex = 0;
+                txtPuissance.Text = "";
+                txtCylindres.Text = "";
+                txtCouleur.Text = "";
+                txtKm.Text = "";
+                txtAn.Text = "";
+                txtdtarv.Text = "";
+                txtPrix.Text = "";
+                txtReduct.Text = "0";
+                DDListCarbu.SelectedIndex = 0;
+                DDListCarro.SelectedIndex = 0;
+            }
         }
     }
 }

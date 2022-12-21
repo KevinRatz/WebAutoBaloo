@@ -7,13 +7,11 @@
 // </généré automatiquement>
 //------------------------------------------------------------------------------
 
-namespace AutoBalooWeb.WebForms
-{
-
-
-    public partial class LocationForms
-    {
-
+namespace AutoBalooWeb.WebForms {
+    
+    
+    public partial class LocationForms {
+        
         /// <summary>
         /// Contrôle txtdtdeb.
         /// </summary>
@@ -22,7 +20,7 @@ namespace AutoBalooWeb.WebForms
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtdtdeb;
-
+        
         /// <summary>
         /// Contrôle txtdtfin.
         /// </summary>
@@ -31,7 +29,7 @@ namespace AutoBalooWeb.WebForms
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtdtfin;
-
+        
         /// <summary>
         /// Contrôle txtVe.
         /// </summary>
@@ -40,7 +38,7 @@ namespace AutoBalooWeb.WebForms
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label txtVe;
-
+        
         /// <summary>
         /// Contrôle ct.
         /// </summary>
@@ -49,7 +47,7 @@ namespace AutoBalooWeb.WebForms
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl ct;
-
+        
         /// <summary>
         /// Contrôle btnLouerCars.
         /// </summary>
@@ -58,7 +56,7 @@ namespace AutoBalooWeb.WebForms
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnLouerCars;
-
+        
         /// <summary>
         /// Contrôle btnCancel.
         /// </summary>

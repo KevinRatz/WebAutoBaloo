@@ -16,6 +16,7 @@ namespace AutoBalooWeb.WebForms
         protected void Page_Load(object sender, EventArgs e)
         {
             txtdtRes.Text = DateTime.Now.ToString();
+            // recherche le vehicule sélectionné
             Vehicule v = ((Modele)Session["CoucheModele"]).GetVehiculeByVM(Session["IdVehicule"].ToString());
             txtVe.Text = v.ToString();
         }
@@ -26,16 +27,21 @@ namespace AutoBalooWeb.WebForms
             Vehicule v = ((Modele)Session["CoucheModele"]).GetVehiculeByVM(Session["IdVehicule"].ToString());
             Reservation res = new Reservation(Convert.ToDateTime(txtdtRes.Text), v.IdVoiture, cliSess.Id, 1);
 
-            // partie paypal
+            /*
+             * Partie paypal
+             * --------------
+             */
+            
             Session["Reserve"] = res;
-            //tax livraison
+            //taxe livraison
             decimal postageCost = 0;
             // prix voiture db
             decimal price = v.Prix-(v.Prix*((decimal)v.Reduction/100));
-            //pour test
+            //quantité
             int qt = 1;
             decimal subtot = (qt * price);
             decimal tot = subtot + postageCost;
+
             // Authentifier avec paypal
             var config = new Dictionary<string, string>();
             config.Add("mode", "sandbox");
@@ -45,12 +51,12 @@ namespace AutoBalooWeb.WebForms
 
             var apiContext = new APIContext(accessToken);
             apiContext.Config = config;
+            
             //info voiture db
             var carsItem = new Item();
             carsItem.name = v.Marque.NomMarque+" "+v.Nom;
             carsItem.currency = "EUR";
             carsItem.price = price.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture);
-
             carsItem.sku = v.ToString().Trim();
             carsItem.quantity = qt.ToString();
 
